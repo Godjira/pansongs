@@ -18,23 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSz-Wk-Wfu">
-                                <rect key="frame" x="256" y="589" width="103" height="30"/>
-                                <color key="backgroundColor" red="0.11730277394980836" green="0.14576000220174737" blue="0.42446567357512954" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.74596083268279656" green="0.79367395598959256" blue="0.83927704015544036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Text -&gt; Chords"/>
-                                <connections>
-                                    <action selector="textOrChordsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vLT-X8-WVe"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="has-go-ny0">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="has-go-ny0">
                                 <rect key="frame" x="8" y="20" width="359" height="561"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-n7-Dvr" userLabel="Chords">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="561"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="317" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="   Bm                                                     Cm                      ">
+                                            <fragment content="      dcdcd                       dcdc                        dcdc">
                                                 <attributes>
                                                     <font key="NSFont" metaFont="system" size="14"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
@@ -43,14 +34,13 @@
                                         </attributedString>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lXw-dM-7D7" userLabel="TextSong">
-                                        <rect key="frame" x="8" y="14" width="351" height="547"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lXw-dM-7D7" userLabel="TextSong">
+                                        <rect key="frame" x="0.0" y="14" width="177.5" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment>
-                                                <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
+                                            <fragment content="test test test test test test">
                                                 <attributes>
-                                                    <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                                    <font key="NSFont" metaFont="system" size="14"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -59,26 +49,38 @@
                                     </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="1vB-n7-Dvr" firstAttribute="leading" secondItem="has-go-ny0" secondAttribute="leading" id="4pA-Ei-uGB"/>
-                                    <constraint firstItem="1vB-n7-Dvr" firstAttribute="trailing" secondItem="lXw-dM-7D7" secondAttribute="trailing" id="5TR-qz-aC0"/>
-                                    <constraint firstItem="1vB-n7-Dvr" firstAttribute="top" secondItem="has-go-ny0" secondAttribute="top" id="61W-KT-AbF"/>
-                                    <constraint firstItem="lXw-dM-7D7" firstAttribute="width" secondItem="has-go-ny0" secondAttribute="width" id="90B-1i-C0e"/>
+                                    <constraint firstItem="1vB-n7-Dvr" firstAttribute="top" secondItem="has-go-ny0" secondAttribute="top" id="958-fS-X9Y"/>
+                                    <constraint firstItem="lXw-dM-7D7" firstAttribute="leading" secondItem="has-go-ny0" secondAttribute="leading" id="CzI-md-Cek"/>
                                     <constraint firstItem="lXw-dM-7D7" firstAttribute="top" secondItem="has-go-ny0" secondAttribute="top" constant="14" id="QpE-zw-nl9"/>
-                                    <constraint firstAttribute="bottom" secondItem="1vB-n7-Dvr" secondAttribute="bottom" id="R5B-kL-9PP"/>
-                                    <constraint firstAttribute="trailing" secondItem="1vB-n7-Dvr" secondAttribute="trailing" id="b22-b0-sh2"/>
-                                    <constraint firstItem="1vB-n7-Dvr" firstAttribute="width" secondItem="has-go-ny0" secondAttribute="width" id="bVq-lW-Oc9"/>
-                                    <constraint firstItem="1vB-n7-Dvr" firstAttribute="height" secondItem="has-go-ny0" secondAttribute="height" id="gFZ-xL-sHQ"/>
+                                    <constraint firstItem="1vB-n7-Dvr" firstAttribute="leading" secondItem="has-go-ny0" secondAttribute="leading" id="S7J-yH-DiU"/>
                                 </constraints>
                             </scrollView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gpn-9E-4gU">
+                                <rect key="frame" x="242" y="619" width="117" height="29"/>
+                                <segments>
+                                    <segment title="Text"/>
+                                    <segment title="Chords"/>
+                                </segments>
+                                <connections>
+                                    <action selector="editingSegmentedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="AbK-ki-lNT"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmH-nA-yNR">
+                                <rect key="frame" x="242" y="589" width="117" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gpn-9E-4gU" secondAttribute="bottom" constant="20" id="7oN-PE-NeP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="has-go-ny0" secondAttribute="trailing" constant="8" id="8DX-Rf-EuR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gpn-9E-4gU" secondAttribute="trailing" constant="16" id="Aro-VJ-p0C"/>
                             <constraint firstAttribute="bottom" secondItem="has-go-ny0" secondAttribute="bottom" constant="86" id="PNZ-Nh-lhZ"/>
-                            <constraint firstItem="sSz-Wk-Wfu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="TuN-uI-UlX"/>
-                            <constraint firstItem="sSz-Wk-Wfu" firstAttribute="top" secondItem="has-go-ny0" secondAttribute="bottom" constant="8" id="ciu-bc-0hO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sSz-Wk-Wfu" secondAttribute="bottom" constant="48" id="gkY-RP-YBp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sSz-Wk-Wfu" secondAttribute="trailing" constant="16" id="jnD-sl-tgo"/>
+                            <constraint firstItem="Gpn-9E-4gU" firstAttribute="top" secondItem="CmH-nA-yNR" secondAttribute="bottom" constant="13" id="QJX-SF-86I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CmH-nA-yNR" secondAttribute="trailing" constant="16" id="Vsp-BO-PhI"/>
+                            <constraint firstItem="CmH-nA-yNR" firstAttribute="width" secondItem="Gpn-9E-4gU" secondAttribute="width" id="fmD-7l-HFK"/>
                             <constraint firstItem="has-go-ny0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="pMh-Ez-0pd"/>
                             <constraint firstItem="has-go-ny0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vfI-QZ-fmD"/>
                         </constraints>
@@ -86,6 +88,7 @@
                     </view>
                     <connections>
                         <outlet property="chordsTextView" destination="1vB-n7-Dvr" id="uVA-bY-KCW"/>
+                        <outlet property="editingSegmented" destination="Gpn-9E-4gU" id="I5e-xT-mJ6"/>
                         <outlet property="scrollView" destination="has-go-ny0" id="bAO-bJ-tbm"/>
                         <outlet property="textView" destination="lXw-dM-7D7" id="Nsg-G5-Qil"/>
                     </connections>

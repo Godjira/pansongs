@@ -12,8 +12,9 @@ class AddSongViewController: UIViewController {
 
     @IBOutlet weak var chordsTextView: UITextView!
     @IBOutlet weak var textView: UITextView!
-    var frontText = true
+    var frontTextView = true
 
+    @IBOutlet weak var editingSegmented: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
 
     override func viewDidLoad() {
@@ -22,6 +23,8 @@ class AddSongViewController: UIViewController {
         chordsTextView.textColor = UIColor.orange
         textView.delegate = self
 
+        let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(AddSongViewController.chooseEditingView))
+        scrollView.addGestureRecognizer(gestrueTapScrollView)
 
         initToolBarForKeyboard()
         if textView.frame.height < scrollView.frame.height {
@@ -51,20 +54,36 @@ class AddSongViewController: UIViewController {
 
     @objc func doneButtonAction() {
         self.view.endEditing(true)
-
     }
 
-
-    @IBAction func textOrChordsAction(_ sender: UIButton) {
-        if frontText {
-            scrollView.bringSubview(toFront: chordsTextView)
-            frontText = false
+    @objc func chooseEditingView() {
+        if editingSegmented.selectedSegmentIndex == 0 {
+            chordsTextView.isUserInteractionEnabled = false
+            textView.isUserInteractionEnabled = true
+            textView.becomeFirstResponder()
         } else {
+            textView.isUserInteractionEnabled = false
+            chordsTextView.isUserInteractionEnabled = true
+            chordsTextView.becomeFirstResponder()
+        }
+    }
+
+    @IBAction func editingSegmentedAction(_ sender: UISegmentedControl) {
+        if editingSegmented.selectedSegmentIndex == 0 {
             scrollView.bringSubview(toFront: textView)
-            frontText = true
+            chordsTextView.isUserInteractionEnabled = false
+            textView.isUserInteractionEnabled = true
+            textView.becomeFirstResponder()
+        } else {
+            scrollView.bringSubview(toFront: chordsTextView)
+            textView.isUserInteractionEnabled = false
+            chordsTextView.isUserInteractionEnabled = true
+            chordsTextView.becomeFirstResponder()
+
         }
     }
 }
+
 
 extension AddSongViewController: UITextViewDelegate {
 
@@ -72,12 +91,7 @@ extension AddSongViewController: UITextViewDelegate {
         if textView == self.textView {
             //textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
             scrollView.contentSize.height = textView.frame.size.height
-        }
-
-        if textView.frame.height < scrollView.frame.height {
-            textView.frame = CGRect(origin: textView.frame.origin,
-                                    size: CGSize(width: textView.frame.width,
-                                                 height: scrollView.frame.height))
+            scrollView.contentSize.width = textView.frame.size.width
         }
     }
     
