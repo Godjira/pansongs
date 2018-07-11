@@ -13,12 +13,15 @@ class AddSongViewController: UIViewController {
     @IBOutlet weak var chordsTextView: UITextView!
     @IBOutlet weak var textView: UITextView!
     var frontTextView = true
+    var segmentedControlItem: UISegmentedControl?
 
     @IBOutlet weak var editingSegmented: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initToolBarForKeyboard()
+
         scrollView.bringSubview(toFront: textView)
         chordsTextView.textColor = UIColor.orange
         textView.delegate = self
@@ -26,7 +29,6 @@ class AddSongViewController: UIViewController {
         let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(AddSongViewController.chooseEditingView))
         scrollView.addGestureRecognizer(gestrueTapScrollView)
 
-        initToolBarForKeyboard()
         if textView.frame.height < scrollView.frame.height {
             textView.frame = CGRect(origin: textView.frame.origin,
                                     size: CGSize(width: textView.frame.width,
@@ -37,14 +39,20 @@ class AddSongViewController: UIViewController {
     func initToolBarForKeyboard() {
         //init toolbar
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
-
+        toolbar.barStyle = .blackOpaque
         //create left side empty space so that done button set on right side
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self,
                                                        action: #selector(AddSongViewController.doneButtonAction))
 
-        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        let segmentedItemArray = ["Text", "Chords"]
+        self.segmentedControlItem = UISegmentedControl(items: segmentedItemArray)
+        self.segmentedControlItem?.frame = CGRect(x: 0, y: 0, width: 120, height: 30)
+        self.segmentedControlItem?.selectedSegmentIndex = 0
+        let segmentBarItem = UIBarButtonItem(customView: self.segmentedControlItem!)
+
+        toolbar.setItems([segmentBarItem ,flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
 
         //setting toolbar as inputAccessoryView
