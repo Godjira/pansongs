@@ -52,6 +52,8 @@ class AddSongViewController: UIViewController {
         self.segmentedControlItem?.selectedSegmentIndex = 0
         let segmentBarItem = UIBarButtonItem(customView: self.segmentedControlItem!)
 
+        self.segmentedControlItem?.addTarget(self, action: #selector(AddSongViewController.changeSegmentedControll), for: .valueChanged)
+
         toolbar.setItems([segmentBarItem ,flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
 
@@ -65,7 +67,7 @@ class AddSongViewController: UIViewController {
     }
 
     @objc func chooseEditingView() {
-        if editingSegmented.selectedSegmentIndex == 0 {
+        if segmentedControlItem?.selectedSegmentIndex == 0 {
             chordsTextView.isUserInteractionEnabled = false
             textView.isUserInteractionEnabled = true
             textView.becomeFirstResponder()
@@ -76,8 +78,8 @@ class AddSongViewController: UIViewController {
         }
     }
 
-    @IBAction func editingSegmentedAction(_ sender: UISegmentedControl) {
-        if editingSegmented.selectedSegmentIndex == 0 {
+     @objc func changeSegmentedControll() {
+        if segmentedControlItem?.selectedSegmentIndex == 0 {
             scrollView.bringSubview(toFront: textView)
             chordsTextView.isUserInteractionEnabled = false
             textView.isUserInteractionEnabled = true
