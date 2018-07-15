@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5H-kS-kDa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,312 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Circle View Controller-->
+        <scene sceneID="NCm-SE-PkG">
+            <objects>
+                <viewController id="s5H-kS-kDa" customClass="CircleViewController" customModule="PanSongs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LvO-xb-WN3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bHh-OW-NfV">
+                                <rect key="frame" x="1" y="344" width="373" height="319"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q4N-H3-o9Z">
+                                    <size key="itemSize" width="136" height="136"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2wJ-iu-iDC">
+                                        <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60d-on-4bY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HJ-5B-uTX">
+                                                    <rect key="frame" x="0.0" y="24" width="136" height="112"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nV0-qO-FfU">
+                                        <rect key="frame" x="0.0" y="183" width="136" height="136"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bXi-Sd-goL">
+                                        <rect key="frame" x="146" y="0.0" width="136" height="136"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfB-hu-Xyp">
+                                <rect key="frame" x="37.5" y="20" width="300" height="300"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="dJM-nZ-DO8" userLabel="circle">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="Lrd-MT-gVc"/>
+                                            <constraint firstAttribute="height" constant="300" id="x3r-vJ-dL1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmP-6x-8Dy">
+                                        <rect key="frame" x="237" y="78" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="D"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="bBz-DY-dIR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ned-wi-zTx">
+                                        <rect key="frame" x="254" y="135" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="A"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="tq2-Qy-wng"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnY-Ds-2W8">
+                                        <rect key="frame" x="237" y="192" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="E"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="OqJ-Wy-Pu3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ion-wL-m9A">
+                                        <rect key="frame" x="75" y="31" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="F"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="GF6-5X-tAB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elo-c1-Q8T">
+                                        <rect key="frame" x="32" y="72" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Bb"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="Jan-7d-k9c"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nb5-xe-lNI">
+                                        <rect key="frame" x="16" y="134" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Eb"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="cyU-v3-ZPj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KC4-WE-Ryk">
+                                        <rect key="frame" x="32" y="192" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Ab"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="4SH-uj-q6Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2K-3Y-vRF">
+                                        <rect key="frame" x="75" y="237" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Db">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="15"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="oqV-b5-oyH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKL-dt-cNe">
+                                        <rect key="frame" x="193" y="237" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="B"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="eKM-ic-PAS" eventType="touchUpInside" id="SdY-Fz-I1J"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bk-bU-2M5">
+                                        <rect key="frame" x="99" y="72" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Dm"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="GYI-sp-CVt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13J-C0-mxH">
+                                        <rect key="frame" x="70" y="96" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Gm"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="BRj-EP-C2n"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxH-5P-2g8">
+                                        <rect key="frame" x="61" y="134" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cm"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="pgF-bZ-uff"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYW-ng-riH">
+                                        <rect key="frame" x="70" y="172" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Fm"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="MQw-ot-mzR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrX-ik-p6k">
+                                        <rect key="frame" x="97" y="199" width="32" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Bbm"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="eKM-ic-PAS" eventType="touchUpInside" id="Rls-tm-JAD"/>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="yEK-8P-sVq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gid-p9-rvl">
+                                        <rect key="frame" x="196" y="172" width="33" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="C#m"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="AE7-a7-wOT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezw-lF-k9I">
+                                        <rect key="frame" x="198" y="99" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Bm"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="odc-eb-JoV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPv-AK-2Qq">
+                                        <rect key="frame" x="207" y="135" width="31" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="F#m"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="DB4-4w-JX4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-6K-f0N">
+                                        <rect key="frame" x="171" y="199" width="34" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="G#m"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="Jmh-hP-w82"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvR-RL-yxo">
+                                        <rect key="frame" x="173" y="72" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Em"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="7mo-UK-ghO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aum-FF-w4W">
+                                        <rect key="frame" x="198" y="31" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="G"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="VhA-dG-wwn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYl-si-U9W">
+                                        <rect key="frame" x="135" y="251" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Gb"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="Wz5-6A-KCt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYc-PF-CPA">
+                                        <rect key="frame" x="135" y="207" width="31" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Ebm"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="d7v-Rd-thE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nh-BT-3ug">
+                                        <rect key="frame" x="135" y="15" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="C"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="rQO-ik-Xsh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyu-Hq-Fd8">
+                                        <rect key="frame" x="135" y="65" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Am"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="GQw-qv-h2R"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dJM-nZ-DO8" firstAttribute="centerX" secondItem="kfB-hu-Xyp" secondAttribute="centerX" id="Gxq-LV-jNa"/>
+                                    <constraint firstItem="dJM-nZ-DO8" firstAttribute="centerY" secondItem="kfB-hu-Xyp" secondAttribute="centerY" id="MlI-x2-8NV"/>
+                                    <constraint firstAttribute="width" constant="300" id="k4O-5b-G1X"/>
+                                    <constraint firstAttribute="height" constant="300" id="rM5-PV-CVF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vJq-XN-DmJ" firstAttribute="bottom" secondItem="bHh-OW-NfV" secondAttribute="bottom" constant="4" id="AJj-0f-Q57"/>
+                            <constraint firstItem="kfB-hu-Xyp" firstAttribute="centerX" secondItem="vJq-XN-DmJ" secondAttribute="centerX" id="FZT-Gn-AWN"/>
+                            <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="kfB-hu-Xyp" secondAttribute="bottom" constant="24" id="fya-RO-jRy"/>
+                            <constraint firstItem="bHh-OW-NfV" firstAttribute="leading" secondItem="vJq-XN-DmJ" secondAttribute="leading" constant="1" id="klK-On-jJb"/>
+                            <constraint firstItem="vJq-XN-DmJ" firstAttribute="trailing" secondItem="bHh-OW-NfV" secondAttribute="trailing" constant="1" id="tP2-j8-4hU"/>
+                            <constraint firstItem="kfB-hu-Xyp" firstAttribute="top" secondItem="vJq-XN-DmJ" secondAttribute="top" id="tdt-2c-UJS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vJq-XN-DmJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="chordsCollection" destination="bHh-OW-NfV" id="Gux-FN-ptf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5U5-9H-nH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eKM-ic-PAS" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-671.20000000000005" y="117.39130434782609"/>
+        </scene>
         <!--Add Song View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -32,7 +338,7 @@
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardAppearance="alert"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lXw-dM-7D7" userLabel="TextSong">
                                         <rect key="frame" x="0.0" y="14" width="177.5" height="33"/>
@@ -45,7 +351,7 @@
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardAppearance="alert"/>
                                     </textView>
                                 </subviews>
                                 <constraints>
@@ -98,4 +404,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="circle" width="407" height="405"/>
+    </resources>
 </document>

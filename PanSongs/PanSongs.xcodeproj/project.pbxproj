@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */; };
+		D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2520F91BCD001F5834 /* Chord.swift */; };
+		D61E9E2920F91EA9001F5834 /* ChordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2820F91EA9001F5834 /* ChordsManager.swift */; };
 		D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693D8BA20F4952E00AFC5BD /* AppDelegate.swift */; };
 		D693D8BD20F4952E00AFC5BD /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693D8BC20F4952E00AFC5BD /* AddSongViewController.swift */; };
 		D693D8C020F4952E00AFC5BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693D8BE20F4952E00AFC5BD /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
+		D61E9E2520F91BCD001F5834 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
+		D61E9E2820F91EA9001F5834 /* ChordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsManager.swift; sourceTree = "<group>"; };
 		D693D8B720F4952E00AFC5BD /* PanSongs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanSongs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D693D8BA20F4952E00AFC5BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D693D8BC20F4952E00AFC5BD /* AddSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +43,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D61E9E2420F91BB7001F5834 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D61E9E2520F91BCD001F5834 /* Chord.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D61E9E2720F91CF2001F5834 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D61E9E2820F91EA9001F5834 /* ChordsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		D693D8AE20F4952E00AFC5BD = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +80,8 @@
 			children = (
 				D693D8BA20F4952E00AFC5BD /* AppDelegate.swift */,
 				D693D8CF20F4955D00AFC5BD /* Controllers */,
+				D61E9E2720F91CF2001F5834 /* Managers */,
+				D61E9E2420F91BB7001F5834 /* Models */,
 				D693D8BE20F4952E00AFC5BD /* Main.storyboard */,
 				D693D8C420F4952F00AFC5BD /* Assets.xcassets */,
 				D693D8C620F4952F00AFC5BD /* LaunchScreen.storyboard */,
@@ -71,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				D693D8BC20F4952E00AFC5BD /* AddSongViewController.swift */,
+				D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -146,8 +171,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61E9E2920F91EA9001F5834 /* ChordsManager.swift in Sources */,
 				D693D8BD20F4952E00AFC5BD /* AddSongViewController.swift in Sources */,
+				D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
+				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

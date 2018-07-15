@@ -39,7 +39,10 @@ class AddSongViewController: UIViewController {
     func initToolBarForKeyboard() {
         //init toolbar
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
-        toolbar.barStyle = .blackOpaque
+        toolbar.barStyle = .blackTranslucent
+        toolbar.isTranslucent = false
+        toolbar.tintColor = UIColor.white
+        toolbar.barTintColor =  UIColor.gray
         //create left side empty space so that done button set on right side
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
@@ -51,6 +54,7 @@ class AddSongViewController: UIViewController {
         self.segmentedControlItem?.frame = CGRect(x: 0, y: 0, width: 120, height: 30)
         self.segmentedControlItem?.selectedSegmentIndex = 0
         let segmentBarItem = UIBarButtonItem(customView: self.segmentedControlItem!)
+
 
         self.segmentedControlItem?.addTarget(self, action: #selector(AddSongViewController.changeSegmentedControll), for: .valueChanged)
 
