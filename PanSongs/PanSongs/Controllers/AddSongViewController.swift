@@ -18,6 +18,9 @@ class AddSongViewController: UIViewController {
     @IBOutlet weak var editingSegmented: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
 
+    var chords: [Chord] = []
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initToolBarForKeyboard()

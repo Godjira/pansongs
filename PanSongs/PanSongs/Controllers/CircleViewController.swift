@@ -14,30 +14,29 @@ class CircleViewController: UIViewController {
     @IBOutlet weak var chordsCollection: UICollectionView!
 
     var chordsManager = ChordsManager.shared()
+    
+    var chords: [Chord] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-//        let chord = ChordsManager.shared().getCmajor()
-//        for pos in chord.positions {
-//            print(pos.frets)
-//            print(pos.fingers)
-//            print(pos.barres)
-//            print(pos.capo)
-//            print(pos.barres)
-//            
-//        }
+        
 
     }
 
 
-    @IBAction func clickOnChordAction(_ sender: UIButton) {        
-        chordsManager.getChordFromText(chord: sender.titleLabel!.text!)
-
+    @IBAction func clickOnChordAction(_ sender: UIButton) {
+        let chord = chordsManager.getChordFromText(chord: sender.titleLabel!.text!)
+        chords.append(chord)
     }
 
 
-
+    @IBAction func next(_ sender: Any) {
+        guard let addSongVC = storyboard?.instantiateViewController(withIdentifier: "AddSongViewController")
+            as? AddSongViewController else { return }
+        addSongVC.chords = self.chords
+        self.present(addSongVC, animated: true)
+    }
+    
 
 }

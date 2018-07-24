@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5H-kS-kDa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5H-kS-kDa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -295,15 +295,27 @@
                                     <constraint firstAttribute="height" constant="300" id="rM5-PV-CVF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIt-Yl-gDv">
+                                <rect key="frame" x="305" y="20" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="HM6-IP-h7m"/>
+                                </constraints>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="next:" destination="s5H-kS-kDa" eventType="touchUpInside" id="22I-0m-enS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vJq-XN-DmJ" firstAttribute="bottom" secondItem="bHh-OW-NfV" secondAttribute="bottom" constant="4" id="AJj-0f-Q57"/>
                             <constraint firstItem="kfB-hu-Xyp" firstAttribute="centerX" secondItem="vJq-XN-DmJ" secondAttribute="centerX" id="FZT-Gn-AWN"/>
+                            <constraint firstItem="zIt-Yl-gDv" firstAttribute="trailing" secondItem="vJq-XN-DmJ" secondAttribute="trailing" id="Lp4-iD-5f8"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="kfB-hu-Xyp" secondAttribute="bottom" constant="24" id="fya-RO-jRy"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="leading" secondItem="vJq-XN-DmJ" secondAttribute="leading" constant="1" id="klK-On-jJb"/>
                             <constraint firstItem="vJq-XN-DmJ" firstAttribute="trailing" secondItem="bHh-OW-NfV" secondAttribute="trailing" constant="1" id="tP2-j8-4hU"/>
                             <constraint firstItem="kfB-hu-Xyp" firstAttribute="top" secondItem="vJq-XN-DmJ" secondAttribute="top" id="tdt-2c-UJS"/>
+                            <constraint firstItem="zIt-Yl-gDv" firstAttribute="top" secondItem="vJq-XN-DmJ" secondAttribute="top" id="zgV-ND-Adi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vJq-XN-DmJ"/>
                     </view>
@@ -319,13 +331,13 @@
         <!--Add Song View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AddSongViewController" customModule="PanSongs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddSongViewController" id="BYZ-38-t0r" customClass="AddSongViewController" customModule="PanSongs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="has-go-ny0">
-                                <rect key="frame" x="8" y="20" width="359" height="561"/>
+                                <rect key="frame" x="8" y="20" width="359" height="627"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-n7-Dvr" userLabel="Chords">
                                         <rect key="frame" x="0.0" y="0.0" width="317" height="33"/>
@@ -361,32 +373,11 @@
                                     <constraint firstItem="1vB-n7-Dvr" firstAttribute="leading" secondItem="has-go-ny0" secondAttribute="leading" id="S7J-yH-DiU"/>
                                 </constraints>
                             </scrollView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gpn-9E-4gU">
-                                <rect key="frame" x="242" y="619" width="117" height="29"/>
-                                <segments>
-                                    <segment title="Text"/>
-                                    <segment title="Chords"/>
-                                </segments>
-                                <connections>
-                                    <action selector="editingSegmentedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="AbK-ki-lNT"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmH-nA-yNR">
-                                <rect key="frame" x="242" y="589" width="117" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gpn-9E-4gU" secondAttribute="bottom" constant="20" id="7oN-PE-NeP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="has-go-ny0" secondAttribute="trailing" constant="8" id="8DX-Rf-EuR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gpn-9E-4gU" secondAttribute="trailing" constant="16" id="Aro-VJ-p0C"/>
                             <constraint firstAttribute="bottom" secondItem="has-go-ny0" secondAttribute="bottom" constant="86" id="PNZ-Nh-lhZ"/>
-                            <constraint firstItem="Gpn-9E-4gU" firstAttribute="top" secondItem="CmH-nA-yNR" secondAttribute="bottom" constant="13" id="QJX-SF-86I"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CmH-nA-yNR" secondAttribute="trailing" constant="16" id="Vsp-BO-PhI"/>
-                            <constraint firstItem="CmH-nA-yNR" firstAttribute="width" secondItem="Gpn-9E-4gU" secondAttribute="width" id="fmD-7l-HFK"/>
                             <constraint firstItem="has-go-ny0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="pMh-Ez-0pd"/>
                             <constraint firstItem="has-go-ny0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vfI-QZ-fmD"/>
                         </constraints>
@@ -394,7 +385,6 @@
                     </view>
                     <connections>
                         <outlet property="chordsTextView" destination="1vB-n7-Dvr" id="uVA-bY-KCW"/>
-                        <outlet property="editingSegmented" destination="Gpn-9E-4gU" id="I5e-xT-mJ6"/>
                         <outlet property="scrollView" destination="has-go-ny0" id="bAO-bJ-tbm"/>
                         <outlet property="textView" destination="lXw-dM-7D7" id="Nsg-G5-Qil"/>
                     </connections>

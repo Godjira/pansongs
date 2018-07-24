@@ -22,38 +22,23 @@ class ChordsManager {
         return uniqueInstance!
     }
 
-    func getChordFromText(chord: String) -> Void {
+    func getChordFromText(chord: String) -> Chord {
 
         let asset = NSDataAsset(name: "chords", bundle: Bundle.main)
         let json = try? JSONSerialization.jsonObject(with: asset!.data,
                                                         options: JSONSerialization.ReadingOptions.allowFragments) as! [String: AnyObject]
         let EADGBE = json!["EADGBE"] as! [String: AnyObject]
-        let chord = EADGBE[chord] as! [[String: String]]
-        print(chord.first!["p"])
+        let chordDic = EADGBE[chord] as! [[String: String]]
+        
+        var positions: [Position] = []
+        for dic in chordDic{
+            let position = Position(p: dic["p"]!, f: dic["f"]!)
+            positions.append(position)
+        }
 
-
-
+        return Chord(name: chord, positions: positions)
     }
 
 
-
-//    func getCmajor() -> Chord {
-//        let asset = NSDataAsset(name: "major", bundle: Bundle.main)
-//        guard let json = try? JSONSerialization.jsonObject(with: asset!.data,
-//                                                           options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject]
-//            else { return Chord(key: "0", positions: [], suffix: "0") }
-//        var positions: [Position] = []
-//        let jsonPos = json?["positions"] as? [[String: AnyObject]]
-//        for pos in jsonPos! {
-//            let newPos = Position(fingers: pos["fingers"] as? String ?? "",
-//                                  frets: pos["frets"] as? String ?? "",
-//                                  barres: pos["barres"] as? Int ?? 0,
-//                                  capo: pos["capo"] as? Bool ?? false)
-//            positions.append(newPos)
-//        }
-//
-//        let chord = Chord(key: json?["key"] as? String ?? "", positions: positions, suffix: json?["suffix"] as? String ?? "")
-//        return chord
-//    }
 
 }
