@@ -22,16 +22,16 @@ class ChordsManager {
         return uniqueInstance!
     }
 
-    func getChordFromText(chord: String) -> Chord {
+    func getChordFromText(chord: String) -> Void {
 
-        let asset = NSDataAsset(name: chord, bundle: Bundle.main)
+        let asset = NSDataAsset(name: "chords", bundle: Bundle.main)
         let json = try? JSONSerialization.jsonObject(with: asset!.data,
                                                         options: JSONSerialization.ReadingOptions.allowFragments) as! [String: AnyObject]
-        let shapes = json["shapes"] [[String: AnyObject]]
+        let EADGBE = json!["EADGBE"] as! [String: AnyObject]
+        let chord = EADGBE[chord] as! [[String: String]]
+        print(chord.first!["p"])
 
 
-
-        var rChord = Chord(name: json["name"] as? String ?? "", fret: json["fret"] as? Int ?? 0, positions: )
 
     }
 

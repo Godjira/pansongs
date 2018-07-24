@@ -32,9 +32,8 @@ class CircleViewController: UIViewController {
     }
 
 
-    @IBAction func clickOnChordAction(_ sender: UIButton) {
-
-        print(sender.titleLabel!.text)
+    @IBAction func clickOnChordAction(_ sender: UIButton) {        
+        chordsManager.getChordFromText(chord: sender.titleLabel!.text!)
 
     }
 

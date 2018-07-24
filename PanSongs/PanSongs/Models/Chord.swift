@@ -11,7 +11,13 @@ import Foundation
 struct Chord {
 
     var name: String
-    var fret: Int
-    var positions: [String]
+    var positions: [Position]
 
+}
+
+struct Position {
+    
+    var p: String
+    var f: String
+    
 }
