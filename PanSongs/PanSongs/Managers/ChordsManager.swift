@@ -31,12 +31,18 @@ class ChordsManager {
         let chordDic = EADGBE[chord] as! [[String: String]]
         
         var positions: [Position] = []
-        for dic in chordDic{
-            let position = Position(p: dic["p"]!, f: dic["f"]!)
-            positions.append(position)
+        for dic in chordDic {
+            let pString = dic["p"]!
+            let pCharacters: [Character] = pString.filter { $0 != "," }
+            
+            let fString = dic["f"]!
+            let fStringComponents = fString.components(separatedBy: ";")
+            let fArrayCharacters: [[Character]] = fStringComponents.map { Array($0) }
+            
+            positions.append(Position(p: pCharacters, f: fArrayCharacters))
         }
 
-        return Chord(name: chord, positions: positions)
+        return Chord(chordStruct: ChordStruct(name: chord, positions: positions))
     }
 
 

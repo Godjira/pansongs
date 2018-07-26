@@ -17,6 +17,8 @@ class AddSongViewController: UIViewController {
 
     @IBOutlet weak var editingSegmented: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    var scrollViewSFrame: CGRect = .zero
 
     var chords: [Chord] = []
 
@@ -24,6 +26,9 @@ class AddSongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initToolBarForKeyboard()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
 
         scrollView.bringSubview(toFront: textView)
         chordsTextView.textColor = UIColor.orange
@@ -37,6 +42,9 @@ class AddSongViewController: UIViewController {
                                     size: CGSize(width: textView.frame.width,
                                                  height: scrollView.frame.height))
         }
+        
+        scrollViewSFrame = scrollView.frame
+        
     }
 
     func initToolBarForKeyboard() {
@@ -68,6 +76,20 @@ class AddSongViewController: UIViewController {
         self.chordsTextView.inputAccessoryView = toolbar
         self.textView.inputAccessoryView = toolbar
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            scrollView.frame = CGRect(x: scrollView.frame.origin.x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.width - keyboardHeight)
+        }
+    }
+    
+    @objc func keyboardDidHide() {
+        scrollView.frame = scrollViewSFrame
+    }
+
+    
 
     @objc func doneButtonAction() {
         self.view.endEditing(true)
