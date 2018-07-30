@@ -16,6 +16,7 @@
 		D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D693D8C120F4952E00AFC5BD /* PanSongs.xcdatamodeld */; };
 		D693D8C520F4952F00AFC5BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D693D8C420F4952F00AFC5BD /* Assets.xcassets */; };
 		D693D8C820F4952F00AFC5BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693D8C620F4952F00AFC5BD /* LaunchScreen.storyboard */; };
+		ED0773DE210A4035008BEFFE /* ChordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0773DD210A4035008BEFFE /* ChordViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D693D8C420F4952F00AFC5BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D693D8C720F4952F00AFC5BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D693D8C920F4952F00AFC5BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED0773DD210A4035008BEFFE /* ChordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				D693D8CF20F4955D00AFC5BD /* Controllers */,
 				D61E9E2720F91CF2001F5834 /* Managers */,
 				D61E9E2420F91BB7001F5834 /* Models */,
+				ED0773DC210A3FDD008BEFFE /* Cells */,
 				D693D8BE20F4952E00AFC5BD /* Main.storyboard */,
 				D693D8C420F4952F00AFC5BD /* Assets.xcassets */,
 				D693D8C620F4952F00AFC5BD /* LaunchScreen.storyboard */,
@@ -98,6 +101,14 @@
 				D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ED0773DC210A3FDD008BEFFE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ED0773DD210A4035008BEFFE /* ChordViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				D61E9E2920F91EA9001F5834 /* ChordsManager.swift in Sources */,
 				D693D8BD20F4952E00AFC5BD /* AddSongViewController.swift in Sources */,
 				D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */,
+				ED0773DE210A4035008BEFFE /* ChordViewCell.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
 				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,
