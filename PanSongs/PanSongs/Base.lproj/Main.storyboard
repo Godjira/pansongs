@@ -417,11 +417,31 @@
                     </view>
                     <connections>
                         <outlet property="chordsTextView" destination="1vB-n7-Dvr" id="uVA-bY-KCW"/>
+                        <outlet property="keyboardView" destination="VpS-d5-OdH" id="YAd-if-fIR"/>
                         <outlet property="scrollView" destination="has-go-ny0" id="bAO-bJ-tbm"/>
                         <outlet property="textView" destination="lXw-dM-7D7" id="Nsg-G5-Qil"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="VpS-d5-OdH" customClass="KeyboardView" customModule="PanSongs" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="381" height="343"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3U-O6-Fsa">
+                            <rect key="frame" x="167.5" y="156.5" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="action:" destination="VpS-d5-OdH" eventType="touchUpInside" id="oJx-px-XUc"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.90691790803108807" green="0.90691790803108807" blue="0.90691790803108807" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstItem="S3U-O6-Fsa" firstAttribute="centerX" secondItem="VpS-d5-OdH" secondAttribute="centerX" id="7k5-ZE-Ewl"/>
+                        <constraint firstItem="S3U-O6-Fsa" firstAttribute="centerY" secondItem="VpS-d5-OdH" secondAttribute="centerY" id="nRM-gY-lBI"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="r2w-up-sqM"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
