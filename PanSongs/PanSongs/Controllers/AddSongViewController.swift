@@ -8,16 +8,15 @@
 
 import UIKit
 
-class AddSongViewController: UIViewController {
+class AddSongViewController: UIViewController, SendDelegate {
     
-    @IBOutlet weak var chordsTextView: CustomTextView!
-    private var customInputViewController = KeyChordBoardViewController(nibName: "keychordboard",
-                                                                      bundle: nil)
+    @IBOutlet weak var chordsTextView: UITextView!
     
     @IBOutlet weak var textView: UITextView!
     var frontTextView = true
     var segmentedControlItem: UISegmentedControl?
     
+    @IBOutlet var keyboardView: KeyboardView!
     @IBOutlet weak var editingSegmented: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -31,6 +30,9 @@ class AddSongViewController: UIViewController {
         super.viewDidLoad()
         initToolBarForKeyboard()
         
+        keyboardView.delegate = self
+        
+        chordsTextView.inputView = keyboardView
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
@@ -38,11 +40,6 @@ class AddSongViewController: UIViewController {
         scrollView.bringSubview(toFront: textView)
         chordsTextView.textColor = UIColor.orange
         textView.delegate = self
-        
-        // Set custom "Keyboard" inputView in chordsTextView
-       
-        chordsTextView.inputViewController = customInputViewController
-        
         
         let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(AddSongViewController.chooseEditingView))
         scrollView.addGestureRecognizer(gestrueTapScrollView)
@@ -55,6 +52,11 @@ class AddSongViewController: UIViewController {
         
         scrollViewSFrame = scrollView.frame
         
+    }
+    
+    func send(text: String) {
+        print(text)
+        // set to text field
     }
     
     func initToolBarForKeyboard() {

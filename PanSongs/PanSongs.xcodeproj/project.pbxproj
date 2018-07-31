@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193E7C0A2110E44C00456BDE /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E7C092110E44C00456BDE /* KeyboardView.swift */; };
 		D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */; };
 		D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2520F91BCD001F5834 /* Chord.swift */; };
 		D61E9E2920F91EA9001F5834 /* ChordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2820F91EA9001F5834 /* ChordsManager.swift */; };
@@ -18,11 +19,11 @@
 		D693D8C820F4952F00AFC5BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693D8C620F4952F00AFC5BD /* LaunchScreen.storyboard */; };
 		ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0773DD210A4035008BEFFE /* ChordCollectionViewCell.swift */; };
 		ED408E5E211080290029C867 /* KeyChordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */; };
-		ED40D9022110B10A00330403 /* keychordboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED40D9012110B10A00330403 /* keychordboard.xib */; };
 		ED40D9042110B2C400330403 /* KeyChordBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40D9032110B2C400330403 /* KeyChordBoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		193E7C092110E44C00456BDE /* KeyboardView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
 		D61E9E2520F91BCD001F5834 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		D61E9E2820F91EA9001F5834 /* ChordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsManager.swift; sourceTree = "<group>"; };
@@ -36,7 +37,6 @@
 		D693D8C920F4952F00AFC5BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED0773DD210A4035008BEFFE /* ChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChordTableViewCell.swift; sourceTree = "<group>"; };
-		ED40D9012110B10A00330403 /* keychordboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = keychordboard.xib; sourceTree = "<group>"; };
 		ED40D9032110B2C400330403 /* KeyChordBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChordBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		193E7C0B2110E8B200456BDE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				193E7C092110E44C00456BDE /* KeyboardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D61E9E2420F91BB7001F5834 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,12 +95,12 @@
 			isa = PBXGroup;
 			children = (
 				D693D8BA20F4952E00AFC5BD /* AppDelegate.swift */,
+				193E7C0B2110E8B200456BDE /* Views */,
 				D693D8CF20F4955D00AFC5BD /* Controllers */,
 				D61E9E2720F91CF2001F5834 /* Managers */,
 				D61E9E2420F91BB7001F5834 /* Models */,
 				ED0773DC210A3FDD008BEFFE /* Cells */,
 				D693D8BE20F4952E00AFC5BD /* Main.storyboard */,
-				ED40D9012110B10A00330403 /* keychordboard.xib */,
 				D693D8C420F4952F00AFC5BD /* Assets.xcassets */,
 				D693D8C620F4952F00AFC5BD /* LaunchScreen.storyboard */,
 				D693D8C920F4952F00AFC5BD /* Info.plist */,
@@ -181,7 +189,6 @@
 				D693D8C820F4952F00AFC5BD /* LaunchScreen.storyboard in Resources */,
 				D693D8C520F4952F00AFC5BD /* Assets.xcassets in Resources */,
 				D693D8C020F4952E00AFC5BD /* Main.storyboard in Resources */,
-				ED40D9022110B10A00330403 /* keychordboard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61E9E2920F91EA9001F5834 /* ChordsManager.swift in Sources */,
+				193E7C0A2110E44C00456BDE /* KeyboardView.swift in Sources */,
 				D693D8BD20F4952E00AFC5BD /* AddSongViewController.swift in Sources */,
 				ED408E5E211080290029C867 /* KeyChordTableViewCell.swift in Sources */,
 				ED40D9042110B2C400330403 /* KeyChordBoardViewController.swift in Sources */,
