@@ -11,6 +11,9 @@ import UIKit
 class AddSongViewController: UIViewController {
     
     @IBOutlet weak var chordsTextView: UITextView!
+    private var customInputViewController = KeyChordBoardViewController(nibName: "keychordboard",
+                                                                      bundle: nil)
+    
     @IBOutlet weak var textView: UITextView!
     var frontTextView = true
     var segmentedControlItem: UISegmentedControl?
@@ -22,10 +25,12 @@ class AddSongViewController: UIViewController {
     
     var chords: [Chord] = []
     
+    @IBOutlet weak var keyChordBoardTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initToolBarForKeyboard()
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
@@ -33,6 +38,11 @@ class AddSongViewController: UIViewController {
         scrollView.bringSubview(toFront: textView)
         chordsTextView.textColor = UIColor.orange
         textView.delegate = self
+        
+        // Set custom "Keyboard" inputView in chordsTextView
+       
+        chordsTextView.inputViewController = customInputViewController
+        
         
         let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(AddSongViewController.chooseEditingView))
         scrollView.addGestureRecognizer(gestrueTapScrollView)
@@ -89,8 +99,6 @@ class AddSongViewController: UIViewController {
         scrollView.frame = scrollViewSFrame
     }
     
-    
-    
     @objc func doneButtonAction() {
         self.view.endEditing(true)
     }
@@ -133,6 +141,34 @@ extension AddSongViewController: UITextViewDelegate {
             scrollView.contentSize.width = textView.frame.size.width
         }
     }
-    
 }
+
+extension AddSongViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return chords.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "KeyChordTableViewCell")
+            as? KeyChordTableViewCell else { return UITableViewCell() }
+        cell.chord = chords[indexPath.row]
+        
+        return cell
+    }
+}
+
+class chordsTextView: UITextView {
+    var _inputViewController : UIInputViewController?
+    override public var inputViewController: UIInputViewController?{
+        get { return _inputViewController }
+        set { _inputViewController = newValue }
+    }
+}
+
+
+
+
+
+
 
