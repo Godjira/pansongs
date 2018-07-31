@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ChordViewCell: UICollectionViewCell {
+class ChordCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameChord: UILabel!
     @IBOutlet weak var chordString: UILabel!

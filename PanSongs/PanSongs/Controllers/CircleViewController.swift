@@ -73,8 +73,8 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChordViewCell", for: indexPath)
-            as? ChordViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChordCollectionViewCell", for: indexPath)
+            as? ChordCollectionViewCell else { return UICollectionViewCell() }
         cell.setChord(chord: chords[indexPath.row])
         
         return cell
