@@ -31,7 +31,8 @@ class AddSongViewController: UIViewController, SendDelegate {
         initToolBarForKeyboard()
         
         keyboardView.delegate = self
-        
+        keyboardView.chords = self.chords
+        keyboardView.reloadData()
         chordsTextView.inputView = keyboardView
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)

@@ -22,10 +22,9 @@ class KeyChordTableViewCell: UITableViewCell {
     
     
     @IBAction func infoButton(_ sender: UIButton) {
+        print("Chord info")
     }
     
-    @IBAction func addButton(_ sender: UIButton) {
-    }
-    
+
     
 }
