@@ -10,6 +10,11 @@ import UIKit
 
 protocol SendDelegate: class {
   func send(text: String)
+  func addSpace(howSpace: Int)
+  func moveCursorToLeft()
+  func moveCursorToRight()
+  func removeCharacterChordsTextView()
+  func newLineChordTextView()
 }
 
 class KeyboardView: UIView {
@@ -31,6 +36,30 @@ class KeyboardView: UIView {
     tableView.reloadData()
   }
   
+  @IBAction func moveCursorToLeftAction(_ sender: UIButton) {
+    delegate?.moveCursorToLeft()
+  }
+  @IBAction func moveCursorToRight(_ sender: UIButton) {
+    delegate?.moveCursorToRight()
+  }
+  
+  @IBAction func smallSpaceAction(_ sender: Any) {
+    delegate?.addSpace(howSpace: 1)
+  }
+  
+  @IBAction func middleSpaceAction(_ sender: Any) {
+    delegate?.addSpace(howSpace: 2)
+  }
+  @IBAction func largeSpaceAction(_ sender: Any) {
+    delegate?.addSpace(howSpace: 2)
+  }
+  
+  @IBAction func nextLineAction(_ sender: Any) {
+    delegate?.newLineChordTextView()
+  }
+  @IBAction func removeAction(_ sender: Any) {
+    delegate?.removeCharacterChordsTextView()
+  }
 }
 
 extension KeyboardView: UITableViewDataSource, UITableViewDelegate {
@@ -47,6 +76,7 @@ extension KeyboardView: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath) as! KeyChordTableViewCell
+    tableView.deselectRow(at: indexPath, animated: true)
     delegate?.send(text: (cell.chord?.chordStruct.name)!)
   }
   

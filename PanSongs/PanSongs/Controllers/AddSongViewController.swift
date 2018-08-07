@@ -55,11 +55,6 @@ class AddSongViewController: UIViewController, SendDelegate {
         
     }
     
-    func send(text: String) {
-        print(text)
-        // set to text field
-    }
-    
     func initToolBarForKeyboard() {
         //init toolbar
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
@@ -69,16 +64,13 @@ class AddSongViewController: UIViewController, SendDelegate {
         toolbar.barTintColor =  UIColor.gray
         //create left side empty space so that done button set on right side
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self,
                                                        action: #selector(AddSongViewController.doneButtonAction))
-        
         let segmentedItemArray = ["Text", "Chords"]
         self.segmentedControlItem = UISegmentedControl(items: segmentedItemArray)
         self.segmentedControlItem?.frame = CGRect(x: 0, y: 0, width: 120, height: 30)
         self.segmentedControlItem?.selectedSegmentIndex = 0
         let segmentBarItem = UIBarButtonItem(customView: self.segmentedControlItem!)
-        
         
         self.segmentedControlItem?.addTarget(self, action: #selector(AddSongViewController.changeSegmentedControll), for: .valueChanged)
         
@@ -132,6 +124,58 @@ class AddSongViewController: UIViewController, SendDelegate {
             
         }
     }
+    
+    //MARK: - Keyboad chordTextView methods
+    func send(text: String) {
+        chordsTextView.insertText(text)
+    }
+    func addSpace(howSpace: Int) {
+        var stringSpace = ""
+        var i = 0
+        while i < howSpace {
+            stringSpace.append(" ")
+            i = i + 1
+        }
+        chordsTextView.insertText(stringSpace)
+    }
+    func moveCursorToLeft() {
+        if let selectedRange = chordsTextView.selectedTextRange {
+            
+            // and only if the new position is valid
+            if let newPosition = chordsTextView.position(from: selectedRange.start, offset: -1) {
+                
+                // set the new position
+                chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: newPosition)
+            }
+        }
+    }
+    func moveCursorToRight() {
+        if let selectedRange = chordsTextView.selectedTextRange {
+            
+            // and only if the new position is valid
+            if let newPosition = chordsTextView.position(from: selectedRange.start, offset: 1) {
+                
+                // set the new position
+                chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: newPosition)
+            }
+        }
+    }
+    func removeCharacterChordsTextView() {
+        if let selectedRange = chordsTextView.selectedTextRange {
+            
+            // and only if the new position is valid
+            if let newPosition = chordsTextView.position(from: selectedRange.start, offset: -1) {
+                
+                // set the new position
+                chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: selectedRange.end)
+                chordsTextView.replace(chordsTextView.selectedTextRange!, withText: "")
+            }
+        }
+    }
+    func newLineChordTextView() {
+        chordsTextView.insertText("\n")
+    }
+    
 }
 
 

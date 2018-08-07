@@ -20,7 +20,7 @@ class CircleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+
         
     }
     
@@ -47,11 +47,6 @@ class CircleViewController: UIViewController {
             }
             chordsCollection.reloadData()
         }
-        
-        
-        
-        
-        
         
     }
     
