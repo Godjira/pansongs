@@ -14,28 +14,34 @@ class CircleViewController: UIViewController {
     @IBOutlet weak var chordsCollection: UICollectionView!
     
     var chordsManager = ChordsManager.shared()
+    var addSongVC: AddSongViewController?
     
     var chords: [Chord] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
+        let barItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(CircleViewController.nextAction))
+        navigationItem.rightBarButtonItem = barItem
     }
     
+    @objc func nextAction() {
+        if addSongVC == nil {
+            addSongVC = storyboard?.instantiateViewController(withIdentifier: "AddSongViewController") as? AddSongViewController
+        }
+        self.addSongVC?.chords = self.chords
+        navigationController?.pushViewController(self.addSongVC!, animated: true)
+    }
     
     @IBAction func clickOnChordAction(_ sender: UIButton) {
         if sender.layer.cornerRadius == 0 {
             sender.layer.cornerRadius = 15
             sender.backgroundColor = UIColor.red
-            
             // Get and add chord to array
             let chord = chordsManager.getChordFromText(chord: sender.titleLabel!.text!)
             let strings = chord.getChordViewString(position: chord.chordStruct.positions.first!)
             chords.append(chord)
             chordsCollection.reloadData()
-            
         } else {
             sender.layer.cornerRadius = 0
             sender.backgroundColor = UIColor.clear
@@ -47,18 +53,7 @@ class CircleViewController: UIViewController {
             }
             chordsCollection.reloadData()
         }
-        
     }
-    
-    
-    @IBAction func next(_ sender: Any) {
-        guard let addSongVC = storyboard?.instantiateViewController(withIdentifier: "AddSongViewController")
-            as? AddSongViewController else { return }
-        addSongVC.chords = self.chords
-        self.present(addSongVC, animated: true)
-    }
-    
-    
 }
 
 extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSource{

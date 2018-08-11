@@ -52,43 +52,28 @@ class Chord {
     func nextChordPosition() {
         currentChordPosition = currentChordPosition + 1
         if checkOutOfRange(currentValue: currentChordPosition, maxValue: maxChordPosition - 1) {
-            currentChordPosition = 0
-        }
-    }
-    
+            currentChordPosition = 0 } }
     func prevChordPosition() {
         currentChordPosition = currentChordPosition - 1
         if checkOutOfRange(currentValue: currentChordPosition, maxValue: maxChordPosition - 1) {
-            currentChordPosition = maxChordPosition - 1
-        }
-    }
-    
+            currentChordPosition = maxChordPosition - 1 } }
     func nextFingerVariation() {
         currentFingerVariation = currentFingerVariation + 1
         if checkOutOfRange(currentValue: currentFingerVariation, maxValue: maxFingerVariation - 1) {
-            currentFingerVariation = 0
-        }
-    }
-    
+            currentFingerVariation = 0 } }
     func prevFingerVariation() {
         currentFingerVariation = currentFingerVariation - 1
         if checkOutOfRange(currentValue: currentFingerVariation, maxValue: maxFingerVariation - 1) {
-            currentFingerVariation = maxFingerVariation - 1
-        }
-    }
+            currentFingerVariation = maxFingerVariation - 1 } }
     
     func checkOutOfRange(currentValue: Int, maxValue: Int) -> Bool {
-        if currentValue > maxValue  || currentValue < 0 {
-            return true
-        }
-        return false
-    }
+        if currentValue > maxValue  || currentValue < 0 { return true }
+        return false }
     
     func getCurrentChordString() -> [String] {
         let chordStrings = getChordViewString(position: chordStruct.positions[currentChordPosition])
         return chordStrings
     }
-    
     
     func getChordViewString(position: Position) -> [String] {
         var baseArray = self.baseArray
@@ -96,8 +81,6 @@ class Chord {
         var firstColumn = self.firstColumn
         
         var rStrings = [String]()
-        
-        // Change baseArray and fretArray as concerns position
         
         // Get min fret
         var intPos = [Int]()
@@ -108,7 +91,7 @@ class Chord {
                 }
             }
         }
-        
+        // Set fret
         let minFret = intPos.min() ?? 0
         fretArray = [symbolsFret[minFret],
                      symbolsFret[minFret + 1],
@@ -133,25 +116,15 @@ class Chord {
                         if indexFinger > 0 { indexFinger = indexFinger - 1 }
                         if let symbol: Character = fingers[indexFinger] {
                             baseArray[i][fret - minFret] = String(symbol)
-                        } else {
-                            firstColumn[i] = "o"
-                        }
+                        } else { firstColumn[i] = "o" }
                         fingerIncrement = fingerIncrement + 1
-                    } else {
-                        firstColumn[i] = "o"
-                    }
-                } else {
-                    firstColumn[i] = "x"
-                }
-                
-                
+                    } else { firstColumn[i] = "o" }
+                } else { firstColumn[i] = "x"}
                 i = i + 1
             }
             rStrings.append(getModifyBaseString(baseArray: baseArray, firstColumn: firstColumn, fretArray: fretArray))
             fingerVariationIncrement = fingerVariationIncrement + 1
         }
-        
-        
         return rStrings
     }
     
@@ -163,11 +136,10 @@ class Chord {
         \(firstColumn[3])|\(baseArray[3][0])|\(baseArray[3][1])|\(baseArray[3][2])|\(baseArray[3][3])|\(baseArray[3][4])|\(baseArray[3][5])|
         \(firstColumn[4])|\(baseArray[4][0])|\(baseArray[4][1])|\(baseArray[4][2])|\(baseArray[4][3])|\(baseArray[4][4])|\(baseArray[4][5])|
         \(firstColumn[5])|\(baseArray[5][0])|\(baseArray[5][1])|\(baseArray[5][2])|\(baseArray[5][3])|\(baseArray[5][4])|\(baseArray[5][5])|
-          \(fretArray[0])\(fretArray[1])\(fretArray[2]) \(fretArray[3])\(fretArray[4])\(fretArray[5])
+        \(fretArray[0])\(fretArray[1])\(fretArray[2]) \(fretArray[3])\(fretArray[4])\(fretArray[5])
         """
         return base
     }
     
-    
-    
 }
+

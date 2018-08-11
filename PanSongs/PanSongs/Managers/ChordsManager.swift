@@ -12,9 +12,7 @@ import UIKit
 class ChordsManager {
     
     private static var uniqueInstance: ChordsManager?
-    
     private init() {}
-    
     static func shared() -> ChordsManager {
         if uniqueInstance == nil {
             uniqueInstance = ChordsManager()
@@ -22,12 +20,19 @@ class ChordsManager {
         return uniqueInstance!
     }
     
-    func getChordFromText(chord: String) -> Chord {
-        
+    var json = [String: AnyObject]()
+    
+    func loadChordJSON() {
         let asset = NSDataAsset(name: "chords", bundle: Bundle.main)
-        let json = try? JSONSerialization.jsonObject(with: asset!.data,
+        guard let json = try? JSONSerialization.jsonObject(with: asset!.data,
                                                      options: JSONSerialization.ReadingOptions.allowFragments) as! [String: AnyObject]
-        let EADGBE = json!["EADGBE"] as! [String: AnyObject]
+            else { print("JSON no load")
+                    return }
+        self.json = json
+    }
+    
+    func getChordFromText(chord: String) -> Chord {
+        let EADGBE = json["EADGBE"] as! [String: AnyObject]
         let chordDic = EADGBE[chord] as! [[String: String]]
         
         var positions: [Position] = []

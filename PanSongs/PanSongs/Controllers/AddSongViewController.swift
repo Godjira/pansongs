@@ -11,8 +11,8 @@ import UIKit
 class AddSongViewController: UIViewController, SendDelegate {
     
     @IBOutlet weak var chordsTextView: UITextView!
-    
     @IBOutlet weak var textView: UITextView!
+    
     var frontTextView = true
     var segmentedControlItem: UISegmentedControl?
     
@@ -20,21 +20,25 @@ class AddSongViewController: UIViewController, SendDelegate {
     @IBOutlet weak var editingSegmented: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var scrollViewSFrame: CGRect = .zero
+    var prevScrollViewHight: CGFloat = 0.0
+    
+    @IBOutlet weak var scrollViewHightConstraint: NSLayoutConstraint!
     
     var chords: [Chord] = []
+    
+    var saveSongVC: SaveSongViewController?
     
     @IBOutlet weak var keyChordBoardTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initToolBarForKeyboard()
-        
-        keyboardView.delegate = self
-        keyboardView.chords = self.chords
-        keyboardView.reloadData()
-        chordsTextView.inputView = keyboardView
-        
+        initCustomKeyboard()
+        // Init and set bar button item
+        let barItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(AddSongViewController.doneBarItemAction))
+        navigationItem.rightBarButtonItem = barItem
+        // Add observers on keyboard event
+        prevScrollViewHight = scrollViewHightConstraint.constant
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
         
@@ -44,15 +48,27 @@ class AddSongViewController: UIViewController, SendDelegate {
         
         let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(AddSongViewController.chooseEditingView))
         scrollView.addGestureRecognizer(gestrueTapScrollView)
-        
+        // Correct hight textView
         if textView.frame.height < scrollView.frame.height {
             textView.frame = CGRect(origin: textView.frame.origin,
                                     size: CGSize(width: textView.frame.width,
                                                  height: scrollView.frame.height))
         }
-        
-        scrollViewSFrame = scrollView.frame
-        
+    }
+    @objc func doneBarItemAction() {
+        if saveSongVC == nil {
+            saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
+        }
+        saveSongVC?.chordSongTextViewString = chordsTextView.text
+        saveSongVC?.textSongTextViewString = textView.text
+        navigationController?.pushViewController(saveSongVC!, animated: true)
+    }
+    
+    func initCustomKeyboard() {
+        keyboardView.delegate = self
+        keyboardView.chords = self.chords
+        keyboardView.reloadData()
+        chordsTextView.inputView = keyboardView
     }
     
     func initToolBarForKeyboard() {
@@ -83,15 +99,20 @@ class AddSongViewController: UIViewController, SendDelegate {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            scrollView.frame = CGRect(x: scrollView.frame.origin.x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.width - keyboardHeight)
-        }
+        // Get keyboard hight
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardSize = keyboardInfo.cgRectValue.size
+        // Set inset
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
     
     @objc func keyboardDidHide() {
-        scrollView.frame = scrollViewSFrame
+        // Return old insets
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = .zero
     }
     
     @objc func doneButtonAction() {
@@ -134,16 +155,13 @@ class AddSongViewController: UIViewController, SendDelegate {
         var i = 0
         while i < howSpace {
             stringSpace.append(" ")
-            i = i + 1
-        }
+            i = i + 1 }
         chordsTextView.insertText(stringSpace)
     }
     func moveCursorToLeft() {
         if let selectedRange = chordsTextView.selectedTextRange {
-            
             // and only if the new position is valid
             if let newPosition = chordsTextView.position(from: selectedRange.start, offset: -1) {
-                
                 // set the new position
                 chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: newPosition)
             }
@@ -151,10 +169,8 @@ class AddSongViewController: UIViewController, SendDelegate {
     }
     func moveCursorToRight() {
         if let selectedRange = chordsTextView.selectedTextRange {
-            
             // and only if the new position is valid
             if let newPosition = chordsTextView.position(from: selectedRange.start, offset: 1) {
-                
                 // set the new position
                 chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: newPosition)
             }
@@ -162,11 +178,9 @@ class AddSongViewController: UIViewController, SendDelegate {
     }
     func removeCharacterChordsTextView() {
         if let selectedRange = chordsTextView.selectedTextRange {
-            
             // and only if the new position is valid
             if let newPosition = chordsTextView.position(from: selectedRange.start, offset: -1) {
-                
-                // set the new position
+                // remove character
                 chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: selectedRange.end)
                 chordsTextView.replace(chordsTextView.selectedTextRange!, withText: "")
             }
@@ -175,7 +189,6 @@ class AddSongViewController: UIViewController, SendDelegate {
     func newLineChordTextView() {
         chordsTextView.insertText("\n")
     }
-    
 }
 
 
@@ -200,7 +213,6 @@ extension AddSongViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "KeyChordTableViewCell")
             as? KeyChordTableViewCell else { return UITableViewCell() }
         cell.chord = chords[indexPath.row]
-        
         return cell
     }
 }
