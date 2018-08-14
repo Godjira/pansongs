@@ -20,7 +20,6 @@ class CircleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let barItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(CircleViewController.nextAction))
         navigationItem.rightBarButtonItem = barItem
     }
@@ -37,15 +36,15 @@ class CircleViewController: UIViewController {
         if sender.layer.cornerRadius == 0 {
             sender.layer.cornerRadius = 15
             sender.backgroundColor = UIColor.red
-            // Get and add chord to array
-            let chord = chordsManager.getChordFromText(chord: sender.titleLabel!.text!)
+            // Get chord
+            guard let chord = chordsManager.getChordFromText(chord: sender.titleLabel!.text!) else { return }
+            // Get first chord position for view
             let strings = chord.getChordViewString(position: chord.chordStruct.positions.first!)
             chords.append(chord)
             chordsCollection.reloadData()
         } else {
             sender.layer.cornerRadius = 0
             sender.backgroundColor = UIColor.clear
-            
             // Delete chord from array
             if let index = chords.index(where: { $0.chordStruct.name == sender.titleLabel!.text! }) {
                 // removing item

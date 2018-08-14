@@ -37,8 +37,6 @@ class ChordCollectionViewCell: UICollectionViewCell {
         timerCounter = timerCounter + 1
     }
     
-    
-    
     @IBAction func positionNextAction(_ sender: Any) {
         chord?.nextChordPosition()
         currentChordPosition = self.chord?.getCurrentChordString()

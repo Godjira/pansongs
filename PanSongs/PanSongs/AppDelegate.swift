@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         ChordsManager.shared().loadChordJSON()
+        // Init CoreDataManager
+        let appDelegat = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegat.persistentContainer.viewContext
+        CoreDataManager.shared().context = context
         return true
     }
 

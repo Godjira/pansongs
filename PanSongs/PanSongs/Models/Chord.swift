@@ -79,7 +79,6 @@ class Chord {
         var baseArray = self.baseArray
         var fretArray = self.fretArray
         var firstColumn = self.firstColumn
-        
         var rStrings = [String]()
         
         // Get min fret
@@ -99,7 +98,6 @@ class Chord {
                      symbolsFret[minFret + 3],
                      symbolsFret[minFret + 4],
                      symbolsFret[minFret + 5]]
-        
         
         var fingerVariationIncrement = 0
         while fingerVariationIncrement < position.f.count {
@@ -136,7 +134,7 @@ class Chord {
         \(firstColumn[3])|\(baseArray[3][0])|\(baseArray[3][1])|\(baseArray[3][2])|\(baseArray[3][3])|\(baseArray[3][4])|\(baseArray[3][5])|
         \(firstColumn[4])|\(baseArray[4][0])|\(baseArray[4][1])|\(baseArray[4][2])|\(baseArray[4][3])|\(baseArray[4][4])|\(baseArray[4][5])|
         \(firstColumn[5])|\(baseArray[5][0])|\(baseArray[5][1])|\(baseArray[5][2])|\(baseArray[5][3])|\(baseArray[5][4])|\(baseArray[5][5])|
-        \(fretArray[0])\(fretArray[1])\(fretArray[2]) \(fretArray[3])\(fretArray[4])\(fretArray[5])
+          \(fretArray[0])\(fretArray[1])\(fretArray[2]) \(fretArray[3])\(fretArray[4])\(fretArray[5])
         """
         return base
     }

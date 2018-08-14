@@ -8,13 +8,13 @@
 
 import UIKit
 
-class AddSongViewController: UIViewController, SendDelegate {
+class AddSongViewController: UIViewController {
     
-    @IBOutlet weak var chordsTextView: UITextView!
+    @IBOutlet weak var chordsTextView: ChordTextView!
     @IBOutlet weak var textView: UITextView!
     
-    var frontTextView = true
-    var segmentedControlItem: UISegmentedControl?
+    private var frontTextView = true
+    private var segmentedControlItem: UISegmentedControl?
     
     @IBOutlet var keyboardView: KeyboardView!
     @IBOutlet weak var editingSegmented: UISegmentedControl!
@@ -30,10 +30,22 @@ class AddSongViewController: UIViewController, SendDelegate {
     
     @IBOutlet weak var keyChordBoardTableView: UITableView!
     
+    private var stringForChordTV: String?
+    private var stringForTextTV: String?
+    private var needCustomStringTextViews: Bool = false
+    
+    let chordManager = ChordsManager.shared()
+    
+    var lastPositionTouch = CGPoint(x: 0, y: 0)
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initCustomKeyboard()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initToolBarForKeyboard()
-        initCustomKeyboard()
         // Init and set bar button item
         let barItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(AddSongViewController.doneBarItemAction))
         navigationItem.rightBarButtonItem = barItem
@@ -43,9 +55,10 @@ class AddSongViewController: UIViewController, SendDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
         
         scrollView.bringSubview(toFront: textView)
-        chordsTextView.textColor = UIColor.orange
         textView.delegate = self
-        
+        chordsTextView.delegate = chordsTextView
+        chordsTextView.delegatChordTextView = self
+                
         let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(AddSongViewController.chooseEditingView))
         scrollView.addGestureRecognizer(gestrueTapScrollView)
         // Correct hight textView
@@ -54,7 +67,29 @@ class AddSongViewController: UIViewController, SendDelegate {
                                     size: CGSize(width: textView.frame.width,
                                                  height: scrollView.frame.height))
         }
+        setCustomStringTextView()
     }
+    
+  
+
+    @IBAction func buttAct(_ sender: Any) {
+        chordsTextView.isSelectable = true
+        chordsTextView.isEditable = false
+    }
+    
+    
+    public func setTextViews(textViewWith chord: String, text: String) {
+        stringForChordTV = chord
+        stringForTextTV = text
+        needCustomStringTextViews = true
+    }
+    private func setCustomStringTextView() {
+        if needCustomStringTextViews {
+            textView.text = stringForTextTV
+            chordsTextView.text = stringForChordTV
+        }
+    }
+    
     @objc func doneBarItemAction() {
         if saveSongVC == nil {
             saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
@@ -64,14 +99,14 @@ class AddSongViewController: UIViewController, SendDelegate {
         navigationController?.pushViewController(saveSongVC!, animated: true)
     }
     
-    func initCustomKeyboard() {
-        keyboardView.delegate = self
+    private func initCustomKeyboard() {
+        keyboardView.delegate = chordsTextView
         keyboardView.chords = self.chords
         keyboardView.reloadData()
         chordsTextView.inputView = keyboardView
     }
     
-    func initToolBarForKeyboard() {
+    private func initToolBarForKeyboard() {
         //init toolbar
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
         toolbar.barStyle = .blackTranslucent
@@ -142,53 +177,15 @@ class AddSongViewController: UIViewController, SendDelegate {
             textView.isUserInteractionEnabled = false
             chordsTextView.isUserInteractionEnabled = true
             chordsTextView.becomeFirstResponder()
-            
         }
     }
     
-    //MARK: - Keyboad chordTextView methods
-    func send(text: String) {
-        chordsTextView.insertText(text)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = event?.allTouches?.first
+        let location = touch!.location(in: view)
+        lastPositionTouch = location
     }
-    func addSpace(howSpace: Int) {
-        var stringSpace = ""
-        var i = 0
-        while i < howSpace {
-            stringSpace.append(" ")
-            i = i + 1 }
-        chordsTextView.insertText(stringSpace)
-    }
-    func moveCursorToLeft() {
-        if let selectedRange = chordsTextView.selectedTextRange {
-            // and only if the new position is valid
-            if let newPosition = chordsTextView.position(from: selectedRange.start, offset: -1) {
-                // set the new position
-                chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: newPosition)
-            }
-        }
-    }
-    func moveCursorToRight() {
-        if let selectedRange = chordsTextView.selectedTextRange {
-            // and only if the new position is valid
-            if let newPosition = chordsTextView.position(from: selectedRange.start, offset: 1) {
-                // set the new position
-                chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: newPosition)
-            }
-        }
-    }
-    func removeCharacterChordsTextView() {
-        if let selectedRange = chordsTextView.selectedTextRange {
-            // and only if the new position is valid
-            if let newPosition = chordsTextView.position(from: selectedRange.start, offset: -1) {
-                // remove character
-                chordsTextView.selectedTextRange = chordsTextView.textRange(from: newPosition, to: selectedRange.end)
-                chordsTextView.replace(chordsTextView.selectedTextRange!, withText: "")
-            }
-        }
-    }
-    func newLineChordTextView() {
-        chordsTextView.insertText("\n")
-    }
+    
 }
 
 
@@ -217,6 +214,16 @@ extension AddSongViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension AddSongViewController: ChordTextViewDelegat {
+    func clickOnChord(chord: Chord) {
+        print(chord.chordStruct.name)
+//        let chordLabel = UITextView(frame: CGRect(origin: CGPoint(x: 50, y: 50), size: CGSize(width: 150, height: 200)))
+//        chordLabel.text = chord.getCurrentChordString().first
+//        chordLabel.backgroundColor = UIColor.white
+//        view.addSubview(chordLabel)
+    }
+}
+
 class chordsTextView: UITextView {
     var _inputViewController : UIInputViewController?
     override public var inputViewController: UIInputViewController?{
@@ -224,10 +231,3 @@ class chordsTextView: UITextView {
         set { _inputViewController = newValue }
     }
 }
-
-
-
-
-
-
-

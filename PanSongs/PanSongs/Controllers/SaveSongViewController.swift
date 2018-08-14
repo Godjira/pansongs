@@ -18,9 +18,11 @@ class SaveSongViewController: UIViewController {
     var textSongTextViewString: String?
     var chordSongTextViewString: String?
     
+    let coreDataManager: CoreDataManager = CoreDataManager.shared()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let barItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(SaveSongViewController.saveAction))
+        let barItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(SaveSongViewController.saveAction))
         navigationItem.rightBarButtonItem = barItem
     }
     
@@ -31,23 +33,15 @@ class SaveSongViewController: UIViewController {
     
     @objc func saveAction() {
         if nameSongTextField.text != "" && authorsTextView.text != "" {
-            let appDelegat = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegat.persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "Song", in: context)
-            let song = Song(entity: entity!, insertInto: context)
-            
+            let song = coreDataManager.newSong()
             song.name = nameSongTextField.text
             song.author = authorsTextView.text
             song.descriptionSong = descriptionTextView.text
             song.chordTextView = chordSongTextViewString
             song.textTextView = textSongTextViewString
-            do {
-                try context.save()
-            } catch {
-                print("Failed saving")
-            }
-            
+            song.date = Date()
+            coreDataManager.saveContext()
+            navigationController?.popToRootViewController(animated: true)
         }
     }
-    
 }

@@ -3,11 +3,12 @@
     <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="chordTextView" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="descriptionSong" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="textTextView" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Song" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Song" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

@@ -31,9 +31,9 @@ class ChordsManager {
         self.json = json
     }
     
-    func getChordFromText(chord: String) -> Chord {
-        let EADGBE = json["EADGBE"] as! [String: AnyObject]
-        let chordDic = EADGBE[chord] as! [[String: String]]
+    func getChordFromText(chord: String) -> Chord? {
+        guard let EADGBE = json["EADGBE"] as? [String: AnyObject] else { return nil }
+        guard let chordDic = EADGBE[chord] as? [[String: String]]  else { return nil }
         
         var positions: [Position] = []
         for dic in chordDic {
@@ -46,10 +46,7 @@ class ChordsManager {
             
             positions.append(Position(p: pCharacters, f: fArray))
         }
-        
         return Chord(chordStruct: ChordStruct(name: chord, positions: positions))
     }
-    
-    
     
 }
