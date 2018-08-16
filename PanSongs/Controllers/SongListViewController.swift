@@ -24,8 +24,8 @@ class SongListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func addBarButtonAction(_ sender: Any) {
-        let circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
-        navigationController?.pushViewController(circleVC, animated: true)
+        let songVC = storyboard?.instantiateViewController(withIdentifier: "SongViewController") as! SongViewController
+        navigationController?.pushViewController(songVC, animated: true)
     }
 }
 
@@ -40,16 +40,16 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let addSongVC = storyboard?.instantiateViewController(withIdentifier: "AddSongViewController") as! AddSongViewController
-        addSongVC.setTextViews(textViewWith: songs[indexPath.row].chordTextView!, text: songs[indexPath.row].textTextView!)
-        navigationController?.pushViewController(addSongVC, animated: true)
+        let songVC = storyboard?.instantiateViewController(withIdentifier: "SongViewController") as! SongViewController
+        songVC.textView.attributedText = songs[indexPath.row].textTextView
+        navigationController?.pushViewController(songVC, animated: true)
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            coreDataManager.deleteSong(with: songs[indexPath.row].date!)
+            //coreDataManager.deleteSong(with: songs[indexPath.row].date!)
             songs.remove(at: indexPath.row)
             tableView.reloadData()
         }

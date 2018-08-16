@@ -34,11 +34,18 @@ class ChordTextView: UITextView, SendDelegate {
                                       value: "Chord",
                                       range: NSRange(location: 0, length: interactableText.length))
         // Adding it all together
-        text.append(NSAttributedString(string: " "))
-        text.append(interactableText)
-        text.append(NSAttributedString(string: " "))
+        let firstAttrSubstring = text.attributedSubstring(from: NSMakeRange(0, self.selectedRange.location))
+        let secondAttrSubstring = text.attributedSubstring(from: NSMakeRange(self.selectedRange.location, text.length - firstAttrSubstring.length))
+        
+        
+        let newString: NSMutableAttributedString = firstAttrSubstring.mutableCopy() as! NSMutableAttributedString
+        newString.append(interactableText)
+        newString.append(NSAttributedString(string: " "))
+        newString.append(secondAttrSubstring)
         // Set the text view to contain the attributed text
-        attributedText = text
+        let oldRange = self.selectedRange
+        attributedText = newString
+        self.selectedRange = NSMakeRange(oldRange.location + interactableText.length + 1, oldRange.length)
         // Disable editing, but enable selectable so that the link can be selected
         //                isEditable = true
         //                isSelectable = false
@@ -95,8 +102,17 @@ class ChordTextView: UITextView, SendDelegate {
     
     func newLineChordTextView() {
         let mutableString: NSMutableAttributedString = attributedText.mutableCopy() as! NSMutableAttributedString
-        mutableString.append(NSAttributedString(string: "\n"))
-        self.attributedText = mutableString
+        
+        let firstAttrSubstring = mutableString.attributedSubstring(from: NSMakeRange(0, self.selectedRange.location))
+        let secondAttrSubstring = mutableString.attributedSubstring(from: NSMakeRange(self.selectedRange.location, mutableString.length - firstAttrSubstring.length))
+        
+        let newString: NSMutableAttributedString = firstAttrSubstring.mutableCopy() as! NSMutableAttributedString
+        newString.append(NSAttributedString(string: "\n"))
+        newString.append(secondAttrSubstring)
+        
+        let oldRange = self.selectedRange
+        attributedText = newString
+        self.selectedRange = NSMakeRange(oldRange.location + 1, oldRange.length)
     }
 }
 

@@ -15,8 +15,7 @@ class SaveSongViewController: UIViewController {
     @IBOutlet weak var authorsTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    var textSongTextViewString: String?
-    var chordSongTextViewString: String?
+    var chordSongTextViewString: NSAttributedString?
     
     let coreDataManager: CoreDataManager = CoreDataManager.shared()
     
@@ -37,9 +36,8 @@ class SaveSongViewController: UIViewController {
             song.name = nameSongTextField.text
             song.author = authorsTextView.text
             song.descriptionSong = descriptionTextView.text
-            song.chordTextView = chordSongTextViewString
-            song.textTextView = textSongTextViewString
-            song.date = Date()
+            song.textTextView = chordSongTextViewString!
+            //song.date = Date()
             coreDataManager.saveContext()
             navigationController?.popToRootViewController(animated: true)
         }

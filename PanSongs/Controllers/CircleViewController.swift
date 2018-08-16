@@ -14,22 +14,22 @@ class CircleViewController: UIViewController {
     @IBOutlet weak var chordsCollection: UICollectionView!
     
     var chordsManager = ChordsManager.shared()
-    var addSongVC: AddSongViewController?
+    var songVC: SongViewController?
     
     var chords: [Chord] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let barItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(CircleViewController.nextAction))
-        navigationItem.rightBarButtonItem = barItem
     }
     
-    @objc func nextAction() {
-        if addSongVC == nil {
-            addSongVC = storyboard?.instantiateViewController(withIdentifier: "AddSongViewController") as? AddSongViewController
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParentViewController {
+            songVC?.chords = chords
+            songVC?.customKeyboard.tableView.reloadData()
+            print(chords.first?.chordStruct.name)
         }
-        self.addSongVC?.chords = self.chords
-        navigationController?.pushViewController(self.addSongVC!, animated: true)
     }
     
     @IBAction func clickOnChordAction(_ sender: UIButton) {
@@ -68,6 +68,5 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         return cell
     }
-    
     
 }
