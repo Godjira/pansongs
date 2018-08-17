@@ -40,16 +40,16 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let songVC = storyboard?.instantiateViewController(withIdentifier: "SongViewController") as! SongViewController
-        songVC.textView.attributedText = songs[indexPath.row].textTextView
-        navigationController?.pushViewController(songVC, animated: true)
+        let detailSongVC = storyboard?.instantiateViewController(withIdentifier: "DetailSongViewController") as! DetailSongViewController
+        detailSongVC.song = songs[indexPath.row]
+        navigationController?.pushViewController(detailSongVC, animated: true)
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            //coreDataManager.deleteSong(with: songs[indexPath.row].date!)
+            coreDataManager.deleteSong(with: songs[indexPath.row].date!)
             songs.remove(at: indexPath.row)
             tableView.reloadData()
         }

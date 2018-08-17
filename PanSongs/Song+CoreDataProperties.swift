@@ -18,7 +18,7 @@ extension Song {
     }
 
     @NSManaged public var author: String?
-    @NSManaged public var date: NSDate?
+    @NSManaged public var date: Date?
     @NSManaged public var descriptionSong: String?
     @NSManaged public var name: String?
     @NSManaged public var textTextView: NSAttributedString?

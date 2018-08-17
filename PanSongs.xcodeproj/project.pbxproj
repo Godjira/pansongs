@@ -17,10 +17,10 @@
 		D693D8C520F4952F00AFC5BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D693D8C420F4952F00AFC5BD /* Assets.xcassets */; };
 		D693D8C820F4952F00AFC5BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693D8C620F4952F00AFC5BD /* LaunchScreen.storyboard */; };
 		ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0773DD210A4035008BEFFE /* ChordCollectionViewCell.swift */; };
+		ED0C6EC5212561EC00BE43BA /* DetailSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0C6EC4212561EC00BE43BA /* DetailSongViewController.swift */; };
 		ED408E5E211080290029C867 /* KeyChordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */; };
 		ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61D59F212184F8007A1ACF /* ChordTextView.swift */; };
 		ED8BBAA721209B2400F8D507 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */; };
-		ED8D253E21246501002B0BB0 /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8D253D21246501002B0BB0 /* ChordView.swift */; };
 		ED91AC21211ECEA50079A5B3 /* SaveSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */; };
 		ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */; };
 		EDBAA73A2124744A004EB241 /* Song+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBAA7382124744A004EB241 /* Song+CoreDataClass.swift */; };
@@ -41,10 +41,10 @@
 		D693D8C720F4952F00AFC5BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D693D8C920F4952F00AFC5BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED0773DD210A4035008BEFFE /* ChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED0C6EC4212561EC00BE43BA /* DetailSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSongViewController.swift; sourceTree = "<group>"; };
 		ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChordTableViewCell.swift; sourceTree = "<group>"; };
 		ED61D59F212184F8007A1ACF /* ChordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordTextView.swift; sourceTree = "<group>"; };
 		ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		ED8D253D21246501002B0BB0 /* ChordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 		ED8D254621246EE3002B0BB0 /* PanSongs 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PanSongs 2.xcdatamodel"; sourceTree = "<group>"; };
 		ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSongViewController.swift; sourceTree = "<group>"; };
 		ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +69,6 @@
 			children = (
 				193E7C092110E44C00456BDE /* KeyboardView.swift */,
 				ED61D59F212184F8007A1ACF /* ChordTextView.swift */,
-				ED8D253D21246501002B0BB0 /* ChordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */,
+				ED0C6EC4212561EC00BE43BA /* DetailSongViewController.swift */,
 				EDCA6C8F2122E7A3005B213D /* SongViewController.swift */,
 				D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */,
 				ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */,
@@ -235,12 +235,12 @@
 				ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */,
 				ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
-				ED8D253E21246501002B0BB0 /* ChordView.swift in Sources */,
 				EDBAA73B2124744A004EB241 /* Song+CoreDataProperties.swift in Sources */,
 				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
 				EDBAA73A2124744A004EB241 /* Song+CoreDataClass.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,
 				ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */,
+				ED0C6EC5212561EC00BE43BA /* DetailSongViewController.swift in Sources */,
 				EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

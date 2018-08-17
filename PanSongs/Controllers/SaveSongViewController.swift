@@ -37,7 +37,7 @@ class SaveSongViewController: UIViewController {
             song.author = authorsTextView.text
             song.descriptionSong = descriptionTextView.text
             song.textTextView = chordSongTextViewString!
-            //song.date = Date()
+            song.date = Date()
             coreDataManager.saveContext()
             navigationController?.popToRootViewController(animated: true)
         }

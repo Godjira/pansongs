@@ -12,6 +12,9 @@ import UIKit
 class SongViewController: UIViewController {
     
     @IBOutlet weak var textView: ChordTextView!
+    
+    var songAttrString: NSAttributedString?
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var customKeyboard: KeyboardView!
     private var segmentedControlItem: UISegmentedControl?
@@ -36,6 +39,10 @@ class SongViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if songAttrString != nil {
+            textView.attributedText = songAttrString
+        }
+        
         initToolBarForKeyboard()
         keyboard = textView.inputView
         // Init and set bar button item
@@ -60,7 +67,6 @@ class SongViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
         
         textView.delegate = textView
-        textView.delegatChordTextView = self
         
         let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(SongViewController.chooseEditingView))
         scrollView.addGestureRecognizer(gestrueTapScrollView)
@@ -94,7 +100,7 @@ class SongViewController: UIViewController {
 
     @objc func circleButtonAction() {
         if circleVC == nil {
-            circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
+            circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as? CircleViewController
         }
         circleVC?.songVC = self
         circleVC?.chords = chords
@@ -174,14 +180,7 @@ extension SongViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension SongViewController: ChordTextViewDelegat {
-    func clickOnChord(chord: Chord) {
-        print(chord.chordStruct.name)
-                let chordLabel = ChordView(frame: CGRect(origin: CGPoint(x: 50, y: 50), size: CGSize(width: 150, height: 200)))
-                chordLabel.setChord(chord: chord)
-                view.addSubview(chordLabel)
-    }
-}
+
 
 class textView: UITextView {
     var _inputViewController : UIInputViewController?

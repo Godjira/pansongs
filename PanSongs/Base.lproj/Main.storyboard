@@ -337,7 +337,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXA-zW-oVo">
                                                     <rect key="frame" x="0.0" y="149" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="&lt;"/>
+                                                    <state key="normal" title="⇦"/>
                                                     <connections>
                                                         <action selector="positionPrevAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="1Wo-zg-225"/>
                                                     </connections>
@@ -352,7 +352,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh2-2f-ed6">
                                                     <rect key="frame" x="94" y="151" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="&gt;"/>
+                                                    <state key="normal" title="⇨"/>
                                                     <connections>
                                                         <action selector="positionNextAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="Cu5-VV-YvL"/>
                                                     </connections>
@@ -389,22 +389,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U5-9H-nH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eKM-ic-PAS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-671.20000000000005" y="117.39130434782609"/>
+            <point key="canvasLocation" x="-89" y="-535"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Song View Controller-->
         <scene sceneID="DW8-4h-FgC">
             <objects>
-                <viewController id="Mj2-Dp-9Bm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailSongViewController" id="Mj2-Dp-9Bm" customClass="DetailSongViewController" customModule="PanSongs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="poI-5O-mju">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B35-T6-n6V" customClass="ChordTextView" customModule="PanSongs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xXC-6W-N5o" userLabel="ChordView">
+                                <rect key="frame" x="100" y="511" width="174" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCd-gV-veX">
+                                        <rect key="frame" x="136" y="37" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="⇨"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjg-x9-OpX">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="143"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">●|➀|-|-|-|-|
+●|➀|-|-|-|-|
+●|-|➁|-|-|-|
+●|-|-|➂|-|-|
+●|-|-|➂|-|-|
+●|➀|-|-|-|-|
+  4 5 6 7 8</string>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cii-jK-EjR">
+                                        <rect key="frame" x="119" y="8" width="55" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtU-5g-sSW">
+                                        <rect key="frame" x="136" y="84" width="30" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="⇦"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B35-T6-n6V" firstAttribute="top" secondItem="mMW-9K-MID" secondAttribute="top" id="3Hx-BN-fid"/>
+                            <constraint firstItem="mMW-9K-MID" firstAttribute="bottom" secondItem="B35-T6-n6V" secondAttribute="bottom" id="RTz-dw-xgS"/>
+                            <constraint firstItem="B35-T6-n6V" firstAttribute="leading" secondItem="mMW-9K-MID" secondAttribute="leading" id="iGZ-Wa-K2o"/>
+                            <constraint firstItem="mMW-9K-MID" firstAttribute="trailing" secondItem="B35-T6-n6V" secondAttribute="trailing" id="wyP-11-Zeh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mMW-9K-MID"/>
                     </view>
+                    <connections>
+                        <outlet property="chordLabel" destination="vjg-x9-OpX" id="Fqn-nC-gqT"/>
+                        <outlet property="chordView" destination="xXC-6W-N5o" id="jeX-5K-hAm"/>
+                        <outlet property="textView" destination="B35-T6-n6V" id="0k5-Qi-x1D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3k-v2-1af" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-671" y="817"/>
+            <point key="canvasLocation" x="-524" y="116.49175412293854"/>
         </scene>
         <!--Song View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -447,81 +505,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" restorationIdentifier="ChordView" id="qeU-xy-c7I" customClass="ChordView" customModule="PanSongs" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="168" height="146"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIi-pf-qgT">
-                            <rect key="frame" x="0.0" y="0.0" width="124" height="146"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="146" id="2nJ-1x-wlS"/>
-                                <constraint firstAttribute="width" constant="124" id="aKt-EH-zQU"/>
-                            </constraints>
-                            <string key="text">●|➀|-|-|-|-|
-●|➀|-|-|-|-|
-●|-|➁|-|-|-|
-●|-|-|➂|-|-|
-●|-|-|➂|-|-|
-●|➀|-|-|-|-|
-  4 5 6 7 8</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Y1R-KK-i2V">
-                            <rect key="frame" x="124" y="0.0" width="44" height="146"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="X5Q-9h-EBn">
-                                    <rect key="frame" x="0.0" y="0.0" width="44" height="48.5"/>
-                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLC-8w-8OT">
-                                    <rect key="frame" x="0.0" y="48.5" width="44" height="49"/>
-                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <color key="tintColor" red="0.78415000000000001" green="0.81179999999999997" blue="0.86731000000000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    <state key="normal" title="⇨"/>
-                                    <connections>
-                                        <action selector="nextPosAction:" destination="qeU-xy-c7I" eventType="touchUpInside" id="DY2-2C-0Mi"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRT-Cq-rzP">
-                                    <rect key="frame" x="0.0" y="97.5" width="44" height="48.5"/>
-                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <color key="tintColor" red="0.78415000000000001" green="0.81179999999999997" blue="0.86731000000000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    <state key="normal" title="⇦"/>
-                                    <connections>
-                                        <action selector="prevPosAction:" destination="qeU-xy-c7I" eventType="touchUpInside" id="kfP-qV-M4J"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="44" id="VhJ-bn-AFX"/>
-                            </constraints>
-                        </stackView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="Zvy-sI-ona" firstAttribute="bottom" secondItem="Y1R-KK-i2V" secondAttribute="bottom" id="11k-dE-gvm"/>
-                        <constraint firstItem="XIi-pf-qgT" firstAttribute="top" secondItem="Zvy-sI-ona" secondAttribute="top" id="5Rn-ub-iFT"/>
-                        <constraint firstItem="Y1R-KK-i2V" firstAttribute="leading" secondItem="XIi-pf-qgT" secondAttribute="trailing" id="73h-ky-nng"/>
-                        <constraint firstItem="XIi-pf-qgT" firstAttribute="bottom" secondItem="Zvy-sI-ona" secondAttribute="bottom" id="EVz-Xu-Yvv"/>
-                        <constraint firstItem="Zvy-sI-ona" firstAttribute="trailing" secondItem="Y1R-KK-i2V" secondAttribute="trailing" id="Gzb-bk-5Og"/>
-                        <constraint firstItem="Y1R-KK-i2V" firstAttribute="top" secondItem="Zvy-sI-ona" secondAttribute="top" id="Pz0-KU-PgO"/>
-                        <constraint firstItem="XIi-pf-qgT" firstAttribute="leading" secondItem="Zvy-sI-ona" secondAttribute="leading" id="duh-WP-4Ao"/>
-                        <constraint firstItem="Y1R-KK-i2V" firstAttribute="leading" secondItem="XIi-pf-qgT" secondAttribute="trailing" id="wp4-gA-z97"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="Zvy-sI-ona"/>
-                    <connections>
-                        <outlet property="chordLabel" destination="XIi-pf-qgT" id="Ggv-Jz-85r"/>
-                        <outlet property="nameChordLabel" destination="X5Q-9h-EBn" id="rpj-nu-P2j"/>
-                    </connections>
-                </view>
                 <view contentMode="scaleToFill" id="VpS-d5-OdH" customClass="KeyboardView" customModule="PanSongs" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="381" height="343"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -703,7 +686,7 @@
                     </connections>
                 </view>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+            <point key="canvasLocation" x="-820" y="-534"/>
         </scene>
         <!--Save Song View Controller-->
         <scene sceneID="sKh-Rb-y9W">
@@ -832,7 +815,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0KO-6M-30G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="869.60000000000002" y="117.39130434782609"/>
+            <point key="canvasLocation" x="860" y="-535"/>
         </scene>
     </scenes>
     <resources>
