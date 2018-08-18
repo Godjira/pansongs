@@ -52,9 +52,9 @@ class CoreDataManager {
         do {
             let objects = try context?.fetch(fetchRequest) as! [Song]
             for object in objects {
-//                if object.date == date {
-//                context?.delete(object)
-//                }
+                if object.date == date {
+                context?.delete(object)
+                }
             }
             saveContext()
         } catch { print("Failed deleting") }

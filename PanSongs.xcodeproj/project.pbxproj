@@ -26,6 +26,7 @@
 		EDBAA73A2124744A004EB241 /* Song+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBAA7382124744A004EB241 /* Song+CoreDataClass.swift */; };
 		EDBAA73B2124744A004EB241 /* Song+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBAA7392124744A004EB241 /* Song+CoreDataProperties.swift */; };
 		EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA6C8F2122E7A3005B213D /* SongViewController.swift */; };
+		EDE0F5932128808B00BDCC09 /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0F5922128808B00BDCC09 /* ChordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		EDBAA7382124744A004EB241 /* Song+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EDBAA7392124744A004EB241 /* Song+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EDCA6C8F2122E7A3005B213D /* SongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
+		EDE0F5922128808B00BDCC09 /* ChordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				193E7C092110E44C00456BDE /* KeyboardView.swift */,
 				ED61D59F212184F8007A1ACF /* ChordTextView.swift */,
+				EDE0F5922128808B00BDCC09 /* ChordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				193E7C0A2110E44C00456BDE /* KeyboardView.swift in Sources */,
 				ED408E5E211080290029C867 /* KeyChordTableViewCell.swift in Sources */,
 				ED91AC21211ECEA50079A5B3 /* SaveSongViewController.swift in Sources */,
+				EDE0F5932128808B00BDCC09 /* ChordView.swift in Sources */,
 				D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */,
 				ED8BBAA721209B2400F8D507 /* CoreDataManager.swift in Sources */,
 				ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */,

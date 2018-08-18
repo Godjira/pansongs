@@ -11,6 +11,7 @@ import UIKit
 
 protocol ChordTextViewDelegat {
     func clickOnChord(chord: Chord)
+    func textViewDidChange()
 }
 
 class ChordTextView: UITextView, SendDelegate {
@@ -125,4 +126,8 @@ extension ChordTextView: UITextViewDelegate {
         
         return false
     }
+    func textViewDidChange(_ textView: UITextView) {
+        delegatChordTextView?.textViewDidChange()
+    }
+    
 }

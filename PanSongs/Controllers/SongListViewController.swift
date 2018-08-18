@@ -21,6 +21,8 @@ class SongListViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.frame = .zero
+        coreDataManager.deleteAllSong()
         // Do any additional setup after loading the view.
     }
     @IBAction func addBarButtonAction(_ sender: Any) {
@@ -35,7 +37,9 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(songs[indexPath.row].author!) - \(songs[indexPath.row].name!)"
+        guard let stringAuthor = songs[indexPath.row].author  else { return cell }
+        guard let  stringName = songs[indexPath.row].name  else { return cell }
+        cell.textLabel?.text = "\(stringAuthor) - \(stringName)"
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

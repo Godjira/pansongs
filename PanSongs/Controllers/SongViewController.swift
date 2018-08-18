@@ -12,14 +12,12 @@ import UIKit
 class SongViewController: UIViewController {
     
     @IBOutlet weak var textView: ChordTextView!
-    
-    var songAttrString: NSAttributedString?
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var customKeyboard: KeyboardView!
     private var segmentedControlItem: UISegmentedControl?
     var keyboard: UIView?
     
+    var song: Song?
     var chords: [Chord] = []
     let chordManager = ChordsManager.shared()
     
@@ -30,25 +28,32 @@ class SongViewController: UIViewController {
         super.viewDidAppear(animated)
         initCustomKeyboard()
     }
-    
     private func initCustomKeyboard() {
         customKeyboard.delegate = textView
         customKeyboard.chords = self.chords
         customKeyboard.reloadData()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if songAttrString != nil {
-            textView.attributedText = songAttrString
-        }
-        
         initToolBarForKeyboard()
+        initCircleButton()
+        if song != nil {
+            textView.attributedText = song?.textTextView
+        }
         keyboard = textView.inputView
         // Init and set bar button item
         let nextBarItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(SongViewController.nextBarItemAction))
         navigationItem.rightBarButtonItem = nextBarItem
-
+        // Add observers on keyboard event
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
+        
+        textView.delegate = textView
+        textView.delegatChordTextView = self
+        let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(SongViewController.chooseEditingView))
+        scrollView.addGestureRecognizer(gestrueTapScrollView)
+    }
+    private func initCircleButton() {
         let imageView = UIImageView(image: UIImage(named: "circleIcon.png"))
         imageView.contentMode = .scaleAspectFit
         let centerButton =  UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -58,18 +63,6 @@ class SongViewController: UIViewController {
         let gestrueTapCircleButton = UITapGestureRecognizer(target: self, action: #selector(SongViewController.circleButtonAction))
         imageView.addGestureRecognizer(gestrueTapCircleButton)
         self.navigationItem.titleView = centerButton
-        
-        centerButton.layoutIfNeeded()
-        
-        
-        // Add observers on keyboard event
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
-        
-        textView.delegate = textView
-        
-        let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(SongViewController.chooseEditingView))
-        scrollView.addGestureRecognizer(gestrueTapScrollView)
     }
     private func initToolBarForKeyboard() {
         //init toolbar
@@ -106,8 +99,7 @@ class SongViewController: UIViewController {
         circleVC?.chords = chords
         self.navigationController?.pushViewController(circleVC!, animated: true)
     }
-    
-    // Keyboard event
+    // MARK: - Keyboard event
     @objc func keyboardWillShow(_ notification: Notification) {
         // Get keyboard hight
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
@@ -118,15 +110,18 @@ class SongViewController: UIViewController {
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }
-    
     @objc func keyboardDidHide() {
         // Return old insets
         scrollView.contentInset = .zero
         scrollView.scrollIndicatorInsets = .zero
     }
+    
     @objc func nextBarItemAction() {
         if saveSongVC == nil {
             saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
+            if song != nil {
+                saveSongVC!.song = song
+            }
         }
         saveSongVC?.chordSongTextViewString = textView.attributedText
         navigationController?.pushViewController(saveSongVC!, animated: true)
@@ -146,6 +141,13 @@ class SongViewController: UIViewController {
             textView.reloadInputViews()
             textView.becomeFirstResponder()
         } else {
+            if chords.count == 0 {
+                if circleVC == nil {
+                    circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
+                }
+                circleVC?.songVC = self
+                navigationController?.pushViewController(circleVC!, animated: true)
+            }
             textView.inputView = customKeyboard
             textView.reloadInputViews()
             textView.becomeFirstResponder()
@@ -155,14 +157,15 @@ class SongViewController: UIViewController {
 }
 
 
-extension SongViewController: UITextViewDelegate {
+extension SongViewController: ChordTextViewDelegat {
     
-    func textViewDidChange(_ textView: UITextView) {
-        if textView == self.textView {
-            //textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
+    func clickOnChord(chord: Chord) {
+        
+    }
+    func textViewDidChange() {
+            textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
             scrollView.contentSize.height = textView.frame.size.height
             scrollView.contentSize.width = textView.frame.size.width
-        }
     }
 }
 

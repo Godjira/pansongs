@@ -17,10 +17,17 @@ class SaveSongViewController: UIViewController {
     
     var chordSongTextViewString: NSAttributedString?
     
+    var song: Song?
+    
     let coreDataManager: CoreDataManager = CoreDataManager.shared()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if song != nil {
+            nameSongTextField.text = song?.name
+            authorsTextView.text = song?.author
+            descriptionTextView.text = song?.descriptionSong
+        }
         let barItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(SaveSongViewController.saveAction))
         navigationItem.rightBarButtonItem = barItem
     }
@@ -32,12 +39,21 @@ class SaveSongViewController: UIViewController {
     
     @objc func saveAction() {
         if nameSongTextField.text != "" && authorsTextView.text != "" {
-            let song = coreDataManager.newSong()
-            song.name = nameSongTextField.text
-            song.author = authorsTextView.text
-            song.descriptionSong = descriptionTextView.text
-            song.textTextView = chordSongTextViewString!
-            song.date = Date()
+            if song != nil {
+                song?.name = nameSongTextField.text
+                song?.author = authorsTextView.text
+                song?.descriptionSong = descriptionTextView.text
+                song?.textTextView = chordSongTextViewString!
+                coreDataManager.saveContext()
+                navigationController?.popToRootViewController(animated: true)
+                return
+            }
+            let newSong = coreDataManager.newSong()
+            newSong.name = nameSongTextField.text
+            newSong.author = authorsTextView.text
+            newSong.descriptionSong = descriptionTextView.text
+            newSong.textTextView = chordSongTextViewString!
+            newSong.date = Date()
             coreDataManager.saveContext()
             navigationController?.popToRootViewController(animated: true)
         }
