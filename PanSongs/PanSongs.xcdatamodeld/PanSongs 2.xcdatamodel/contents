@@ -8,6 +8,6 @@
         <attribute name="textTextView" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Song" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Song" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

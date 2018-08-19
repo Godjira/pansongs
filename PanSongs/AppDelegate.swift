@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init CoreDataManager
         let appDelegat = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegat.persistentContainer.viewContext
-        CoreDataManager.shared().context = context
+        CoreDataManager.shared.context = context
         return true
     }
 

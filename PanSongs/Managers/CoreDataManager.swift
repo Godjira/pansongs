@@ -15,12 +15,7 @@ class CoreDataManager {
     private static var uniqueInstance: CoreDataManager?
     
     private init() {}
-    static func shared() -> CoreDataManager {
-        if uniqueInstance == nil {
-            uniqueInstance = CoreDataManager()
-        }
-        return uniqueInstance!
-    }
+    static let shared = CoreDataManager()
     
     var context: NSManagedObjectContext?
     

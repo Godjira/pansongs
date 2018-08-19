@@ -19,7 +19,7 @@ class SaveSongViewController: UIViewController {
     
     var song: Song?
     
-    let coreDataManager: CoreDataManager = CoreDataManager.shared()
+    let coreDataManager: CoreDataManager = CoreDataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
