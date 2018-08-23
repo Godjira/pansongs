@@ -121,7 +121,7 @@ extension ChordTextView: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         //Code to the respective action
         print(self.attributedText.attributedSubstring(from: characterRange).string)
-        guard let chord = chordManager.getChordFromText(chord: self.attributedText.attributedSubstring(from: characterRange).string) else { return false }
+        guard let chord = chordManager.getChordFromText(nameChord: self.attributedText.attributedSubstring(from: characterRange).string) else { return false }
         self.delegatChordTextView?.clickOnChord(chord: chord)
         
         return false

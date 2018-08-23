@@ -54,6 +54,7 @@ class ChordView: UIView {
         self.chord = chord
         pageControl.numberOfPages = chord.chordStruct.positions.count
         chordNameLabel.text = chord.chordStruct.name
+        chordLabel.text = chord.getCurrentChordString().first
     }
     @IBAction func closeButtonAction(_ sender: Any) {
         self.isHidden = true

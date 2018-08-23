@@ -24,19 +24,23 @@ class DetailSongViewController: UIViewController {
         chordView.initGesture()
         let width: CGFloat = 130
         let height: CGFloat = 200
+        scrollView.frame = CGRect(x: 0, y: (navigationController?.accessibilityFrame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (navigationController?.accessibilityFrame.height)!)
         let x = UIScreen.main.bounds.width / 2 - width / 2
         let y = UIScreen.main.bounds.height - height
         chordView.frame = CGRect(x: x, y: y, width: width, height: height)
         setFrameAndContentSize()
     }
     private func setFrameAndContentSize(){
-            textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
-            scrollView.contentSize.height = textView.frame.size.height
-            scrollView.contentSize.width = textView.frame.size.width
+        textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: CGFloat(song!.widthTextView) + 10, height: scrollView.contentSize.height))
+        scrollView.contentSize.height = textView.contentSize.height
+        scrollView.contentSize.width = CGFloat(song!.widthTextView)
+        textView.insertText(" ")
     }
     private func initTextView() {
         textView.isEditable = false
         textView.isSelectable = true
+        textView.isUserInteractionEnabled = true
+        textView.isScrollEnabled = true
         textView.delegatChordTextView = self
         textView.delegate = textView
         textView.attributedText = song?.textTextView
@@ -63,8 +67,8 @@ class DetailSongViewController: UIViewController {
 extension DetailSongViewController: ChordTextViewDelegat {
     func textViewDidChange() {
         textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
-        scrollView.contentSize.height = textView.frame.size.height
-        scrollView.contentSize.width = textView.frame.size.width
+        scrollView.contentSize.height = textView.contentSize.height
+        scrollView.contentSize.width = textView.contentSize.width
     }
     
     func clickOnChord(chord: Chord) {

@@ -12,6 +12,7 @@ import UIKit
 class CircleViewController: UIViewController {
     
     @IBOutlet weak var chordsCollection: UICollectionView!
+    @IBOutlet weak var circleView: UIView!
     
     var chordsManager = ChordsManager.shared()
     var songVC: SongViewController?
@@ -21,9 +22,14 @@ class CircleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Choose chords"
-        
         let okButton = UIBarButtonItem(title: "Ok", style: .done, target: self, action: #selector(CircleViewController.okButtonAction))
         navigationItem.leftBarButtonItem = okButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setCircleViewOverTheTop()
+        animateCircleViewToOldPosition()
     }
     @objc func okButtonAction() {
         self.navigationController?.popViewController(animated: true)
@@ -41,13 +47,14 @@ class CircleViewController: UIViewController {
     @IBAction func clickOnChordAction(_ sender: UIButton) {
         if sender.layer.cornerRadius == 0 {
             sender.layer.cornerRadius = 15
-            sender.backgroundColor = UIColor(displayP3Red: 25, green: 25, blue: 25, alpha: 1)
+            sender.backgroundColor = UIColor.lightGray
             // Get chord
-            guard let chord = chordsManager.getChordFromText(chord: sender.titleLabel!.text!) else { return }
+            guard let chord = chordsManager.getChordFromText(nameChord: sender.titleLabel!.text!) else { return }
             // Get first chord position for view
             let strings = chord.getChordViewString(position: chord.chordStruct.positions.first!)
             chords.append(chord)
             chordsCollection.reloadData()
+            chordsCollection.scrollToLastIndexPath(position: .right, animated: true)
         } else {
             sender.layer.cornerRadius = 0
             sender.backgroundColor = UIColor.clear
@@ -59,8 +66,35 @@ class CircleViewController: UIViewController {
             chordsCollection.reloadData()
         }
     }
+    
+    // MARK: - Circle Animation
+    private var oldCircleViewFrame: CGRect?
+    private var overTheTopCircleFrame: CGRect?
+    
+    private func setCircleViewOverTheTop() {
+        oldCircleViewFrame = circleView.frame
+        guard let oldCircleViewFrame = oldCircleViewFrame else { return }
+        circleView.frame = CGRect(x: oldCircleViewFrame.origin.x, y: -oldCircleViewFrame.height, width: oldCircleViewFrame.width, height: oldCircleViewFrame.height)
+        overTheTopCircleFrame = circleView.frame
+        self.circleView.alpha = 0
+    }
+    
+    private func animateCircleViewToOldPosition() {
+        guard oldCircleViewFrame != nil else { return }
+        UIView.animate(withDuration: 0.5) {
+            self.circleView.alpha = 1
+            self.circleView.frame = self.oldCircleViewFrame!
+        }
+    }
+    private func animateCircleViewToOverTheTopPosition() {
+        guard overTheTopCircleFrame != nil else { return }
+        self.circleView.alpha = 0.3
+        UIView.animate(withDuration: 0.5) {
+            self.circleView.frame = self.overTheTopCircleFrame!
+        }
+    }
 }
-extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return chords.count
     }
@@ -69,5 +103,9 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
             as? ChordCollectionViewCell else { return UICollectionViewCell() }
         cell.setChord(chord: chords[indexPath.row])
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ChordCollectionViewCell else { return }
+        chordsManager.getAdditionalChord(chord: cell.chord!)
     }
 }

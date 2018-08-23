@@ -26,7 +26,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
         nameChord.text = chord.chordStruct.name
         currentChordPosition = self.chord?.getCurrentChordString()
         chordString.text = currentChordPosition?.first
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.updateFingers), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.updateFingers), userInfo: nil, repeats: true)
     }
     
     @objc func updateFingers() {

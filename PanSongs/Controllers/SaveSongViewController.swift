@@ -16,6 +16,7 @@ class SaveSongViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var chordSongTextViewString: NSAttributedString?
+    var widthTextView: Float?
     
     var song: Song?
     
@@ -53,6 +54,7 @@ class SaveSongViewController: UIViewController {
             newSong.author = authorsTextView.text
             newSong.descriptionSong = descriptionTextView.text
             newSong.textTextView = chordSongTextViewString!
+            newSong.widthTextView = widthTextView!
             newSong.date = Date()
             coreDataManager.saveContext()
             navigationController?.popToRootViewController(animated: true)

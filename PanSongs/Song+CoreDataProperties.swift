@@ -2,7 +2,7 @@
 //  Song+CoreDataProperties.swift
 //  PanSongs
 //
-//  Created by Godjira on 8/15/18.
+//  Created by Godjira on 8/22/18.
 //  Copyright © 2018 pangolier. All rights reserved.
 //
 //
@@ -22,5 +22,6 @@ extension Song {
     @NSManaged public var descriptionSong: String?
     @NSManaged public var name: String?
     @NSManaged public var textTextView: NSAttributedString?
+    @NSManaged public var widthTextView: Float
 
 }

@@ -76,7 +76,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfB-hu-Xyp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfB-hu-Xyp" userLabel="CircleView">
                                 <rect key="frame" x="37.5" y="20" width="300" height="300"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="dJM-nZ-DO8" userLabel="circle">
@@ -143,7 +143,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2K-3Y-vRF">
-                                        <rect key="frame" x="75" y="237" width="30" height="30"/>
+                                        <rect key="frame" x="73" y="229" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -159,7 +159,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKL-dt-cNe">
-                                        <rect key="frame" x="193" y="237" width="30" height="30"/>
+                                        <rect key="frame" x="198" y="229" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="B"/>
                                         <connections>
@@ -255,14 +255,6 @@
                                             <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="VhA-dG-wwn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYl-si-U9W">
-                                        <rect key="frame" x="135" y="251" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Gb"/>
-                                        <connections>
-                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="Wz5-6A-KCt"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYc-PF-CPA">
                                         <rect key="frame" x="135" y="207" width="31" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -285,6 +277,40 @@
                                         <state key="normal" title="Am"/>
                                         <connections>
                                             <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="GQw-qv-h2R"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgS-sZ-zgE">
+                                        <rect key="frame" x="82" y="252" width="36" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="C#"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="GCk-CA-9qS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWF-9x-lMY">
+                                        <rect key="frame" x="149" y="263" width="30" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="F#"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="LAa-Xl-hzf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4M-ez-f9S">
+                                        <rect key="frame" x="184" y="251" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cb"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="Zvc-n3-q9s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYl-si-U9W">
+                                        <rect key="frame" x="136" y="245" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Gb"/>
+                                        <connections>
+                                            <action selector="clickOnChordAction:" destination="s5H-kS-kDa" eventType="touchUpInside" id="Wz5-6A-KCt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -357,6 +383,38 @@
                                                         <action selector="positionNextAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="Cu5-VV-YvL"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gpv-5S-MIQ">
+                                                    <rect key="frame" x="110" y="-12" width="45" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.1635471573" green="0.14535137940000001" blue="0.35043889459999999" alpha="0.25931078769999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="10" maxY="0.0"/>
+                                                    <state key="normal" title="+">
+                                                        <color key="titleColor" red="0.0" green="0.99143940210000003" blue="1" alpha="0.67262414383561642" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxT-5c-eJK" userLabel="CloseInvisibleButton">
+                                                    <rect key="frame" x="-11" y="-14" width="45" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.1635471573" green="0.14535137940000001" blue="0.35043889459999999" alpha="0.25931078769999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <inset key="contentEdgeInsets" minX="5" minY="10" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title=" X">
+                                                        <color key="titleColor" red="0.66666668650000005" green="0.1577306798" blue="0.36689298970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="closeButtonAction:" destination="xXC-6W-N5o" eventType="touchUpInside" id="rpM-Xe-X6J"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.53110205340000005" green="0.59963005879999998" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -390,6 +448,7 @@
                     </view>
                     <connections>
                         <outlet property="chordsCollection" destination="bHh-OW-NfV" id="Gux-FN-ptf"/>
+                        <outlet property="circleView" destination="kfB-hu-Xyp" id="SqG-xA-00F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U5-9H-nH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,11 +464,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roj-tC-SQt">
-                                <rect key="frame" x="8" y="13" width="359" height="654"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roj-tC-SQt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqc-Lz-7Oy" userLabel="Chords" customClass="ChordTextView" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20" width="10" height="30"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqc-Lz-7Oy" userLabel="Chords" customClass="ChordTextView" customModule="PanSongs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="7" width="861" height="652"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardAppearance="alert"/>
@@ -418,20 +479,10 @@
                                         </connections>
                                     </textView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="xqc-Lz-7Oy" firstAttribute="leading" secondItem="n9P-Qi-LYd" secondAttribute="leading" id="DQR-5R-n6U"/>
-                                    <constraint firstItem="xqc-Lz-7Oy" firstAttribute="top" secondItem="n9P-Qi-LYd" secondAttribute="top" id="sEx-mD-MOb"/>
-                                </constraints>
                                 <viewLayoutGuide key="safeArea" id="n9P-Qi-LYd"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="roj-tC-SQt" firstAttribute="top" secondItem="poI-5O-mju" secondAttribute="top" id="5LL-aF-WRe"/>
-                            <constraint firstItem="mMW-9K-MID" firstAttribute="trailing" secondItem="roj-tC-SQt" secondAttribute="trailing" id="vfp-ge-PXl"/>
-                            <constraint firstItem="mMW-9K-MID" firstAttribute="bottom" secondItem="roj-tC-SQt" secondAttribute="bottom" id="wNy-gd-VU5"/>
-                            <constraint firstItem="roj-tC-SQt" firstAttribute="leading" secondItem="mMW-9K-MID" secondAttribute="leading" id="zTM-mk-ux0"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mMW-9K-MID"/>
                     </view>
                     <connections>

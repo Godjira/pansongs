@@ -39,6 +39,11 @@ class SongViewController: UIViewController {
         initCircleButton()
         if song != nil {
             textView.attributedText = song?.textTextView
+            textView.frame = CGRect(x: textView.frame.origin.x,
+                                    y: textView.frame.origin.y,
+                                    width: CGFloat(song!.widthTextView),
+                                    height: textView.frame.height)
+            scrollView.contentSize.width = CGFloat(song!.widthTextView)
         }
         keyboard = textView.inputView
         // Init and set bar button item
@@ -120,9 +125,12 @@ class SongViewController: UIViewController {
         if saveSongVC == nil {
             saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
             if song != nil {
+                song?.textTextView = textView.attributedText
+                song?.widthTextView = Float(textView.frame.width)
                 saveSongVC!.song = song
             }
         }
+        saveSongVC?.widthTextView = Float(textView.frame.width)
         saveSongVC?.chordSongTextViewString = textView.attributedText
         navigationController?.pushViewController(saveSongVC!, animated: true)
     }
