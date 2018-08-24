@@ -19,6 +19,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameChord: UILabel!
     @IBOutlet weak var chordString: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     var chord: Chord?
     
@@ -39,6 +40,10 @@ class ChordCollectionViewCell: UICollectionViewCell {
     func setChord(chord: Chord, fromCircle: Bool) {
         if fromCircle {
             deleteButton.isHidden = true
+            addButton.isHidden = false
+        } else {
+            addButton.isHidden = true
+            deleteButton.isHidden = false
         }
         self.chord = chord
         nameChord.text = chord.chordStruct.name

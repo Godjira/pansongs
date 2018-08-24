@@ -32,6 +32,7 @@ class CircleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setCircleViewOverTheTop()
+        setAdCollectToOverTheTop()
         animateCircleViewToOldPosition()
     }
     @objc func okButtonAction() {
@@ -70,7 +71,8 @@ class CircleViewController: UIViewController {
         }
     }
     
-    // MARK: - Circle Animation
+    // MARK: - Circle and AdditionalChordCollectionView Animation
+    // Circle animations
     private var oldCircleViewFrame: CGRect?
     private var overTheTopCircleFrame: CGRect?
     
@@ -96,14 +98,43 @@ class CircleViewController: UIViewController {
             self.circleView.frame = self.overTheTopCircleFrame!
         }
     }
+    // AdditionalCollection animation
+    private var oldAdditColectionViewFrame: CGRect?
+    private var overTheTopAdditColectionFrame: CGRect?
+    
+    private func setAdCollectToOverTheTop() {
+        oldAdditColectionViewFrame = circleView.frame
+        guard let oldCircleViewFrame = oldAdditColectionViewFrame else { return }
+        additionalChordsCollectionView.frame = CGRect(x: oldAdditColectionViewFrame!.origin.x, y: -oldAdditColectionViewFrame!.height, width: oldAdditColectionViewFrame!.width, height: oldAdditColectionViewFrame!.height)
+        overTheTopAdditColectionFrame = additionalChordsCollectionView.frame
+        self.additionalChordsCollectionView.alpha = 0
+    }
+    
+    private func animateAdCollectToOldPosition() {
+        guard oldAdditColectionViewFrame != nil else { return }
+        UIView.animate(withDuration: 0.5) {
+            self.additionalChordsCollectionView.alpha = 1
+            self.additionalChordsCollectionView.frame = self.oldAdditColectionViewFrame!
+        }
+    }
+    private func animateAdCollectToOverTheTopPosition() {
+        guard oldAdditColectionViewFrame != nil else { return }
+        self.circleView.alpha = 0.3
+        UIView.animate(withDuration: 0.5) {
+            self.circleView.frame = self.overTheTopAdditColectionFrame!
+        }
+    }
 }
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == chordsCollection {
             return chords.count
         }
         if collectionView == additionalChordsCollectionView {
-            return additionalChords.count
+            if additionalChords.count == 0 { return 0 }
+            // +1 for back cell (to circle)
+            return additionalChords.count + 1
         }
         return 0
     }
@@ -117,11 +148,19 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
         }
         if collectionView == additionalChordsCollectionView {
+            // Create cell for back to circle
+            if indexPath.row == 0 {
+                guard let backCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backCell", for: indexPath)
+                    as? AdditionalChordCollectionViewCell else { return UICollectionViewCell() }
+                backCell.nameChordLabel.text = "⇪"
+                return backCell
+            }
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdditionalChordCollectionViewCell", for: indexPath)
                 as? AdditionalChordCollectionViewCell else { return UICollectionViewCell() }
-            let additionalChord = additionalChords[indexPath.row]
+            let additionalChord = additionalChords[indexPath.row - 1]
             cell.nameChordLabel.text = additionalChord.chordStruct.name
             cell.additionalChord = additionalChord
+            
             return cell
         }
         return UICollectionViewCell()
@@ -131,20 +170,29 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
             
         }
         if collectionView == additionalChordsCollectionView {
+            // If did select BackCell
+            if indexPath.row == 0 {
+                animateAdCollectToOverTheTopPosition()
+                animateCircleViewToOldPosition()
+                return
+            }
             guard let cell = collectionView.cellForItem(at: indexPath) as? AdditionalChordCollectionViewCell else { return }
             chords.append(cell.additionalChord!)
+            chordsCollection.reloadData()
+            chordsCollection.scrollToLastIndexPath(position: .right, animated: true)
         }
     }
 }
 
 extension CircleViewController: ChordCollectionViewCellDelegat {
     func deleteChord(chord: Chord) {
-        chords.filter { $0.chordStruct.name != chord.chordStruct.name }
+        chords.remove(at: chords.index(where: { $0.chordStruct.name == chord.chordStruct.name })!)
         self.chordsCollection.reloadData()
     }
     func addAdditionalChord(fromChord: Chord) {
         self.additionalChords = chordsManager.getAdditionalChord(chord: fromChord)!
         additionalChordsCollectionView.reloadData()
         animateCircleViewToOverTheTopPosition()
+        animateAdCollectToOldPosition()
     }
 }

@@ -62,7 +62,9 @@ class ChordsManager {
         }
         print(chords.count)
         for chord in chords {
-            print(chord.chordStruct.name)
+            if checkIsFromCircle(chord: chord) {
+                chords.remove(at: chords.index(where: { chord.chordStruct.name == $0.chordStruct.name })!)
+            }
         }
         return chords
     }

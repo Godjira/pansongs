@@ -76,26 +76,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-Rm-D2p">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-Rm-D2p">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KIC-qc-BK4">
-                                    <size key="itemSize" width="66" height="44"/>
+                                    <size key="itemSize" width="67" height="38"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="AdditionalChordCollectionViewCell" reuseIdentifier="AdditionalChordCollectionViewCell" id="1wd-t5-O6X" customClass="AdditionalChordCollectionViewCell" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="66" height="44"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="backCell" id="hIy-h0-whr" customClass="AdditionalChordCollectionViewCell" customModule="PanSongs" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="67" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="66" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="67" height="38"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-8J-lsN">
+                                                    <rect key="frame" x="6" y="0.0" width="54" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.36124532210398241" green="0.71334740920672435" blue="1" alpha="0.67262414380000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="nameChordLabel" destination="cLX-8J-lsN" id="tSt-NB-FjD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="AdditionalChordCollectionViewCell" reuseIdentifier="AdditionalChordCollectionViewCell" id="1wd-t5-O6X" customClass="AdditionalChordCollectionViewCell" customModule="PanSongs" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="62.5" width="67" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="67" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-7B-AV7">
-                                                    <rect key="frame" x="6" y="11" width="54" height="22"/>
+                                                    <rect key="frame" x="6" y="8" width="54" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -471,6 +496,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="addButton" destination="Gpv-5S-MIQ" id="0Ij-K1-kwJ"/>
                                             <outlet property="chordString" destination="9HJ-5B-uTX" id="dGn-p8-f7L"/>
                                             <outlet property="deleteButton" destination="sxT-5c-eJK" id="zK3-xN-siQ"/>
                                             <outlet property="nameChord" destination="60d-on-4bY" id="UlQ-5m-rCe"/>
@@ -486,9 +512,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="bottom" secondItem="vJq-XN-DmJ" secondAttribute="bottom" constant="1" id="8JO-zD-VSa"/>
+                            <constraint firstItem="vJq-XN-DmJ" firstAttribute="trailing" secondItem="Ndb-Rm-D2p" secondAttribute="trailing" id="9jR-Fg-Zw7"/>
                             <constraint firstItem="kfB-hu-Xyp" firstAttribute="centerX" secondItem="vJq-XN-DmJ" secondAttribute="centerX" id="FZT-Gn-AWN"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="kfB-hu-Xyp" secondAttribute="bottom" constant="1" id="Jin-fO-GN6"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="leading" secondItem="vJq-XN-DmJ" secondAttribute="leading" constant="1" id="N8M-kv-6g6"/>
+                            <constraint firstItem="Ndb-Rm-D2p" firstAttribute="top" secondItem="LvO-xb-WN3" secondAttribute="top" id="OLa-pK-Nku"/>
+                            <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="Ndb-Rm-D2p" secondAttribute="bottom" constant="1" id="cfp-gx-fhU"/>
+                            <constraint firstItem="Ndb-Rm-D2p" firstAttribute="leading" secondItem="vJq-XN-DmJ" secondAttribute="leading" id="r0d-eM-joD"/>
                             <constraint firstItem="kfB-hu-Xyp" firstAttribute="top" secondItem="vJq-XN-DmJ" secondAttribute="top" id="tdt-2c-UJS"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="trailing" secondItem="vJq-XN-DmJ" secondAttribute="trailing" constant="1" id="tlt-rR-m0l"/>
                         </constraints>

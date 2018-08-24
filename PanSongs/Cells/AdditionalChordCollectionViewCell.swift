@@ -12,6 +12,6 @@ import UIKit
 class AdditionalChordCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameChordLabel: UILabel!
-    
     var additionalChord: Chord?
+    
 }
