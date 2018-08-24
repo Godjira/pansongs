@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-protocol ChordTextViewDelegat {
-    func clickOnChord(chord: Chord)
+protocol ChordTextViewDelegate {
+    func clickOn(chord: Chord)
     func textViewDidChange()
 }
 
-class ChordTextView: UITextView, SendDelegate {
+class ChordTextView: UITextView, KeyboardViewDelegate {
     
     let chordManager = ChordsManager.shared()
-    var delegatChordTextView: ChordTextViewDelegat?
+    var delegatChordTextView: ChordTextViewDelegate?
     
     func insertChord(chord: Chord) {
         let text: NSMutableAttributedString = attributedText.mutableCopy() as! NSMutableAttributedString
@@ -122,7 +122,7 @@ extension ChordTextView: UITextViewDelegate {
         //Code to the respective action
         print(self.attributedText.attributedSubstring(from: characterRange).string)
         guard let chord = chordManager.getChordFromText(nameChord: self.attributedText.attributedSubstring(from: characterRange).string) else { return false }
-        self.delegatChordTextView?.clickOnChord(chord: chord)
+        self.delegatChordTextView?.clickOn(chord: chord)
         
         return false
     }

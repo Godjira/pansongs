@@ -165,9 +165,9 @@ class SongViewController: UIViewController {
 }
 
 
-extension SongViewController: ChordTextViewDelegat {
+extension SongViewController: ChordTextViewDelegate {
     
-    func clickOnChord(chord: Chord) {
+    func clickOn(chord: Chord) {
         
     }
     func textViewDidChange() {

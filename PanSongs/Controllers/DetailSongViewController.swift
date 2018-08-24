@@ -64,7 +64,11 @@ class DetailSongViewController: UIViewController {
     }
     
 }
-extension DetailSongViewController: ChordTextViewDelegat {
+extension DetailSongViewController: ChordTextViewDelegate {
+  func clickOn(chord: Chord) {
+    
+  }
+  
     func textViewDidChange() {
         textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
         scrollView.contentSize.height = textView.contentSize.height

@@ -21,7 +21,6 @@ class SongListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.frame = .zero
-        CoreDataManager.shared.deleteAllSong()
         // Do any additional setup after loading the view.
     }
     @IBAction func addBarButtonAction(_ sender: Any) {

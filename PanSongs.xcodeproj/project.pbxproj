@@ -27,6 +27,7 @@
 		ED91AC21211ECEA50079A5B3 /* SaveSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */; };
 		ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */; };
 		EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */; };
+		EDCA0EAD213068DC00C65995 /* HexUIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA0EAC213068DC00C65995 /* HexUIColorExtension.swift */; };
 		EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA6C8F2122E7A3005B213D /* SongViewController.swift */; };
 		EDE0F5932128808B00BDCC09 /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0F5922128808B00BDCC09 /* ChordView.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSongViewController.swift; sourceTree = "<group>"; };
 		ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewController.swift; sourceTree = "<group>"; };
 		EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalChordCollectionViewCell.swift; sourceTree = "<group>"; };
+		EDCA0EAC213068DC00C65995 /* HexUIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexUIColorExtension.swift; sourceTree = "<group>"; };
 		EDCA6C8F2122E7A3005B213D /* SongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		EDE0F5922128808B00BDCC09 /* ChordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +105,9 @@
 				D693D8B920F4952E00AFC5BD /* PanSongs */,
 				D693D8B820F4952E00AFC5BD /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		D693D8B820F4952E00AFC5BD /* Products */ = {
 			isa = PBXGroup;
@@ -117,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				D693D8BA20F4952E00AFC5BD /* AppDelegate.swift */,
-				ED2B7AA7212EB18700F1C200 /* UICollectionViewExtension.swift */,
+				EDCA0EAB213068B300C65995 /* Extensions */,
 				193E7C0B2110E8B200456BDE /* Views */,
 				D693D8CF20F4955D00AFC5BD /* Controllers */,
 				D61E9E2720F91CF2001F5834 /* Managers */,
@@ -162,6 +166,15 @@
 				D693D8C120F4952E00AFC5BD /* PanSongs.xcdatamodeld */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		EDCA0EAB213068B300C65995 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED2B7AA7212EB18700F1C200 /* UICollectionViewExtension.swift */,
+				EDCA0EAC213068DC00C65995 /* HexUIColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +259,7 @@
 				ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */,
 				ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
+				EDCA0EAD213068DC00C65995 /* HexUIColorExtension.swift in Sources */,
 				EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */,
 				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SendDelegate: class {
+protocol KeyboardViewDelegate: class {
   func send(text: String)
   func addSpace(howSpace: Int)
   func moveCursorToLeft()
@@ -21,7 +21,7 @@ protocol SendDelegate: class {
 class KeyboardView: UIView {
   
   @IBOutlet weak var tableView: UITableView!
-  weak var delegate: SendDelegate?
+  weak var delegate: KeyboardViewDelegate?
   var chords: [Chord] = []
   
   override func awakeFromNib() {
