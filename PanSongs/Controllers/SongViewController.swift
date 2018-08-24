@@ -59,7 +59,9 @@ class SongViewController: UIViewController {
     scrollView.addGestureRecognizer(gestrueTapScrollView)
   }
   private func initCircleButton() {
-    let imageView = UIImageView(image: UIImage(named: "circleIcon.png"))
+    let circleImage = UIImage(named: "circleIcon.png")?.withRenderingMode(.alwaysTemplate)
+    let imageView = UIImageView(image: circleImage)
+    imageView.tintColor = .tertiary
     imageView.contentMode = .scaleAspectFit
     let centerButton =  UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
     imageView.frame = centerButton.bounds

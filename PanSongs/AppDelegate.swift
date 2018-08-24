@@ -16,7 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    UINavigationBar.appearance().barTintColor = .background
+    UINavigationBar.appearance().isTranslucent = false
+    UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .secondary
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.tertiary]
+    UIButton.appearance().tintColor = .secondary
+    
     ChordsManager.shared().loadChordJSON()
     // Init CoreDataManager
     let appDelegat = UIApplication.shared.delegate as! AppDelegate

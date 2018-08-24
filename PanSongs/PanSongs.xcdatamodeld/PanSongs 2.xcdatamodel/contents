@@ -6,8 +6,9 @@
         <attribute name="descriptionSong" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="textTextView" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="widthTextView" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Song" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Song" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

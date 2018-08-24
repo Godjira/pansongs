@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		193E7C0A2110E44C00456BDE /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E7C092110E44C00456BDE /* KeyboardView.swift */; };
+		194D6F9421306B36009EA33A /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D6F9321306B36009EA33A /* UIColorExtensions.swift */; };
 		D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */; };
 		D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2520F91BCD001F5834 /* Chord.swift */; };
 		D61E9E2920F91EA9001F5834 /* ChordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2820F91EA9001F5834 /* ChordsManager.swift */; };
@@ -27,13 +28,13 @@
 		ED91AC21211ECEA50079A5B3 /* SaveSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */; };
 		ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */; };
 		EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */; };
-		EDCA0EAD213068DC00C65995 /* HexUIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA0EAC213068DC00C65995 /* HexUIColorExtension.swift */; };
 		EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA6C8F2122E7A3005B213D /* SongViewController.swift */; };
 		EDE0F5932128808B00BDCC09 /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0F5922128808B00BDCC09 /* ChordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		193E7C092110E44C00456BDE /* KeyboardView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; tabWidth = 2; };
+		194D6F9321306B36009EA33A /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
 		D61E9E2520F91BCD001F5834 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		D61E9E2820F91EA9001F5834 /* ChordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordsManager.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSongViewController.swift; sourceTree = "<group>"; };
 		ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewController.swift; sourceTree = "<group>"; };
 		EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalChordCollectionViewCell.swift; sourceTree = "<group>"; };
-		EDCA0EAC213068DC00C65995 /* HexUIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexUIColorExtension.swift; sourceTree = "<group>"; };
 		EDCA6C8F2122E7A3005B213D /* SongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		EDE0F5922128808B00BDCC09 /* ChordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				ED2B7AA7212EB18700F1C200 /* UICollectionViewExtension.swift */,
-				EDCA0EAC213068DC00C65995 /* HexUIColorExtension.swift */,
+				194D6F9321306B36009EA33A /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,7 +259,6 @@
 				ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */,
 				ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
-				EDCA0EAD213068DC00C65995 /* HexUIColorExtension.swift in Sources */,
 				EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */,
 				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,
@@ -268,6 +267,7 @@
 				ED477FB1212D911C00712BC9 /* Song+CoreDataClass.swift in Sources */,
 				EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */,
 				ED477FB2212D911C00712BC9 /* Song+CoreDataProperties.swift in Sources */,
+				194D6F9421306B36009EA33A /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

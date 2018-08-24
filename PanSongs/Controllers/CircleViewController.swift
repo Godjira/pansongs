@@ -13,6 +13,7 @@ class CircleViewController: UIViewController {
   
   @IBOutlet weak var chordsCollection: UICollectionView!
   @IBOutlet weak var circleView: UIView!
+  @IBOutlet weak var circleImageView: UIImageView!
   
   var chordsManager = ChordsManager.shared()
   var songVC: SongViewController?
@@ -27,6 +28,8 @@ class CircleViewController: UIViewController {
     self.title = "Choose chords"
     let okButton = UIBarButtonItem(title: "Ok", style: .done, target: self, action: #selector(CircleViewController.okButtonAction))
     navigationItem.leftBarButtonItem = okButton
+    circleImageView.image = circleImageView.image?.withRenderingMode(.alwaysTemplate)
+    circleImageView.tintColor = .secondary
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +54,8 @@ class CircleViewController: UIViewController {
   @IBAction func clickOnChordAction(_ sender: UIButton) {
     if sender.layer.cornerRadius == 0 {
       sender.layer.cornerRadius = 15
-      sender.backgroundColor = UIColor.lightGray
+      sender.backgroundColor = .secondary
+      sender.setTitleColor(.white, for: .normal)
       // Get chord
       guard let chord = chordsManager.getChordFromText(nameChord: sender.titleLabel!.text!) else { return }
       // Get first chord position for view
@@ -62,6 +66,7 @@ class CircleViewController: UIViewController {
     } else {
       sender.layer.cornerRadius = 0
       sender.backgroundColor = UIColor.clear
+      sender.setTitleColor(.secondary, for: .normal)
       // Delete chord from array
       if let index = chords.index(where: { $0.chordStruct.name == sender.titleLabel!.text! }) {
         // removing item

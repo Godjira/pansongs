@@ -17,6 +17,7 @@ class SongListViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     songs = CoreDataManager.shared.getAllSongs()
     tableView.reloadData()
+    tableView.tableFooterView = UIView()
   }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,10 +35,11 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
     return songs.count
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     guard let stringAuthor = songs[indexPath.row].author  else { return cell }
     guard let  stringName = songs[indexPath.row].name  else { return cell }
     cell.textLabel?.text = "\(stringAuthor) - \(stringName)"
+    cell.textLabel?.textColor = .tertiary
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

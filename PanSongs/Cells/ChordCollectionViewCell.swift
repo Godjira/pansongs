@@ -37,6 +37,16 @@ class ChordCollectionViewCell: UICollectionViewCell {
     chordDelegat?.deleteChord(chord: chord!)
   }
   
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    
+    nameChord.textColor = .secondary
+    chordString.textColor = .tertiary
+    deleteButton.setTitleColor(.tertiary, for: .normal)
+    addButton.setTitleColor(.tertiary, for: .normal)
+    contentView.backgroundColor = .background
+  }
+  
   func setChord(chord: Chord, fromCircle: Bool) {
     if fromCircle {
       deleteButton.isHidden = true
@@ -49,7 +59,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
     nameChord.text = chord.chordStruct.name
     currentChordPosition = self.chord?.getCurrentChordString()
     chordString.text = currentChordPosition?.first
-    timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.updateFingers), userInfo: nil, repeats: true)
+    timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updateFingers), userInfo: nil, repeats: true)
   }
   
   @objc func updateFingers() {
