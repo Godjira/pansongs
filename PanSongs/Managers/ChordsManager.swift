@@ -67,4 +67,15 @@ class ChordsManager {
         return chords
     }
     
+    let chordsFromCircle = ["C", "G", "D", "A", "E", "B", "Cb", "Gb", "F#", "Db", "C#", "Ab", "Eb", "Bb", "F", "Am", "Em", "Bm", "F#m", "C#m", "G#m", "Ebm", "Bbm", "Fm", "Cm", "Gm", "Dm"]
+    
+    func checkIsFromCircle(chord: Chord) -> Bool{
+        for nameChord in chordsFromCircle {
+            if nameChord == chord.chordStruct.name {
+                return true
+            }
+        }
+        return false
+    }
+    
 }

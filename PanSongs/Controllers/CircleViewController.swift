@@ -17,7 +17,10 @@ class CircleViewController: UIViewController {
     var chordsManager = ChordsManager.shared()
     var songVC: SongViewController?
     
+    @IBOutlet weak var additionalChordsCollectionView: UICollectionView!
+    
     var chords: [Chord] = []
+    var additionalChords: [Chord] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,16 +99,52 @@ class CircleViewController: UIViewController {
 }
 extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return chords.count
+        if collectionView == chordsCollection {
+            return chords.count
+        }
+        if collectionView == additionalChordsCollectionView {
+            return additionalChords.count
+        }
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == chordsCollection {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChordCollectionViewCell", for: indexPath)
             as? ChordCollectionViewCell else { return UICollectionViewCell() }
-        cell.setChord(chord: chords[indexPath.row])
+        cell.chordDelegat = self
+        let isFromCircle = chordsManager.checkIsFromCircle(chord: chords[indexPath.row])
+        cell.setChord(chord: chords[indexPath.row], fromCircle: isFromCircle)
         return cell
+        }
+        if collectionView == additionalChordsCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdditionalChordCollectionViewCell", for: indexPath)
+                as? AdditionalChordCollectionViewCell else { return UICollectionViewCell() }
+            let additionalChord = additionalChords[indexPath.row]
+            cell.nameChordLabel.text = additionalChord.chordStruct.name
+            cell.additionalChord = additionalChord
+            return cell
+        }
+        return UICollectionViewCell()
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ChordCollectionViewCell else { return }
-        chordsManager.getAdditionalChord(chord: cell.chord!)
+        if collectionView == chordsCollection {
+            
+        }
+        if collectionView == additionalChordsCollectionView {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? AdditionalChordCollectionViewCell else { return }
+            chords.append(cell.additionalChord!)
+        }
+    }
+}
+
+extension CircleViewController: ChordCollectionViewCellDelegat {
+    func deleteChord(chord: Chord) {
+        chords.filter { $0.chordStruct.name != chord.chordStruct.name }
+        self.chordsCollection.reloadData()
+    }
+    func addAdditionalChord(fromChord: Chord) {
+        self.additionalChords = chordsManager.getAdditionalChord(chord: fromChord)!
+        additionalChordsCollectionView.reloadData()
+        animateCircleViewToOverTheTopPosition()
     }
 }

@@ -26,6 +26,7 @@
 		ED8BBAA721209B2400F8D507 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */; };
 		ED91AC21211ECEA50079A5B3 /* SaveSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */; };
 		ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */; };
+		EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */; };
 		EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA6C8F2122E7A3005B213D /* SongViewController.swift */; };
 		EDE0F5932128808B00BDCC09 /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0F5922128808B00BDCC09 /* ChordView.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		ED8D254621246EE3002B0BB0 /* PanSongs 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PanSongs 2.xcdatamodel"; sourceTree = "<group>"; };
 		ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSongViewController.swift; sourceTree = "<group>"; };
 		ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewController.swift; sourceTree = "<group>"; };
+		EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalChordCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDCA6C8F2122E7A3005B213D /* SongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		EDE0F5922128808B00BDCC09 /* ChordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 			children = (
 				ED0773DD210A4035008BEFFE /* ChordCollectionViewCell.swift */,
 				ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */,
+				EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */,
 				ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
+				EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */,
 				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,
 				ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */,

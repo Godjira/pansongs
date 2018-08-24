@@ -9,10 +9,16 @@
 import Foundation
 import UIKit
 
+protocol ChordCollectionViewCellDelegat {
+    func deleteChord(chord: Chord)
+    func addAdditionalChord(fromChord: Chord)
+}
+
 class ChordCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameChord: UILabel!
     @IBOutlet weak var chordString: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var chord: Chord?
     
@@ -21,7 +27,19 @@ class ChordCollectionViewCell: UICollectionViewCell {
     var timer: Timer?
     var timerCounter = 0
     
-    func setChord(chord: Chord) {
+    var chordDelegat: ChordCollectionViewCellDelegat?
+    
+    @IBAction func buttonAddAdditionalChord(_ sender: Any) {
+        chordDelegat?.addAdditionalChord(fromChord: chord!)
+    }
+    @IBAction func deleteChordButtonAction(_ sender: Any) {
+        chordDelegat?.deleteChord(chord: chord!)
+    }
+    
+    func setChord(chord: Chord, fromCircle: Bool) {
+        if fromCircle {
+            deleteButton.isHidden = true
+        }
         self.chord = chord
         nameChord.text = chord.chordStruct.name
         currentChordPosition = self.chord?.getCurrentChordString()
