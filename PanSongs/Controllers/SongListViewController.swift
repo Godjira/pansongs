@@ -13,16 +13,15 @@ class SongListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var songs = [Song]()
-    let coreDataManager = CoreDataManager.shared()
     
     override func viewWillAppear(_ animated: Bool) {
-        songs = coreDataManager.getAllSongs()
+        songs = CoreDataManager.shared.getAllSongs()
         tableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.frame = .zero
-        coreDataManager.deleteAllSong()
+        CoreDataManager.shared.deleteAllSong()
         // Do any additional setup after loading the view.
     }
     @IBAction func addBarButtonAction(_ sender: Any) {
@@ -53,7 +52,7 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            coreDataManager.deleteSong(with: songs[indexPath.row].date!)
+            CoreDataManager.shared.deleteSong(with: songs[indexPath.row].date!)
             songs.remove(at: indexPath.row)
             tableView.reloadData()
         }
