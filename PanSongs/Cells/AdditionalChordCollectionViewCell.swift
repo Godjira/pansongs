@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class AdditionalChordCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var nameChordLabel: UILabel!
-    var additionalChord: Chord?
-    
+  
+  @IBOutlet weak var nameChordLabel: UILabel!
+  var additionalChord: Chord?
+  
 }

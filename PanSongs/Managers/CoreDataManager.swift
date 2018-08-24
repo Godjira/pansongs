@@ -11,58 +11,58 @@ import CoreData
 import UIKit
 
 class CoreDataManager {
-    
-    private static var uniqueInstance: CoreDataManager?
-    
-    private init() {}
-    static let shared = CoreDataManager()
-    
-    var context: NSManagedObjectContext?
-    
-    func newSong() -> Song {
-        let entity = NSEntityDescription.entity(forEntityName: "Song", in: context!)
-        let song = Song(entity: entity!, insertInto: context)
-        return song
+  
+  private static var uniqueInstance: CoreDataManager?
+  
+  private init() {}
+  static let shared = CoreDataManager()
+  
+  var context: NSManagedObjectContext?
+  
+  func newSong() -> Song {
+    let entity = NSEntityDescription.entity(forEntityName: "Song", in: context!)
+    let song = Song(entity: entity!, insertInto: context)
+    return song
+  }
+  
+  func saveContext() {
+    do {
+      try context?.save()
+    } catch { print("Failed saving") }
+  }
+  
+  func getAllSongs() -> [Song] {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
+    do {
+      let result = try context?.fetch(fetchRequest) as! [Song]
+      return result
+    } catch {
+      print(error)
     }
-    
-    func saveContext() {
-        do {
-            try context?.save()
-        } catch { print("Failed saving") }
-    }
-    
-    func getAllSongs() -> [Song] {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
-        do {
-            let result = try context?.fetch(fetchRequest) as! [Song]
-            return result
-        } catch {
-            print(error)
+    return [Song]()
+  }
+  
+  func deleteSong(with date: Date) {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
+    do {
+      let objects = try context?.fetch(fetchRequest) as! [Song]
+      for object in objects {
+        if object.date == date {
+          context?.delete(object)
         }
-        return [Song]()
-    }
-    
-    func deleteSong(with date: Date) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
-        do {
-            let objects = try context?.fetch(fetchRequest) as! [Song]
-            for object in objects {
-                if object.date == date {
-                context?.delete(object)
-                }
-            }
-            saveContext()
-        } catch { print("Failed deleting") }
-    }
-    // For clean CoreData
-    func deleteAllSong() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
-        do {
-            let objects = try context?.fetch(fetchRequest)
-            for object in objects! {
-                context?.delete(object as! NSManagedObject)
-            }
-            saveContext()
-        } catch { print("Failed deleting") }
-    }
+      }
+      saveContext()
+    } catch { print("Failed deleting") }
+  }
+  // For clean CoreData
+  func deleteAllSong() {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
+    do {
+      let objects = try context?.fetch(fetchRequest)
+      for object in objects! {
+        context?.delete(object as! NSManagedObject)
+      }
+      saveContext()
+    } catch { print("Failed deleting") }
+  }
 }

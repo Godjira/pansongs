@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 extension UICollectionView {
+  
+  func scrollToLastIndexPath(position: UICollectionViewScrollPosition, animated: Bool) {
+    self.layoutIfNeeded()
     
-    func scrollToLastIndexPath(position: UICollectionViewScrollPosition, animated: Bool) {
-        self.layoutIfNeeded()
-        
-        for sectionIndex in (0..<self.numberOfSections).reversed() {
-            if self.numberOfItems(inSection: sectionIndex) > 0 {
-                self.scrollToItem(at: IndexPath.init(item: self.numberOfItems(inSection: sectionIndex)-1, section: sectionIndex),
-                                  at: position,
-                                  animated: animated)
-                break
-            }
-        }
+    for sectionIndex in (0..<self.numberOfSections).reversed() {
+      if self.numberOfItems(inSection: sectionIndex) > 0 {
+        self.scrollToItem(at: IndexPath.init(item: self.numberOfItems(inSection: sectionIndex)-1, section: sectionIndex),
+                          at: position,
+                          animated: animated)
+        break
+      }
     }
-    
+  }
+  
 }

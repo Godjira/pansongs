@@ -10,21 +10,21 @@ import Foundation
 import  UIKit
 
 class KeyChordTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var nameChordLabel: UILabel!
-    
-    var chord: Chord?
-    
-    func setChord(chord: Chord) {
-        self.chord = chord
-        nameChordLabel.text = chord.chordStruct.name
-    }
-    
-    
-    @IBAction func infoButton(_ sender: UIButton) {
-        print("Chord info")
-    }
-    
-
-    
+  
+  @IBOutlet weak var nameChordLabel: UILabel!
+  
+  var chord: Chord?
+  
+  func setChord(chord: Chord) {
+    self.chord = chord
+    nameChordLabel.text = chord.chordStruct.name
+  }
+  
+  
+  @IBAction func infoButton(_ sender: UIButton) {
+    print("Chord info")
+  }
+  
+  
+  
 }
