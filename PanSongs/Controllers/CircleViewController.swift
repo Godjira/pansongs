@@ -103,9 +103,9 @@ class CircleViewController: UIViewController {
     private var overTheTopAdditColectionFrame: CGRect?
     
     private func setAdCollectToOverTheTop() {
-        oldAdditColectionViewFrame = circleView.frame
-        guard let oldCircleViewFrame = oldAdditColectionViewFrame else { return }
-        additionalChordsCollectionView.frame = CGRect(x: oldAdditColectionViewFrame!.origin.x, y: -oldAdditColectionViewFrame!.height, width: oldAdditColectionViewFrame!.width, height: oldAdditColectionViewFrame!.height)
+        oldAdditColectionViewFrame = additionalChordsCollectionView.frame
+        guard let oldAdditColectionViewFrame = oldAdditColectionViewFrame else { return }
+        additionalChordsCollectionView.frame = CGRect(x: oldAdditColectionViewFrame.origin.x, y: -oldAdditColectionViewFrame.height, width: oldAdditColectionViewFrame.width, height: oldAdditColectionViewFrame.height)
         overTheTopAdditColectionFrame = additionalChordsCollectionView.frame
         self.additionalChordsCollectionView.alpha = 0
     }
@@ -119,9 +119,9 @@ class CircleViewController: UIViewController {
     }
     private func animateAdCollectToOverTheTopPosition() {
         guard oldAdditColectionViewFrame != nil else { return }
-        self.circleView.alpha = 0.3
+        self.additionalChordsCollectionView.alpha = 0.3
         UIView.animate(withDuration: 0.5) {
-            self.circleView.frame = self.overTheTopAdditColectionFrame!
+            self.additionalChordsCollectionView.frame = self.overTheTopAdditColectionFrame!
         }
     }
 }
