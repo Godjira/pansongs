@@ -21,21 +21,25 @@ class DetailSongViewController: UIViewController {
     initTextView()
     view.addSubview(chordView)
     chordView.isHidden = true
-    chordView.initGesture()
-    let width: CGFloat = 130
-    let height: CGFloat = 200
-    scrollView.frame = CGRect(x: 0, y: (navigationController?.accessibilityFrame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (navigationController?.accessibilityFrame.height)!)
-    let x = UIScreen.main.bounds.width / 2 - width / 2
-    let y = UIScreen.main.bounds.height - height
-    chordView.frame = CGRect(x: x, y: y, width: width, height: height)
+    chordView.center.x = UIScreen.main.bounds.width / 2
+    chordView.center.y = UIScreen.main.bounds.height - chordView.frame.height / 2 - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height
     setFrameAndContentSize()
   }
-  private func setFrameAndContentSize(){
-    textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: CGFloat(song!.widthTextView) + 10, height: scrollView.contentSize.height))
+  
+  private func setFrameAndContentSize() {
+    scrollView.frame = CGRect(x: CGFloat(0),
+                              y: CGFloat(0),
+                              width: UIScreen.main.bounds.width,
+                              height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
+    textView.frame = CGRect(x: CGFloat(0),
+                            y: CGFloat(0),
+                            width: CGFloat(song!.widthTextView),
+                            height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
+    
     scrollView.contentSize.height = textView.contentSize.height
     scrollView.contentSize.width = CGFloat(song!.widthTextView)
-    textView.insertText(" ")
   }
+  
   private func initTextView() {
     textView.isEditable = false
     textView.isSelectable = true
@@ -45,6 +49,7 @@ class DetailSongViewController: UIViewController {
     textView.delegate = textView
     textView.attributedText = song?.textTextView
   }
+  
   private func initEditButton () {
     let editImage = UIImage(named: "editIcon.png")?.withRenderingMode(.alwaysTemplate)
     let imageView = UIImageView(image: editImage)
@@ -66,10 +71,19 @@ class DetailSongViewController: UIViewController {
   }
   
 }
-extension DetailSongViewController: ChordTextViewDelegate {
+extension DetailSongViewController: ChordTextViewDelegate, PresentChordViewDelegate {
+  
+  func closeChordView() {
+//    scrollView.contentInset = .zero
+//    scrollView.scrollIndicatorInsets = .zero
+  }
+  
   func clickOn(chord: Chord) {
     chordView.setChord(chord: chord)
     chordView.isHidden = false
+//    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: chordView.frame.height, right: 0)
+//    scrollView.contentInset = contentInsets
+//    scrollView.scrollIndicatorInsets = contentInsets
   }
   
   func textViewDidChange() {

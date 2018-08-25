@@ -37,14 +37,7 @@ class SongViewController: UIViewController {
     super.viewDidLoad()
     initToolBarForKeyboard()
     initCircleButton()
-    if song != nil {
-      textView.attributedText = song?.textTextView
-      textView.frame = CGRect(x: textView.frame.origin.x,
-                              y: textView.frame.origin.y,
-                              width: CGFloat(song!.widthTextView),
-                              height: textView.frame.height)
-      scrollView.contentSize.width = CGFloat(song!.widthTextView)
-    }
+    initTextAndScrollViews()
     keyboard = textView.inputView
     // Init and set bar button item
     let nextBarItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(SongViewController.nextBarItemAction))
@@ -52,12 +45,34 @@ class SongViewController: UIViewController {
     // Add observers on keyboard event
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
-    
+  }
+  
+  private func initTextAndScrollViews() {
+    // Set frames
+    scrollView.frame = CGRect(x: CGFloat(0),
+                              y: CGFloat(0),
+                              width: UIScreen.main.bounds.width,
+                              height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
+    textView.frame = CGRect(x: CGFloat(0),
+                            y: CGFloat(0),
+                            width: CGFloat(song!.widthTextView),
+                            height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
+    if song != nil {
+      textView.attributedText = song?.textTextView
+      textView.frame = CGRect(x: textView.frame.origin.x,
+                              y: textView.frame.origin.y,
+                              width: CGFloat(song!.widthTextView),
+                              height: textView.frame.height)
+      scrollView.contentSize.width = CGFloat(song!.widthTextView)
+      scrollView.contentSize.height = textView.frame.size.height
+    }
+    // Other
     textView.delegate = textView
     textView.delegatChordTextView = self
     let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(SongViewController.chooseEditingView))
     scrollView.addGestureRecognizer(gestrueTapScrollView)
   }
+  
   private func initCircleButton() {
     let circleImage = UIImage(named: "circleIcon.png")?.withRenderingMode(.alwaysTemplate)
     let imageView = UIImageView(image: circleImage)
@@ -71,6 +86,7 @@ class SongViewController: UIViewController {
     imageView.addGestureRecognizer(gestrueTapCircleButton)
     self.navigationItem.titleView = centerButton
   }
+  
   private func initToolBarForKeyboard() {
     //init toolbar
     let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
@@ -86,7 +102,6 @@ class SongViewController: UIViewController {
     let segmentBarItem = UIBarButtonItem(customView: self.segmentedControlItem!)
     toolbar.setItems([segmentBarItem ,flexSpace, doneBtn], animated: false)
     toolbar.sizeToFit()
-    
     //setting toolbar as inputAccessoryView
     self.textView.inputAccessoryView = toolbar
   }
@@ -106,17 +121,37 @@ class SongViewController: UIViewController {
     circleVC?.chords = chords
     self.navigationController?.pushViewController(circleVC!, animated: true)
   }
+  
+  @objc func changeSegmentedControll() {
+    if segmentedControlItem?.selectedSegmentIndex == 0 {
+      textView.inputView = keyboard
+      textView.reloadInputViews()
+      textView.becomeFirstResponder()
+    } else {
+      if chords.count == 0 {
+        if circleVC == nil {
+          circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
+        }
+        circleVC?.songVC = self
+        navigationController?.pushViewController(circleVC!, animated: true)
+      }
+      textView.inputView = customKeyboard
+      textView.reloadInputViews()
+      textView.becomeFirstResponder()
+    }
+  }
   // MARK: - Keyboard event
   @objc func keyboardWillShow(_ notification: Notification) {
     // Get keyboard hight
     let userInfo: NSDictionary = notification.userInfo! as NSDictionary
     let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
     let keyboardSize = keyboardInfo.cgRectValue.size
-    // Set inset
+    // Set insets
     let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
     scrollView.contentInset = contentInsets
     scrollView.scrollIndicatorInsets = contentInsets
   }
+  
   @objc func keyboardDidHide() {
     // Return old insets
     scrollView.contentInset = .zero
@@ -144,34 +179,12 @@ class SongViewController: UIViewController {
   @objc func chooseEditingView() {
     textView.becomeFirstResponder()
   }
-  
-  @objc func changeSegmentedControll() {
-    if segmentedControlItem?.selectedSegmentIndex == 0 {
-      textView.inputView = keyboard
-      textView.reloadInputViews()
-      textView.becomeFirstResponder()
-    } else {
-      if chords.count == 0 {
-        if circleVC == nil {
-          circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
-        }
-        circleVC?.songVC = self
-        navigationController?.pushViewController(circleVC!, animated: true)
-      }
-      textView.inputView = customKeyboard
-      textView.reloadInputViews()
-      textView.becomeFirstResponder()
-    }
-  }
-  
 }
-
 
 extension SongViewController: ChordTextViewDelegate {
   
-  func clickOn(chord: Chord) {
-    
-  }
+  func clickOn(chord: Chord) {}
+  
   func textViewDidChange() {
     textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
     scrollView.contentSize.height = textView.frame.size.height
@@ -192,8 +205,6 @@ extension SongViewController: UITableViewDelegate, UITableViewDataSource {
     return cell
   }
 }
-
-
 
 class textView: UITextView {
   var _inputViewController : UIInputViewController?

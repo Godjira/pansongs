@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol ChordTextViewDelegate {
-  func clickOn(chord: Chord)
-  func textViewDidChange()
+   func clickOn(chord: Chord)
+   func textViewDidChange()
 }
 
 class ChordTextView: UITextView, KeyboardViewDelegate {
@@ -19,7 +19,7 @@ class ChordTextView: UITextView, KeyboardViewDelegate {
   let chordManager = ChordsManager.shared()
   var delegatChordTextView: ChordTextViewDelegate?
   
-  func insertChord(chord: Chord) {
+  func insert(chord: Chord) {
     let interactableText = NSMutableAttributedString(string: chord.chordStruct.name)
     interactableText.addAttribute(NSAttributedStringKey.font,
                                   value: UIFont.systemFont(ofSize: 12),

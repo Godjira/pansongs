@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol PresentChordViewDelegate {
+  func closeChordView()
+}
+
 class ChordView: UIView {
   
   @IBOutlet weak var chordLabel: UILabel!
@@ -17,8 +21,9 @@ class ChordView: UIView {
   @IBOutlet weak var pageControl: UIPageControl!
   
   private var chord: Chord?
+  var closeDelegat: PresentChordViewDelegate?
   
-  func initGesture() {
+  override func awakeFromNib() {
     let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ChordView.respondToSwipeGesture(gesture:)) )
     swipeRight.direction = .right
     chordLabel.addGestureRecognizer(swipeRight)
@@ -26,6 +31,7 @@ class ChordView: UIView {
     swipeLeft.direction = .left
     chordLabel.addGestureRecognizer(swipeLeft)
   }
+  
   @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
     if let swipeGesture = gesture as? UISwipeGestureRecognizer {
       switch swipeGesture.direction {
@@ -50,12 +56,14 @@ class ChordView: UIView {
       }
     }
   }
+  
   func setChord(chord: Chord) {
     self.chord = chord
     pageControl.numberOfPages = chord.chordStruct.positions.count
     chordNameLabel.text = chord.chordStruct.name
     chordLabel.text = chord.getCurrentChordString().first
   }
+  
   @IBAction func closeButtonAction(_ sender: Any) {
     self.isHidden = true
   }

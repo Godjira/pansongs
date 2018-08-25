@@ -15,7 +15,7 @@ protocol KeyboardViewDelegate: class {
   func moveCursorToRight()
   func removeCharacterChordsTextView()
   func newLineChordTextView()
-  func insertChord(chord: Chord)
+  func insert(chord: Chord)
 }
 
 class KeyboardView: UIView {
@@ -71,6 +71,6 @@ extension KeyboardView: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath) as! KeyChordTableViewCell
     tableView.deselectRow(at: indexPath, animated: true)
-    delegate?.insertChord(chord: cell.chord!)
+    delegate?.insert(chord: cell.chord!)
   }
 }
