@@ -68,17 +68,13 @@ class DetailSongViewController: UIViewController {
 }
 extension DetailSongViewController: ChordTextViewDelegate {
   func clickOn(chord: Chord) {
-    
+    chordView.setChord(chord: chord)
+    chordView.isHidden = false
   }
   
   func textViewDidChange() {
     textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
     scrollView.contentSize.height = textView.contentSize.height
     scrollView.contentSize.width = textView.contentSize.width
-  }
-  
-  func clickOnChord(chord: Chord) {
-    chordView.setChord(chord: chord)
-    chordView.isHidden = false
   }
 }

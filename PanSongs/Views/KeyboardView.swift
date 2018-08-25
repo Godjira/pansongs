@@ -55,16 +55,19 @@ class KeyboardView: UIView {
     delegate?.removeCharacterChordsTextView()
   }
 }
+
 extension KeyboardView: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return chords.count
   }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "KeyChordTableViewCell") as! KeyChordTableViewCell
     let chord: Chord = chords[indexPath.row]
     cell.setChord(chord: chord)
     return cell
   }
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath) as! KeyChordTableViewCell
     tableView.deselectRow(at: indexPath, animated: true)
