@@ -11,10 +11,7 @@ import CoreData
 import UIKit
 
 class CoreDataManager {
-  
-  private static var uniqueInstance: CoreDataManager?
-  
-  private init() {}
+
   static let shared = CoreDataManager()
   
   var context: NSManagedObjectContext?

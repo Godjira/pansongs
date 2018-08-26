@@ -10,23 +10,10 @@ import UIKit
 
 extension UIColor {
   
-  open class var primary: UIColor {
-    return #colorLiteral(red: 0.8196078431, green: 0.8588235294, blue: 0.7411764706, alpha: 1)
-  }
-  
-  open class var secondary: UIColor {
-    return #colorLiteral(red: 0.568627451, green: 0.6666666667, blue: 0.6156862745, alpha: 1)
-  }
-  
-  open class var tertiary: UIColor {
-    return #colorLiteral(red: 0.2431372549, green: 0.3764705882, blue: 0.4352941176, alpha: 1)
-  }
-  
-  open class var quaternary: UIColor {
-    return #colorLiteral(red: 0.9882352941, green: 0.937254902, blue: 0.8901960784, alpha: 1)
-  }
-  
-  open class var background: UIColor {
-    return #colorLiteral(red: 0.9882352941, green: 1, blue: 0.8901960784, alpha: 1)
-  }
+  open class var primary: UIColor { return #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) }
+  open class var secondary: UIColor { return #colorLiteral(red: 0.2862745098, green: 0.2588235294, blue: 0.431372549, alpha: 1) }
+  open class var tertiary: UIColor { return  #colorLiteral(red: 0.811595575, green: 0.8694346519, blue: 1, alpha: 1) }
+  open class var quaternary: UIColor { return #colorLiteral(red: 0.3167889585, green: 0.3256473132, blue: 0.5271649031, alpha: 1) }
+  open class var background: UIColor { return #colorLiteral(red: 0.2392156863, green: 0.2901960784, blue: 0.4, alpha: 1) }
+  open class var background2: UIColor {return #colorLiteral(red: 0.9679010991, green: 0.9329235774, blue: 0.8536356812, alpha: 1) }
 }

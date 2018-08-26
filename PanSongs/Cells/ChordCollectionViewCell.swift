@@ -25,7 +25,6 @@ class ChordCollectionViewCell: UICollectionViewCell {
   
   var currentChordPosition: [String]?
   
-  var timer: Timer?
   var timerCounter = 0
   
   var chordDelegat: ChordCollectionViewCellDelegat?
@@ -40,8 +39,8 @@ class ChordCollectionViewCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    nameChord.textColor = .secondary
-    chordString.textColor = .tertiary
+    nameChord.textColor = .background2
+    chordString.textColor = .background2
     deleteButton.setTitleColor(.tertiary, for: .normal)
     addButton.setTitleColor(.tertiary, for: .normal)
     contentView.backgroundColor = .background
@@ -59,10 +58,9 @@ class ChordCollectionViewCell: UICollectionViewCell {
     nameChord.text = chord.chordStruct.name
     currentChordPosition = self.chord?.getCurrentChordString()
     chordString.text = currentChordPosition?.first
-    timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updateFingers), userInfo: nil, repeats: true)
   }
   
-  @objc func updateFingers() {
+   func updateFingers() {
     if timerCounter > ((currentChordPosition?.count)! - 1) {
       timerCounter = 0
     }

@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     UINavigationBar.appearance().barTintColor = .background
     UINavigationBar.appearance().isTranslucent = false
-    UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .secondary
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.tertiary]
-    UIButton.appearance().tintColor = .secondary
+    UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .background2
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.background2]
+    UIButton.appearance().tintColor = .background2
     
     ChordsManager.shared().loadChordJSON()
     // Init CoreDataManager

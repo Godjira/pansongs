@@ -17,7 +17,10 @@ class SongListViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     songs = CoreDataManager.shared.getAllSongs()
     tableView.reloadData()
-    tableView.tableFooterView = UIView()
+    title = "Song list"
+    let footerView = UIView()
+    footerView.backgroundColor = .background
+    tableView.tableFooterView = footerView
   }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,7 +42,7 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
     guard let stringAuthor = songs[indexPath.row].author  else { return cell }
     guard let  stringName = songs[indexPath.row].name  else { return cell }
     cell.textLabel?.text = "\(stringAuthor) - \(stringName)"
-    cell.textLabel?.textColor = .tertiary
+    cell.textLabel?.textColor = .secondary
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

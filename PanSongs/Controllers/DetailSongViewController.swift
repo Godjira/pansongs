@@ -53,7 +53,7 @@ class DetailSongViewController: UIViewController {
   private func initEditButton () {
     let editImage = UIImage(named: "editIcon.png")?.withRenderingMode(.alwaysTemplate)
     let imageView = UIImageView(image: editImage)
-    imageView.tintColor = .tertiary
+    imageView.tintColor = .background2
     imageView.contentMode = .scaleAspectFit
     let centerButton =  UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
     imageView.frame = centerButton.bounds

@@ -55,17 +55,17 @@ class SongViewController: UIViewController {
                               height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
     textView.frame = CGRect(x: CGFloat(0),
                             y: CGFloat(0),
-                            width: CGFloat(song!.widthTextView),
+                            width: UIScreen.main.bounds.width,
                             height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
-    if song != nil {
-      textView.attributedText = song?.textTextView
+    if let song = song {
+      textView.attributedText = song.textTextView
       textView.frame = CGRect(x: textView.frame.origin.x,
                               y: textView.frame.origin.y,
-                              width: CGFloat(song!.widthTextView),
+                              width: CGFloat(song.widthTextView),
                               height: textView.frame.height)
-      scrollView.contentSize.width = CGFloat(song!.widthTextView)
+      scrollView.contentSize.width = CGFloat(song.widthTextView)
       scrollView.contentSize.height = textView.frame.size.height
-    }
+    } else { print("song == nil")}
     // Other
     textView.delegate = textView
     textView.delegatChordTextView = self
@@ -76,7 +76,7 @@ class SongViewController: UIViewController {
   private func initCircleButton() {
     let circleImage = UIImage(named: "circleIcon.png")?.withRenderingMode(.alwaysTemplate)
     let imageView = UIImageView(image: circleImage)
-    imageView.tintColor = .tertiary
+    imageView.tintColor = .background2
     imageView.contentMode = .scaleAspectFit
     let centerButton =  UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
     imageView.frame = centerButton.bounds

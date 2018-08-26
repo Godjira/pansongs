@@ -22,6 +22,7 @@ class CircleViewController: UIViewController {
   
   var chords: [Chord] = []
   var additionalChords: [Chord] = []
+  var timerUpdateFingerInCell: Timer?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,6 +31,21 @@ class CircleViewController: UIViewController {
     navigationItem.leftBarButtonItem = okButton
     circleImageView.image = circleImageView.image?.withRenderingMode(.alwaysTemplate)
     circleImageView.tintColor = .secondary
+    view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    for subView in circleView.subviews {
+      if ((subView as? UIButton) != nil) {
+        subView.tintColor = .secondary
+      }
+    }
+    timerUpdateFingerInCell = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateFingersInCell), userInfo: nil, repeats: true)
+  }
+  
+  @objc func updateFingersInCell() {
+    for cell in chordsCollection.visibleCells {
+      if let cell: ChordCollectionViewCell = cell as? ChordCollectionViewCell {
+        cell.updateFingers()
+      }
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -76,15 +92,19 @@ class CircleViewController: UIViewController {
     }
   }
   
+  deinit {
+    timerUpdateFingerInCell?.invalidate()
+    timerUpdateFingerInCell = nil
+  }
+  
   // MARK: - Circle and AdditionalChordCollectionView Animation
   // Circle animations
   private var oldCircleViewCenter: CGPoint?
   private var overTheTopCircleCenter: CGPoint?
   
   private func setCircleViewOverTheTop() {
-    let heightNavigationAndStatusBars = (navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.height
     let widthScreen = UIScreen.main.bounds.width
-    circleView.center.y = heightNavigationAndStatusBars + circleView.frame.height / 2
+    circleView.center.y =  circleView.frame.height / 2
     circleView.center.x = widthScreen / 2
     oldCircleViewCenter = circleView.center
     // Set over top position
@@ -162,6 +182,8 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let backCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backCell", for: indexPath)
           as? AdditionalChordCollectionViewCell else { return UICollectionViewCell() }
         backCell.nameChordLabel.text = "⇪"
+        backCell.backgroundColor = .tertiary
+        backCell.nameChordLabel.textColor = .background2
         return backCell
       }
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdditionalChordCollectionViewCell", for: indexPath)
@@ -169,7 +191,8 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
       let additionalChord = additionalChords[indexPath.row - 1]
       cell.nameChordLabel.text = additionalChord.chordStruct.name
       cell.additionalChord = additionalChord
-      
+      cell.backgroundColor = .secondary
+      cell.nameChordLabel.textColor = .primary
       return cell
     }
     return UICollectionViewCell()
