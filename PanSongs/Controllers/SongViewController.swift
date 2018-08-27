@@ -19,13 +19,10 @@ class SongViewController: UIViewController {
   
   var song: Song?
   var chords: [Chord] = []
-  let chordManager = ChordsManager.shared()
-  
-  var saveSongVC: SaveSongViewController?
-  var circleVC: CircleViewController?
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    chords = ChordsManager.shared.getChordsFrom(song: song!)
     initCustomKeyboard()
   }
   private func initCustomKeyboard() {
@@ -38,6 +35,7 @@ class SongViewController: UIViewController {
     initToolBarForKeyboard()
     initCircleButton()
     initTextAndScrollViews()
+   
     keyboard = textView.inputView
     // Init and set bar button item
     let nextBarItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(SongViewController.nextBarItemAction))
@@ -48,27 +46,32 @@ class SongViewController: UIViewController {
   }
   
   private func initTextAndScrollViews() {
-    // Set frames
-    scrollView.frame = CGRect(x: CGFloat(0),
+    if song?.widthTextView == 0 {
+      // Set frames
+      scrollView.frame = CGRect(x: CGFloat(0),
+                                y: CGFloat(0),
+                                width: UIScreen.main.bounds.width,
+                                height: UIScreen.main.bounds.height)
+      textView.frame = CGRect(x: CGFloat(0),
                               y: CGFloat(0),
                               width: UIScreen.main.bounds.width,
-                              height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
-    textView.frame = CGRect(x: CGFloat(0),
-                            y: CGFloat(0),
-                            width: UIScreen.main.bounds.width,
-                            height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
-    if let song = song {
-      textView.attributedText = song.textTextView
+                              height: UIScreen.main.bounds.height)
+    } else {
+      textView.attributedText = song?.textTextView
       textView.frame = CGRect(x: textView.frame.origin.x,
                               y: textView.frame.origin.y,
-                              width: CGFloat(song.widthTextView),
+                              width: CGFloat((song?.widthTextView)!),
                               height: textView.frame.height)
-      scrollView.contentSize.width = CGFloat(song.widthTextView)
+      scrollView.frame = CGRect(x: CGFloat(0),
+                                y: CGFloat(0),
+                                width: UIScreen.main.bounds.width,
+                                height: UIScreen.main.bounds.height)
+      scrollView.contentSize.width = CGFloat((song?.widthTextView)!)
       scrollView.contentSize.height = textView.frame.size.height
-    } else { print("song == nil")}
+    }
     // Other
     textView.delegate = textView
-    textView.delegatChordTextView = self
+    textView.delegateChordTextView = self
     let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(SongViewController.chooseEditingView))
     scrollView.addGestureRecognizer(gestrueTapScrollView)
   }
@@ -114,11 +117,9 @@ class SongViewController: UIViewController {
   }
   
   @objc func circleButtonAction() {
-    if circleVC == nil {
-      circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as? CircleViewController
-    }
-    circleVC?.songVC = self
-    circleVC?.chords = chords
+    let circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as? CircleViewController
+    guard let song = song else { return }
+    circleVC?.song = song
     self.navigationController?.pushViewController(circleVC!, animated: true)
   }
   
@@ -129,11 +130,10 @@ class SongViewController: UIViewController {
       textView.becomeFirstResponder()
     } else {
       if chords.count == 0 {
-        if circleVC == nil {
-          circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
-        }
-        circleVC?.songVC = self
-        navigationController?.pushViewController(circleVC!, animated: true)
+        let circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
+        setSong()
+        circleVC.song = song
+        navigationController?.pushViewController(circleVC, animated: true)
       }
       textView.inputView = customKeyboard
       textView.reloadInputViews()
@@ -159,16 +159,9 @@ class SongViewController: UIViewController {
   }
   
   @objc func nextBarItemAction() {
-    if saveSongVC == nil {
-      saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
-      if song != nil {
-        song?.textTextView = textView.attributedText
-        song?.widthTextView = Float(textView.frame.width)
-        saveSongVC!.song = song
-      }
-    }
-    saveSongVC?.widthTextView = Float(textView.frame.width)
-    saveSongVC?.chordSongTextViewString = textView.attributedText
+      let saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
+        setSong()
+    saveSongVC?.song = song
     navigationController?.pushViewController(saveSongVC!, animated: true)
   }
   
@@ -179,6 +172,24 @@ class SongViewController: UIViewController {
   @objc func chooseEditingView() {
     textView.becomeFirstResponder()
   }
+  
+  private func setSong() {
+    let chords = self.chords.map { $0.chordStruct.name }
+    song?.chords = chords
+    song?.textTextView = textView.attributedText
+    song?.widthTextView = Float(textView.frame.width)
+  }
+  
+  override func viewWillDisappear(_ animated : Bool) {
+    super.viewWillDisappear(animated)
+    
+    if self.isMovingFromParentViewController {
+      if song?.date == nil {
+        CoreDataManager.shared.delete(song: song!)
+      }
+    }
+  }
+  
 }
 
 extension SongViewController: ChordTextViewDelegate {

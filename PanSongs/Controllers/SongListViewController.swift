@@ -29,6 +29,9 @@ class SongListViewController: UIViewController {
   }
   @IBAction func addBarButtonAction(_ sender: Any) {
     let songVC = storyboard?.instantiateViewController(withIdentifier: "SongViewController") as! SongViewController
+    let song = CoreDataManager.shared.newSong()
+    song.localId = NSUUID().uuidString
+    songVC.song = song
     navigationController?.pushViewController(songVC, animated: true)
   }
 }
@@ -56,7 +59,7 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
   }
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == UITableViewCellEditingStyle.delete {
-      CoreDataManager.shared.deleteSong(with: songs[indexPath.row].date!)
+      CoreDataManager.shared.delete(song: songs[indexPath.row])
       songs.remove(at: indexPath.row)
       tableView.reloadData()
     }

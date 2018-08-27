@@ -45,7 +45,7 @@ class DetailSongViewController: UIViewController {
     textView.isSelectable = true
     textView.isUserInteractionEnabled = true
     textView.isScrollEnabled = true
-    textView.delegatChordTextView = self
+    textView.delegateChordTextView = self
     textView.delegate = textView
     textView.attributedText = song?.textTextView
   }

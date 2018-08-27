@@ -16,18 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    UINavigationBar.appearance().barTintColor = .background
-    UINavigationBar.appearance().isTranslucent = false
-    UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .background2
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.background2]
-    UIButton.appearance().tintColor = .background2
-    
-    ChordsManager.shared().loadChordJSON()
+    setupColors()
+    ChordsManager.shared.loadChordJSON()
     // Init CoreDataManager
-    let appDelegat = UIApplication.shared.delegate as! AppDelegate
-    let context = appDelegat.persistentContainer.viewContext
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = appDelegate.persistentContainer.viewContext
     CoreDataManager.shared.context = context
     return true
+  }
+  
+  private func setupColors() {
+  UINavigationBar.appearance().barStyle = .blackOpaque
+  UINavigationBar.appearance().barTintColor = .background
+  UINavigationBar.appearance().tintColor = .background2
+  UINavigationBar.appearance().isTranslucent = false
+  UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .background2
+  UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.background2]
+  UIButton.appearance().tintColor = .background2
   }
   
   func applicationWillResignActive(_ application: UIApplication) {
@@ -68,7 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       if let error = error as NSError? {
         // Replace this implementation with code to handle the error appropriately.
         // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        
         /*
          Typical reasons for an error here include:
          * The parent directory does not exist, cannot be created, or disallows writing.
@@ -84,7 +88,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }()
   
   // MARK: - Core Data Saving support
-  
   func saveContext () {
     let context = persistentContainer.viewContext
     if context.hasChanges {

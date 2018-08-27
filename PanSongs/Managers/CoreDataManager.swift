@@ -39,12 +39,12 @@ class CoreDataManager {
     return [Song]()
   }
   
-  func deleteSong(with date: Date) {
+  func delete(song: Song) {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
     do {
       let objects = try context?.fetch(fetchRequest) as! [Song]
       for object in objects {
-        if object.date == date {
+        if object.localId == song.localId {
           context?.delete(object)
         }
       }

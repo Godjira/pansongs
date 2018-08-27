@@ -13,12 +13,7 @@ class ChordsManager {
   
   private static var uniqueInstance: ChordsManager?
   private init() {}
-  static func shared() -> ChordsManager {
-    if uniqueInstance == nil {
-      uniqueInstance = ChordsManager()
-    }
-    return uniqueInstance!
-  }
+  static let shared = ChordsManager()
   
   var json = [String: AnyObject]()
   
@@ -60,7 +55,6 @@ class ChordsManager {
       }
       }
     }
-    print(chords.count)
     for chord in chords {
       if checkIsFromCircle(chord: chord) {
         chords.remove(at: chords.index(where: { chord.chordStruct.name == $0.chordStruct.name })!)
@@ -80,4 +74,13 @@ class ChordsManager {
     return false
   }
   
+  func getChordsFrom(song: Song) -> [Chord] {
+    var chords = [Chord]()
+    if song.chords?.count != nil && song.chords?.count != 0 {
+      for chord in song.chords! {
+        chords.append(ChordsManager.shared.getChordFromText(nameChord: chord)!)
+      }
+    }
+    return chords
+  }
 }

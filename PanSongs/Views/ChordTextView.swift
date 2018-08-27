@@ -16,8 +16,7 @@ protocol ChordTextViewDelegate {
 
 class ChordTextView: UITextView, KeyboardViewDelegate {
   
-  let chordManager = ChordsManager.shared()
-  var delegatChordTextView: ChordTextViewDelegate?
+  var delegateChordTextView: ChordTextViewDelegate?
   
   func insert(chord: Chord) {
     let interactableText = NSMutableAttributedString(string: chord.chordStruct.name)
@@ -104,13 +103,13 @@ extension ChordTextView: UITextViewDelegate {
   func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
     //Code to the respective action
     print(self.attributedText.attributedSubstring(from: characterRange).string)
-    guard let chord = chordManager.getChordFromText(nameChord: self.attributedText.attributedSubstring(from: characterRange).string) else { return false }
-    self.delegatChordTextView?.clickOn(chord: chord)
+    guard let chord = ChordsManager.shared.getChordFromText(nameChord: self.attributedText.attributedSubstring(from: characterRange).string) else { return false }
+    self.delegateChordTextView?.clickOn(chord: chord)
     
     return false
   }
   func textViewDidChange(_ textView: UITextView) {
-    delegatChordTextView?.textViewDidChange()
+    delegateChordTextView?.textViewDidChange()
   }
   
 }

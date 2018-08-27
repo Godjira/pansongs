@@ -15,8 +15,7 @@ class CircleViewController: UIViewController {
   @IBOutlet weak var circleView: UIView!
   @IBOutlet weak var circleImageView: UIImageView!
   
-  var chordsManager = ChordsManager.shared()
-  var songVC: SongViewController?
+  var song: Song?
   
   @IBOutlet weak var additionalChordsCollectionView: UICollectionView!
   
@@ -53,7 +52,25 @@ class CircleViewController: UIViewController {
     setCircleViewOverTheTop()
     setAdCollectToOverTheTop()
     animateCircleViewToOldPosition()
+    setupChords()
   }
+  
+  private func setupChords() {
+    chords = ChordsManager.shared.getChordsFrom(song: song!)
+    for subView in circleView.subviews {
+      if let chordButton: UIButton = subView as? UIButton {
+        for chord in chords {
+          if chordButton.currentTitle == chord.chordStruct.name {
+            chordButton.layer.cornerRadius = 15
+            chordButton.backgroundColor = .secondary
+            chordButton.setTitleColor(.white, for: .normal)
+            chordsCollection.reloadData()
+          }
+        }
+      }
+    }
+  }
+  
   @objc func okButtonAction() {
     self.navigationController?.popViewController(animated: true)
   }
@@ -61,21 +78,18 @@ class CircleViewController: UIViewController {
     super.viewWillDisappear(animated)
     
     if self.isMovingFromParentViewController {
-      if songVC != nil {
-        songVC?.chords = chords
-        songVC?.customKeyboard.tableView.reloadData()
-      }
+      song?.chords = self.chords.map { $0.chordStruct.name }
     }
   }
+  
   @IBAction func clickOnChordAction(_ sender: UIButton) {
     if sender.layer.cornerRadius == 0 {
       sender.layer.cornerRadius = 15
       sender.backgroundColor = .secondary
       sender.setTitleColor(.white, for: .normal)
       // Get chord
-      guard let chord = chordsManager.getChordFromText(nameChord: sender.titleLabel!.text!) else { return }
+      guard let chord = ChordsManager.shared.getChordFromText(nameChord: sender.titleLabel!.text!) else { return }
       // Get first chord position for view
-      let strings = chord.getChordViewString(position: chord.chordStruct.positions.first!)
       chords.append(chord)
       chordsCollection.reloadData()
       chordsCollection.scrollToLastIndexPath(position: .right, animated: true)
@@ -146,6 +160,7 @@ class CircleViewController: UIViewController {
       self.additionalChordsCollectionView.frame = self.oldAdditColectionViewFrame!
     }
   }
+  
   private func animateAdCollectToOverTheTopPosition() {
     guard oldAdditColectionViewFrame != nil else { return }
     self.additionalChordsCollectionView.alpha = 0.3
@@ -167,12 +182,13 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     return 0
   }
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     if collectionView == chordsCollection {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChordCollectionViewCell", for: indexPath)
         as? ChordCollectionViewCell else { return UICollectionViewCell() }
       cell.chordDelegat = self
-      let isFromCircle = chordsManager.checkIsFromCircle(chord: chords[indexPath.row])
+      let isFromCircle = ChordsManager.shared.checkIsFromCircle(chord: chords[indexPath.row])
       cell.setChord(chord: chords[indexPath.row], fromCircle: isFromCircle)
       return cell
     }
@@ -197,6 +213,7 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     return UICollectionViewCell()
   }
+  
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if collectionView == chordsCollection {
       
@@ -217,12 +234,14 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 extension CircleViewController: ChordCollectionViewCellDelegat {
+  
   func deleteChord(chord: Chord) {
     chords.remove(at: chords.index(where: { $0.chordStruct.name == chord.chordStruct.name })!)
     self.chordsCollection.reloadData()
   }
+  
   func addAdditionalChord(fromChord: Chord) {
-    self.additionalChords = chordsManager.getAdditionalChord(chord: fromChord)!
+    self.additionalChords = ChordsManager.shared.getAdditionalChord(chord: fromChord)!
     additionalChordsCollectionView.reloadData()
     animateCircleViewToOverTheTopPosition()
     animateAdCollectToOldPosition()
