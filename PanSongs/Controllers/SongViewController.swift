@@ -35,7 +35,7 @@ class SongViewController: UIViewController {
     initToolBarForKeyboard()
     initCircleButton()
     initTextAndScrollViews()
-   
+    
     keyboard = textView.inputView
     // Init and set bar button item
     let nextBarItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(SongViewController.nextBarItemAction))
@@ -46,28 +46,16 @@ class SongViewController: UIViewController {
   }
   
   private func initTextAndScrollViews() {
-    if song?.widthTextView == 0 {
-      // Set frames
-      scrollView.frame = CGRect(x: CGFloat(0),
-                                y: CGFloat(0),
-                                width: UIScreen.main.bounds.width,
-                                height: UIScreen.main.bounds.height)
-      textView.frame = CGRect(x: CGFloat(0),
-                              y: CGFloat(0),
-                              width: UIScreen.main.bounds.width,
-                              height: UIScreen.main.bounds.height)
+    if song?.textTextView != nil {
+    textView.attributedText = song?.textTextView
+    }
+    textView.layoutIfNeeded()
+    let contentSize = self.textView.sizeThatFits(self.textView.bounds.size)
+    scrollView.contentSize.height = contentSize.height
+    if contentSize.width > UIScreen.main.bounds.width {
+    scrollView.contentSize.width = contentSize.width
     } else {
-      textView.attributedText = song?.textTextView
-      textView.frame = CGRect(x: textView.frame.origin.x,
-                              y: textView.frame.origin.y,
-                              width: CGFloat((song?.widthTextView)!),
-                              height: textView.frame.height)
-      scrollView.frame = CGRect(x: CGFloat(0),
-                                y: CGFloat(0),
-                                width: UIScreen.main.bounds.width,
-                                height: UIScreen.main.bounds.height)
-      scrollView.contentSize.width = CGFloat((song?.widthTextView)!)
-      scrollView.contentSize.height = textView.frame.size.height
+      scrollView.contentSize.width = UIScreen.main.bounds.width
     }
     // Other
     textView.delegate = textView
@@ -146,6 +134,7 @@ class SongViewController: UIViewController {
     let userInfo: NSDictionary = notification.userInfo! as NSDictionary
     let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
     let keyboardSize = keyboardInfo.cgRectValue.size
+    
     // Set insets
     let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
     scrollView.contentInset = contentInsets
@@ -159,8 +148,8 @@ class SongViewController: UIViewController {
   }
   
   @objc func nextBarItemAction() {
-      let saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
-        setSong()
+    let saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
+    setSong()
     saveSongVC?.song = song
     navigationController?.pushViewController(saveSongVC!, animated: true)
   }
@@ -197,9 +186,16 @@ extension SongViewController: ChordTextViewDelegate {
   func clickOn(chord: Chord) {}
   
   func textViewDidChange() {
-    textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
-    scrollView.contentSize.height = textView.frame.size.height
-    scrollView.contentSize.width = textView.frame.size.width
+    if textView.contentSize.height > UIScreen.main.bounds.height {
+    scrollView.contentSize.height = textView.contentSize.height
+    } else {
+      scrollView.contentSize.height = UIScreen.main.bounds.height
+    }
+    if textView.contentSize.width > UIScreen.main.bounds.width {
+      scrollView.contentSize.width = textView.contentSize.width
+    } else {
+      scrollView.contentSize.width = UIScreen.main.bounds.width
+    }
   }
 }
 

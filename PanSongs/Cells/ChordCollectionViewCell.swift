@@ -40,7 +40,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
     super.awakeFromNib()
     
     nameChord.textColor = .background2
-    chordString.textColor = .background2
+    chordString.textColor = .white
     deleteButton.setTitleColor(.tertiary, for: .normal)
     addButton.setTitleColor(.tertiary, for: .normal)
     contentView.backgroundColor = .background
