@@ -16,27 +16,36 @@ class CoreDataManager {
   
   var context: NSManagedObjectContext?
   
-  func newSong() -> Song {
-    let entity = NSEntityDescription.entity(forEntityName: "Song", in: context!)
-    let song = Song(entity: entity!, insertInto: context)
-    return song
+  func fetch<T: NSManagedObject>(entity:T.Type, sortBy key: String? = nil, ascending: Bool = true, predicate: NSPredicate? = nil) -> [T]? {
+    let entityName = String(describing: entity).components(separatedBy: ".").last!
+    let request    = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+    
+    request.returnsObjectsAsFaults = false
+    request.predicate = predicate
+    
+    if let key = key {
+      let sorter = NSSortDescriptor(key:key, ascending:ascending)
+      request.sortDescriptors = [sorter]
+    }
+    
+    do {
+      let lists = try context?.fetch(request)
+      return lists as? [T]
+    } catch {
+      print("Error with request: \(error)")
+      return nil
+    }
   }
   
+  func deleteEntity<T>(_ entity: T) {
+    context?.delete(entity as! NSManagedObject)
+    saveContext()
+  }
+
   func saveContext() {
     do {
       try context?.save()
     } catch { print("Failed saving") }
-  }
-  
-  func getAllSongs() -> [Song] {
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
-    do {
-      let result = try context?.fetch(fetchRequest) as! [Song]
-      return result
-    } catch {
-      print(error)
-    }
-    return [Song]()
   }
   
   func delete(song: Song) {

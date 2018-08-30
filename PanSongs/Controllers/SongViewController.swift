@@ -176,9 +176,7 @@ class SongViewController: UIViewController {
     super.viewWillDisappear(animated)
     
     if self.isMovingFromParentViewController {
-      if song?.date == nil {
-        CoreDataManager.shared.delete(song: song!)
-      }
+      CoreDataManager.shared.context?.undo()
     }
   }
   

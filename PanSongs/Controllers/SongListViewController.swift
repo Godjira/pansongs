@@ -15,7 +15,7 @@ class SongListViewController: UIViewController {
   var songs = [Song]()
   
   override func viewWillAppear(_ animated: Bool) {
-    songs = CoreDataManager.shared.getAllSongs()
+    songs = CoreDataManager.shared.fetch(entity: Song.self) ?? []
     tableView.reloadData()
     title = "Song list"
     let footerView = UIView()
@@ -29,7 +29,7 @@ class SongListViewController: UIViewController {
   }
   @IBAction func addBarButtonAction(_ sender: Any) {
     let songVC = storyboard?.instantiateViewController(withIdentifier: "SongViewController") as! SongViewController
-    let song = CoreDataManager.shared.newSong()
+    let song = Song(context: CoreDataManager.shared.context!)
     song.localId = NSUUID().uuidString
     songVC.song = song
     navigationController?.pushViewController(songVC, animated: true)
@@ -59,7 +59,7 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
   }
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == UITableViewCellEditingStyle.delete {
-      CoreDataManager.shared.delete(song: songs[indexPath.row])
+      CoreDataManager.shared.deleteEntity(songs[indexPath.row])
       songs.remove(at: indexPath.row)
       tableView.reloadData()
     }

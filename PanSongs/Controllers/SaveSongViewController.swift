@@ -17,8 +17,6 @@ class SaveSongViewController: UIViewController {
   
   var song: Song?
   
-  let coreDataManager: CoreDataManager = CoreDataManager.shared
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     nameSongTextField.text = song?.name
@@ -40,7 +38,7 @@ class SaveSongViewController: UIViewController {
       song?.author = authorsTextView.text
       song?.descriptionSong = descriptionTextView.text
       song?.date = Date()
-      coreDataManager.saveContext()
+      CoreDataManager.shared.saveContext()
       navigationController?.popToRootViewController(animated: true)
     }
   }
