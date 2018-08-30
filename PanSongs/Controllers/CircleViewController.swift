@@ -28,23 +28,21 @@ class CircleViewController: UIViewController {
     self.title = "Choose chords"
     let okButton = UIBarButtonItem(title: "Ok", style: .done, target: self, action: #selector(CircleViewController.okButtonAction))
     navigationItem.leftBarButtonItem = okButton
+    
     circleImageView.image = circleImageView.image?.withRenderingMode(.alwaysTemplate)
     circleImageView.tintColor = .secondary
     view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    for subView in circleView.subviews {
-      if ((subView as? UIButton) != nil) {
-        subView.tintColor = .secondary
-      }
+    
+    for subview in circleView.subviews where subview.isKind(of: UIButton.self) {
+        subview.tintColor = .secondary
     }
     additionalChordsCollectionView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: additionalChordsCollectionView.frame.height)
     timerUpdateFingerInCell = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateFingersInCell), userInfo: nil, repeats: true)
   }
   
   @objc func updateFingersInCell() {
-    for cell in chordsCollection.visibleCells {
-      if let cell: ChordCollectionViewCell = cell as? ChordCollectionViewCell {
-        cell.updateFingers()
-      }
+    for case let cell as ChordCollectionViewCell in chordsCollection.visibleCells {
+      cell.updateFingers()
     }
   }
   
@@ -89,7 +87,7 @@ class CircleViewController: UIViewController {
       sender.backgroundColor = .secondary
       sender.setTitleColor(.white, for: .normal)
       // Get chord
-      guard let chord = ChordsManager.shared.getChordFromText(nameChord: sender.titleLabel!.text!) else { return }
+      guard let chord = ChordsManager.shared.getChordFrom(nameChord: sender.titleLabel!.text!) else { return }
       // Get first chord position for view
       chords.append(chord)
       chordsCollection.reloadData()
@@ -134,7 +132,6 @@ class CircleViewController: UIViewController {
       self.circleView.alpha = 1
       self.circleView.center = self.oldCircleViewCenter!
     }
-
   }
   
   private func animateCircleViewToOverTheTopPosition() {
@@ -143,7 +140,6 @@ class CircleViewController: UIViewController {
       self.circleView.center = self.overTheTopCircleCenter!
       self.circleView.alpha = 0.3
     }
-
   }
   // AdditionalCollection animation
   private var oldAdditColectionViewFrame: CGRect?
@@ -195,9 +191,8 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     if collectionView == chordsCollection {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChordCollectionViewCell", for: indexPath)
         as? ChordCollectionViewCell else { return UICollectionViewCell() }
-      cell.chordDelegat = self
-      let isFromCircle = ChordsManager.shared.checkIsFromCircle(chord: chords[indexPath.row])
-      cell.setChord(chord: chords[indexPath.row], fromCircle: isFromCircle)
+      cell.chordDelegate = self
+      cell.setChord(chord: chords[indexPath.row], fromCircle: ChordsManager.shared.chordsFromCircle.contains(chords[indexPath.row].chordStruct.name))
       return cell
     }
     if collectionView == additionalChordsCollectionView {
@@ -249,7 +244,7 @@ extension CircleViewController: ChordCollectionViewCellDelegat {
   }
   
   func addAdditionalChord(fromChord: Chord) {
-    self.additionalChords = ChordsManager.shared.getAdditionalChord(chord: fromChord)!
+    self.additionalChords = ChordsManager.shared.getAdditionalChord(from: fromChord)!
     additionalChordsCollectionView.reloadData()
     animateCircleViewToOverTheTopPosition()
     animateAdCollectToOldPosition()

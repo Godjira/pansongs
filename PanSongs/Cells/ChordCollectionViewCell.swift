@@ -28,13 +28,13 @@ class ChordCollectionViewCell: UICollectionViewCell {
   
   var timerCounter = 0
   
-  var chordDelegat: ChordCollectionViewCellDelegat?
+  var chordDelegate: ChordCollectionViewCellDelegat?
   
   @IBAction func buttonAddAdditionalChord(_ sender: Any) {
-    chordDelegat?.addAdditionalChord(fromChord: chord!)
+    chordDelegate?.addAdditionalChord(fromChord: chord!)
   }
   @IBAction func deleteChordButtonAction(_ sender: Any) {
-    chordDelegat?.deleteChord(chord: chord!)
+    chordDelegate?.deleteChord(chord: chord!)
   }
   
   override func awakeFromNib() {
@@ -57,7 +57,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
     }
     self.chord = chord
     nameChord.text = chord.chordStruct.name
-    currentChordPosition = self.chord?.getCurrentChordString()
+    currentChordPosition = self.chord?.currentVatiations
     pageControl.numberOfPages = chord.chordStruct.positions.count
     chordString.text = currentChordPosition?.first
   }
@@ -72,7 +72,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
   
   @IBAction func positionNextAction(_ sender: Any) {
     chord?.nextChordPosition()
-    currentChordPosition = self.chord?.getCurrentChordString()
+    currentChordPosition = self.chord?.currentVatiations
     chordString.text = currentChordPosition?.first
     if pageControl.currentPage == pageControl.numberOfPages - 1 {
       pageControl.currentPage = 0
@@ -82,7 +82,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
   }
   @IBAction func positionPrevAction(_ sender: Any) {
     chord?.prevChordPosition()
-    currentChordPosition = self.chord?.getCurrentChordString()
+    currentChordPosition = self.chord?.currentVatiations
     chordString.text = currentChordPosition?.first
     if pageControl.currentPage == 0 {
       pageControl.currentPage = chord!.chordStruct.positions.count

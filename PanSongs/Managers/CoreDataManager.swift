@@ -27,7 +27,6 @@ class CoreDataManager {
       let sorter = NSSortDescriptor(key:key, ascending:ascending)
       request.sortDescriptors = [sorter]
     }
-    
     do {
       let lists = try context?.fetch(request)
       return lists as? [T]

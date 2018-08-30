@@ -20,22 +20,11 @@ class SongViewController: UIViewController {
   var song: Song?
   var chords: [Chord] = []
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    chords = ChordsManager.shared.getChordsFrom(song: song!)
-    initCustomKeyboard()
-    textView.layoutIfNeeded()
-  }
-  private func initCustomKeyboard() {
-    customKeyboard.delegate = textView
-    customKeyboard.chords = self.chords
-    customKeyboard.reloadData()
-  }
   override func viewDidLoad() {
     super.viewDidLoad()
-    initToolBarForKeyboard()
-    initCircleButton()
-    initTextAndScrollViews()
+    setupToolBarForKeyboard()
+    setupCircleButton()
+    setupTextAndScrollViews()
     
     keyboard = textView.inputView
     // Init and set bar button item
@@ -46,40 +35,59 @@ class SongViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
   }
   
-  private func initTextAndScrollViews() {
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    chords = ChordsManager.shared.getChordsFrom(song: song!)
+    setupCustomKeyboard()
+    textView.layoutIfNeeded()
+  }
+  
+  private func setupCustomKeyboard() {
+    customKeyboard.delegate = textView
+    customKeyboard.chords = self.chords
+    customKeyboard.reloadData()
+  }
+  
+  private func setupTextAndScrollViews() {
     if song?.textTextView != nil {
-    textView.attributedText = song?.textTextView
+      textView.attributedText = song?.textTextView
     }
     textView.layoutIfNeeded()
+    
     let contentSize = self.textView.sizeThatFits(self.textView.bounds.size)
     scrollView.contentSize.height = contentSize.height
     if contentSize.width > UIScreen.main.bounds.width {
-    scrollView.contentSize.width = contentSize.width
+      scrollView.contentSize.width = contentSize.width
     } else {
       scrollView.contentSize.width = UIScreen.main.bounds.width
     }
     // Other
     textView.delegate = textView
     textView.delegateChordTextView = self
+    
     let gestrueTapScrollView = UITapGestureRecognizer(target: self, action: #selector(SongViewController.chooseEditingView))
     scrollView.addGestureRecognizer(gestrueTapScrollView)
   }
   
-  private func initCircleButton() {
+  private func setupCircleButton() {
     let circleImage = UIImage(named: "circleIcon.png")?.withRenderingMode(.alwaysTemplate)
     let imageView = UIImageView(image: circleImage)
     imageView.tintColor = .background2
     imageView.contentMode = .scaleAspectFit
+    
     let centerButton =  UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
     imageView.frame = centerButton.bounds
+    
     centerButton.addSubview(imageView)
     imageView.isUserInteractionEnabled = true
+    
     let gestrueTapCircleButton = UITapGestureRecognizer(target: self, action: #selector(SongViewController.circleButtonAction))
     imageView.addGestureRecognizer(gestrueTapCircleButton)
+    
     self.navigationItem.titleView = centerButton
   }
   
-  private func initToolBarForKeyboard() {
+  private func setupToolBarForKeyboard() {
     //init toolbar
     let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
     toolbar.barStyle = .blackTranslucent
@@ -90,14 +98,15 @@ class SongViewController: UIViewController {
     let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self,
                                                    action: #selector(SongViewController.doneButtonAction))
-    initSegmentedControll()
+    setupSegmentedControll()
     let segmentBarItem = UIBarButtonItem(customView: self.segmentedControlItem!)
     toolbar.setItems([segmentBarItem ,flexSpace, doneBtn], animated: false)
     toolbar.sizeToFit()
     //setting toolbar as inputAccessoryView
     self.textView.inputAccessoryView = toolbar
   }
-  private func initSegmentedControll() {
+  
+  private func setupSegmentedControll() {
     let segmentedItemArray = ["Text", "Chords"]
     self.segmentedControlItem = UISegmentedControl(items: segmentedItemArray)
     self.segmentedControlItem?.frame = CGRect(x: 0, y: 0, width: 120, height: 30)
@@ -109,7 +118,7 @@ class SongViewController: UIViewController {
     let circleVC = CircleViewController.instance()
     guard let song = song else { return }
     circleVC.song = song
-    self.navigationController?.pushViewController(circleVC, animated: true)
+    navigationController?.pushViewController(circleVC, animated: true)
   }
   
   @objc func changeSegmentedControll() {
@@ -135,7 +144,6 @@ class SongViewController: UIViewController {
     let userInfo: NSDictionary = notification.userInfo! as NSDictionary
     let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
     let keyboardSize = keyboardInfo.cgRectValue.size
-    
     // Set insets
     let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + (textView.inputAccessoryView?.frame.height)!, right: 0)
     scrollView.contentInset = contentInsets
@@ -188,7 +196,7 @@ extension SongViewController: ChordTextViewDelegate {
   
   func textViewDidChange() {
     if textView.contentSize.height > UIScreen.main.bounds.height {
-    scrollView.contentSize.height = textView.contentSize.height
+      scrollView.contentSize.height = textView.contentSize.height
     } else {
       scrollView.contentSize.height = UIScreen.main.bounds.height
     }

@@ -22,6 +22,7 @@ class SongListViewController: UIViewController {
     footerView.backgroundColor = .background
     tableView.tableFooterView = footerView
   }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.frame = .zero
@@ -40,23 +41,27 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return songs.count
   }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     guard let stringAuthor = songs[indexPath.row].author  else { return cell }
-    guard let  stringName = songs[indexPath.row].name  else { return cell }
+    guard let stringName = songs[indexPath.row].name  else { return cell }
     cell.textLabel?.text = "\(stringAuthor) - \(stringName)"
     cell.textLabel?.textColor = .secondary
     return cell
   }
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     let detailSongVC = DetailSongViewController.instance()
     detailSongVC.song = songs[indexPath.row]
     navigationController?.pushViewController(detailSongVC, animated: true)
   }
+  
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     return true
   }
+  
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == UITableViewCellEditingStyle.delete {
       CoreDataManager.shared.deleteEntity(songs[indexPath.row])

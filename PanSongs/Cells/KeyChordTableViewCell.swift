@@ -19,12 +19,8 @@ class KeyChordTableViewCell: UITableViewCell {
     self.chord = chord
     nameChordLabel.text = chord.chordStruct.name
   }
-  
-  
+
   @IBAction func infoButton(_ sender: UIButton) {
     print("Chord info")
   }
-  
-  
-  
 }
