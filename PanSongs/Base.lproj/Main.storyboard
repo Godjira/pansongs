@@ -87,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-Rm-D2p">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="313"/>
+                                <rect key="frame" x="0.0" y="8" width="375" height="285"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KIC-qc-BK4">
                                     <size key="itemSize" width="67" height="38"/>
@@ -123,7 +123,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="AdditionalChordCollectionViewCell" reuseIdentifier="AdditionalChordCollectionViewCell" id="1wd-t5-O6X" customClass="AdditionalChordCollectionViewCell" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="61" width="67" height="38"/>
+                                        <rect key="frame" x="10" y="67" width="67" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="67" height="38"/>
@@ -155,7 +155,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfB-hu-Xyp" userLabel="CircleView">
-                                <rect key="frame" x="37.5" y="20" width="300" height="300"/>
+                                <rect key="frame" x="37.5" y="28" width="300" height="300"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="dJM-nZ-DO8" userLabel="circle">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -390,31 +390,31 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bHh-OW-NfV">
-                                <rect key="frame" x="1" y="321" width="375" height="347"/>
+                                <rect key="frame" x="1" y="343" width="375" height="344"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q4N-H3-o9Z">
-                                    <size key="itemSize" width="144" height="184"/>
+                                    <size key="itemSize" width="144" height="155"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ChordViewCell" reuseIdentifier="ChordCollectionViewCell" id="2wJ-iu-iDC" customClass="ChordCollectionViewCell" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="81.5" width="144" height="184"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="155"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="144" height="184"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="144" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60d-on-4bY">
-                                                    <rect key="frame" x="4" y="8" width="136" height="15"/>
+                                                    <rect key="frame" x="38" y="5" width="69" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.18351712270000001" green="0.099011987359999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HJ-5B-uTX">
-                                                    <rect key="frame" x="4" y="20" width="132" height="136"/>
+                                                    <rect key="frame" x="6" y="14" width="132" height="126"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">●|➀|-|-|-|-|
 ●|➀|-|-|-|-|
@@ -427,45 +427,35 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXA-zW-oVo">
-                                                    <rect key="frame" x="9" y="146" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="⇦"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXA-zW-oVo">
+                                                    <rect key="frame" x="0.0" y="129" width="26" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="26" id="8Lu-mv-wsN"/>
+                                                        <constraint firstAttribute="height" constant="26" id="8aJ-6H-V22"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <state key="normal" title="⟨"/>
                                                     <connections>
-                                                        <action selector="positionPrevAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="1Wo-zg-225"/>
+                                                        <action selector="positionPrevAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="9Tx-hV-SVB"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh2-2f-ed6">
-                                                    <rect key="frame" x="114" y="146" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="⇨"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh2-2f-ed6">
+                                                    <rect key="frame" x="118" y="129" width="26" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="26" id="QuK-kv-A7B"/>
+                                                        <constraint firstAttribute="height" constant="26" id="gU0-DU-w45"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <state key="normal" title="⟩"/>
                                                     <connections>
-                                                        <action selector="positionNextAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="Cu5-VV-YvL"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gpv-5S-MIQ">
-                                                    <rect key="frame" x="110" y="-12" width="45" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.1635471573" green="0.14535137940000001" blue="0.35043889459999999" alpha="0.25931078769999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="10" maxY="0.0"/>
-                                                    <state key="normal" title="+">
-                                                        <color key="titleColor" red="0.0" green="0.99143940210000003" blue="1" alpha="0.67262414383561642" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="buttonAddAdditionalChord:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="SKl-FX-97G"/>
+                                                        <action selector="positionNextAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="91y-U8-bFc"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxT-5c-eJK" userLabel="CloseInvisibleButton">
-                                                    <rect key="frame" x="-11" y="-14" width="45" height="45"/>
+                                                    <rect key="frame" x="-5" y="-13" width="35" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.1635471573" green="0.14535137940000001" blue="0.35043889459999999" alpha="0.25931078769999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <inset key="contentEdgeInsets" minX="5" minY="10" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="contentEdgeInsets" minX="3" minY="15" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title=" X">
                                                         <color key="titleColor" red="0.66666668650000005" green="0.1577306798" blue="0.36689298970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -479,16 +469,40 @@
                                                         <action selector="deleteChordButtonAction:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="WDE-hr-Eae"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHz-I0-nbP">
-                                                    <rect key="frame" x="42" y="153" width="61" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gpv-5S-MIQ">
+                                                    <rect key="frame" x="115" y="-12" width="35" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.1635471573" green="0.14535137940000001" blue="0.35043889459999999" alpha="0.25931078769999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
+                                                    <state key="normal" title="+">
+                                                        <color key="titleColor" red="0.0" green="0.99143940210000003" blue="1" alpha="0.67262414383561642" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="buttonAddAdditionalChord:" destination="2wJ-iu-iDC" eventType="touchUpInside" id="SKl-FX-97G"/>
+                                                    </connections>
+                                                </button>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="99A-tI-cKb">
+                                                    <rect key="frame" x="0.0" y="124" width="144" height="37"/>
+                                                </pageControl>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.53110205340000005" green="0.59963005879999998" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="eh2-2f-ed6" secondAttribute="bottom" id="5Ie-Xh-LaS"/>
+                                            <constraint firstItem="99A-tI-cKb" firstAttribute="centerX" secondItem="2wJ-iu-iDC" secondAttribute="centerX" id="6Ws-Yy-zcZ"/>
+                                            <constraint firstItem="99A-tI-cKb" firstAttribute="leading" secondItem="2wJ-iu-iDC" secondAttribute="leading" id="SUz-uD-p64"/>
+                                            <constraint firstAttribute="bottom" secondItem="99A-tI-cKb" secondAttribute="bottom" constant="-6" id="ciP-Aw-yYE"/>
+                                            <constraint firstAttribute="bottom" secondItem="UXA-zW-oVo" secondAttribute="bottom" id="dZq-cT-3Rp"/>
+                                            <constraint firstItem="UXA-zW-oVo" firstAttribute="leading" secondItem="2wJ-iu-iDC" secondAttribute="leading" id="hgt-kc-9Bs"/>
+                                            <constraint firstAttribute="trailing" secondItem="99A-tI-cKb" secondAttribute="trailing" id="v42-m6-ZWt"/>
+                                            <constraint firstAttribute="trailing" secondItem="eh2-2f-ed6" secondAttribute="trailing" id="vmA-Ua-CQ8"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -499,6 +513,7 @@
                                             <outlet property="chordString" destination="9HJ-5B-uTX" id="dGn-p8-f7L"/>
                                             <outlet property="deleteButton" destination="sxT-5c-eJK" id="zK3-xN-siQ"/>
                                             <outlet property="nameChord" destination="60d-on-4bY" id="UlQ-5m-rCe"/>
+                                            <outlet property="pageControl" destination="99A-tI-cKb" id="CWZ-pV-v2A"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -510,13 +525,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bHh-OW-NfV" firstAttribute="bottom" secondItem="vJq-XN-DmJ" secondAttribute="bottom" constant="1" id="8JO-zD-VSa"/>
+                            <constraint firstItem="bHh-OW-NfV" firstAttribute="bottom" secondItem="vJq-XN-DmJ" secondAttribute="bottom" constant="20" id="8JO-zD-VSa"/>
                             <constraint firstItem="vJq-XN-DmJ" firstAttribute="trailing" secondItem="Ndb-Rm-D2p" secondAttribute="trailing" id="9jR-Fg-Zw7"/>
-                            <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="kfB-hu-Xyp" secondAttribute="bottom" constant="1" id="Kji-UB-vQy"/>
+                            <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="kfB-hu-Xyp" secondAttribute="bottom" constant="15" id="Kji-UB-vQy"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="leading" secondItem="vJq-XN-DmJ" secondAttribute="leading" constant="1" id="N8M-kv-6g6"/>
-                            <constraint firstItem="Ndb-Rm-D2p" firstAttribute="top" secondItem="LvO-xb-WN3" secondAttribute="top" id="OLa-pK-Nku"/>
-                            <constraint firstItem="kfB-hu-Xyp" firstAttribute="top" secondItem="vJq-XN-DmJ" secondAttribute="top" id="Yxi-lQ-nFG"/>
-                            <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="Ndb-Rm-D2p" secondAttribute="bottom" constant="8" id="cfp-gx-fhU"/>
+                            <constraint firstItem="Ndb-Rm-D2p" firstAttribute="top" secondItem="LvO-xb-WN3" secondAttribute="top" constant="8" id="OLa-pK-Nku"/>
+                            <constraint firstItem="kfB-hu-Xyp" firstAttribute="top" secondItem="vJq-XN-DmJ" secondAttribute="top" constant="8" id="Yxi-lQ-nFG"/>
+                            <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="Ndb-Rm-D2p" secondAttribute="bottom" constant="50" id="cfp-gx-fhU"/>
                             <constraint firstItem="Ndb-Rm-D2p" firstAttribute="leading" secondItem="vJq-XN-DmJ" secondAttribute="leading" id="r0d-eM-joD"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="trailing" secondItem="vJq-XN-DmJ" secondAttribute="trailing" constant="1" id="tlt-rR-m0l"/>
                             <constraint firstItem="kfB-hu-Xyp" firstAttribute="centerX" secondItem="vJq-XN-DmJ" secondAttribute="centerX" id="xA3-kV-ydR"/>
@@ -543,14 +558,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roj-tC-SQt">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DhL-lS-BhW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqc-Lz-7Oy" userLabel="Chords" customClass="ChordTextView" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="344" height="575"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1648" height="1426"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="1" green="0.70980392156862748" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardAppearance="alert"/>
                                         <connections>
@@ -558,15 +573,20 @@
                                         </connections>
                                     </textView>
                                 </subviews>
-                                <viewLayoutGuide key="safeArea" id="n9P-Qi-LYd"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DhL-lS-BhW" firstAttribute="trailing" secondItem="mMW-9K-MID" secondAttribute="trailing" id="8ck-fL-0WR"/>
+                            <constraint firstItem="DhL-lS-BhW" firstAttribute="top" secondItem="poI-5O-mju" secondAttribute="top" id="EMK-Oj-QOg"/>
+                            <constraint firstItem="DhL-lS-BhW" firstAttribute="bottom" secondItem="mMW-9K-MID" secondAttribute="bottom" id="NHS-0R-X0m"/>
+                            <constraint firstItem="DhL-lS-BhW" firstAttribute="leading" secondItem="mMW-9K-MID" secondAttribute="leading" id="YkZ-XK-pE0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mMW-9K-MID"/>
                     </view>
                     <connections>
                         <outlet property="chordView" destination="xXC-6W-N5o" id="wHu-Y4-rNb"/>
-                        <outlet property="scrollView" destination="roj-tC-SQt" id="TB8-VF-6CQ"/>
+                        <outlet property="scrollView" destination="DhL-lS-BhW" id="w9y-ZP-b1k"/>
                         <outlet property="textView" destination="xqc-Lz-7Oy" id="nq9-FU-JjB"/>
                     </connections>
                 </viewController>
@@ -642,12 +662,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="has-go-ny0">
-                                <rect key="frame" x="4" y="20" width="359" height="647"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="has-go-ny0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-n7-Dvr" userLabel="Chords" customClass="ChordTextView" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="13.5" height="30"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-n7-Dvr" userLabel="Chords" customClass="ChordTextView" customModule="PanSongs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="1" green="0.70980392160000005" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText">
                                             <fragment content=" ">
                                                 <attributes>
@@ -662,10 +683,12 @@
                                 <constraints>
                                     <constraint firstItem="1vB-n7-Dvr" firstAttribute="leading" secondItem="has-go-ny0" secondAttribute="leading" id="EUA-kX-Tfe"/>
                                     <constraint firstItem="1vB-n7-Dvr" firstAttribute="top" secondItem="has-go-ny0" secondAttribute="top" id="Lf9-ZH-oD6"/>
+                                    <constraint firstAttribute="trailing" secondItem="1vB-n7-Dvr" secondAttribute="trailing" id="yNH-jX-PtX"/>
+                                    <constraint firstAttribute="bottom" secondItem="1vB-n7-Dvr" secondAttribute="bottom" id="zBc-6k-Iiq"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="has-go-ny0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Kf-te-ZcA"/>
                             <constraint firstItem="has-go-ny0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AWg-8U-Nbo"/>
@@ -954,6 +977,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle" width="407" height="405"/>
+        <image name="circle" width="392" height="392"/>
     </resources>
 </document>

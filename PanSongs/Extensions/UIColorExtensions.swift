@@ -15,5 +15,5 @@ extension UIColor {
   open class var tertiary: UIColor { return  #colorLiteral(red: 0.811595575, green: 0.8694346519, blue: 1, alpha: 1) }
   open class var quaternary: UIColor { return #colorLiteral(red: 0.3167889585, green: 0.3256473132, blue: 0.5271649031, alpha: 1) }
   open class var background: UIColor { return #colorLiteral(red: 0.2392156863, green: 0.2901960784, blue: 0.4, alpha: 1) }
-  open class var background2: UIColor {return #colorLiteral(red: 0.9679010991, green: 0.9329235774, blue: 0.8536356812, alpha: 1) }
+  open class var background2: UIColor {return #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1) }
 }

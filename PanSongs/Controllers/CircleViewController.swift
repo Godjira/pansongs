@@ -36,6 +36,7 @@ class CircleViewController: UIViewController {
         subView.tintColor = .secondary
       }
     }
+    additionalChordsCollectionView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: additionalChordsCollectionView.frame.height)
     timerUpdateFingerInCell = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateFingersInCell), userInfo: nil, repeats: true)
   }
   
@@ -74,9 +75,9 @@ class CircleViewController: UIViewController {
   @objc func okButtonAction() {
     self.navigationController?.popViewController(animated: true)
   }
+  
   override func viewWillDisappear(_ animated : Bool) {
     super.viewWillDisappear(animated)
-    
     if self.isMovingFromParentViewController {
       song?.chords = self.chords.map { $0.chordStruct.name }
     }
@@ -133,13 +134,16 @@ class CircleViewController: UIViewController {
       self.circleView.alpha = 1
       self.circleView.center = self.oldCircleViewCenter!
     }
+
   }
+  
   private func animateCircleViewToOverTheTopPosition() {
     guard overTheTopCircleCenter != nil else { return }
-    self.circleView.alpha = 0.3
     UIView.animate(withDuration: 0.5) {
       self.circleView.center = self.overTheTopCircleCenter!
+      self.circleView.alpha = 0.3
     }
+
   }
   // AdditionalCollection animation
   private var oldAdditColectionViewFrame: CGRect?
@@ -159,6 +163,7 @@ class CircleViewController: UIViewController {
       self.additionalChordsCollectionView.alpha = 1
       self.additionalChordsCollectionView.frame = self.oldAdditColectionViewFrame!
     }
+    additionalChordsCollectionView.isUserInteractionEnabled = true
   }
   
   private func animateAdCollectToOverTheTopPosition() {

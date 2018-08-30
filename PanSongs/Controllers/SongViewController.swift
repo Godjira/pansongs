@@ -24,6 +24,7 @@ class SongViewController: UIViewController {
     super.viewDidAppear(animated)
     chords = ChordsManager.shared.getChordsFrom(song: song!)
     initCustomKeyboard()
+    textView.layoutIfNeeded()
   }
   private func initCustomKeyboard() {
     customKeyboard.delegate = textView
@@ -136,15 +137,17 @@ class SongViewController: UIViewController {
     let keyboardSize = keyboardInfo.cgRectValue.size
     
     // Set insets
-    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + (textView.inputAccessoryView?.frame.height)!, right: 0)
     scrollView.contentInset = contentInsets
     scrollView.scrollIndicatorInsets = contentInsets
+    scrollView.showsHorizontalScrollIndicator = false
   }
   
   @objc func keyboardDidHide() {
     // Return old insets
     scrollView.contentInset = .zero
     scrollView.scrollIndicatorInsets = .zero
+    scrollView.showsHorizontalScrollIndicator = true
   }
   
   @objc func nextBarItemAction() {
@@ -192,7 +195,8 @@ extension SongViewController: ChordTextViewDelegate {
       scrollView.contentSize.height = UIScreen.main.bounds.height
     }
     if textView.contentSize.width > UIScreen.main.bounds.width {
-      scrollView.contentSize.width = textView.contentSize.width
+      scrollView.contentSize.width = textView.contentSize.width + 20
+      textView.frame.size = CGSize(width: textView.frame.width + 20, height: textView.frame.height)
     } else {
       scrollView.contentSize.width = UIScreen.main.bounds.width
     }

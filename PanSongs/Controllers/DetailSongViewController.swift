@@ -20,24 +20,14 @@ class DetailSongViewController: UIViewController {
     initEditButton()
     initTextView()
     view.addSubview(chordView)
-    chordView.isHidden = true
-    chordView.center.x = UIScreen.main.bounds.width / 2
-    chordView.center.y = UIScreen.main.bounds.height - chordView.frame.height / 2 - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height
-    setFrameAndContentSize()
-  }
-  
-  private func setFrameAndContentSize() {
-    scrollView.frame = CGRect(x: CGFloat(0),
-                              y: CGFloat(0),
-                              width: UIScreen.main.bounds.width,
-                              height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
-    textView.frame = CGRect(x: CGFloat(0),
-                            y: CGFloat(0),
-                            width: CGFloat(song!.widthTextView),
-                            height: UIScreen.main.bounds.height - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height)
+    setupFrameChordView()
+    setStatusBarBackgroundColor(color: .background)
     
-    scrollView.contentSize.height = textView.contentSize.height
-    scrollView.contentSize.width = CGFloat(song!.widthTextView)
+  }
+
+  private func setStatusBarBackgroundColor(color: UIColor) {
+    guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+    statusBar.backgroundColor = color
   }
   
   private func initTextView() {
@@ -47,8 +37,30 @@ class DetailSongViewController: UIViewController {
     textView.isScrollEnabled = true
     textView.delegateChordTextView = self
     textView.delegate = textView
-    textView.attributedText = song?.textTextView
+    setupFrameTextView()
   }
+  
+  private func setupFrameTextView() {
+    textView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 2000, height: 3000))
+    textView.attributedText = song?.textTextView
+    textView.layoutIfNeeded()
+    guard let widthTextView: CGFloat = CGFloat(song!.widthTextView) else { return }
+    let contentSize = self.textView.sizeThatFits(self.textView.bounds.size)
+    scrollView.contentSize.height = contentSize.height
+    if contentSize.width > UIScreen.main.bounds.width {
+      scrollView.contentSize.width = contentSize.width
+    } else {
+      scrollView.contentSize.width = UIScreen.main.bounds.width
+    }
+  }
+  
+  
+  private func setupFrameChordView() {
+    chordView.isHidden = true
+    chordView.center.x = UIScreen.main.bounds.width / 2
+    chordView.center.y = UIScreen.main.bounds.height - chordView.frame.height / 2 - (navigationController?.navigationBar.frame.height)! - UIApplication.shared.statusBarFrame.height - CGFloat(20)
+  }
+  
   
   private func initEditButton () {
     let editImage = UIImage(named: "editIcon.png")?.withRenderingMode(.alwaysTemplate)
@@ -74,21 +86,16 @@ class DetailSongViewController: UIViewController {
 extension DetailSongViewController: ChordTextViewDelegate, PresentChordViewDelegate {
   
   func closeChordView() {
-//    scrollView.contentInset = .zero
-//    scrollView.scrollIndicatorInsets = .zero
+
   }
   
   func clickOn(chord: Chord) {
     chordView.setChord(chord: chord)
     chordView.isHidden = false
-//    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: chordView.frame.height, right: 0)
-//    scrollView.contentInset = contentInsets
-//    scrollView.scrollIndicatorInsets = contentInsets
+    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: chordView.frame.height, right: 0)
   }
   
   func textViewDidChange() {
-    textView.frame = CGRect(origin: textView.frame.origin, size: CGSize(width: textView.frame.width, height: textView.contentSize.height))
-    scrollView.contentSize.height = textView.contentSize.height
-    scrollView.contentSize.width = textView.contentSize.width
+
   }
 }

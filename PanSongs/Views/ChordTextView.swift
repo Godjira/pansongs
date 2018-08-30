@@ -27,6 +27,7 @@ class ChordTextView: UITextView, KeyboardViewDelegate {
     interactableText.addAttribute(NSAttributedStringKey.link,
                                   value: "Chord",
                                   range: NSRange(location: 0, length: interactableText.length))
+    
     interactableText.append(NSAttributedString(string: " "))
     insertAttributedText(attrString: interactableText)
   }

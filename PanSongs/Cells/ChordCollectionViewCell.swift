@@ -20,7 +20,8 @@ class ChordCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var chordString: UILabel!
   @IBOutlet weak var deleteButton: UIButton!
   @IBOutlet weak var addButton: UIButton!
-  
+  @IBOutlet weak var pageControl: UIPageControl!
+    
   var chord: Chord?
   
   var currentChordPosition: [String]?
@@ -38,7 +39,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
+    pageControl.isUserInteractionEnabled = false
     nameChord.textColor = .background2
     chordString.textColor = .white
     deleteButton.setTitleColor(.tertiary, for: .normal)
@@ -57,6 +58,7 @@ class ChordCollectionViewCell: UICollectionViewCell {
     self.chord = chord
     nameChord.text = chord.chordStruct.name
     currentChordPosition = self.chord?.getCurrentChordString()
+    pageControl.numberOfPages = chord.chordStruct.positions.count
     chordString.text = currentChordPosition?.first
   }
   
@@ -72,10 +74,20 @@ class ChordCollectionViewCell: UICollectionViewCell {
     chord?.nextChordPosition()
     currentChordPosition = self.chord?.getCurrentChordString()
     chordString.text = currentChordPosition?.first
+    if pageControl.currentPage == pageControl.numberOfPages - 1 {
+      pageControl.currentPage = 0
+    } else {
+      pageControl.currentPage = pageControl.currentPage + 1
+    }
   }
   @IBAction func positionPrevAction(_ sender: Any) {
     chord?.prevChordPosition()
     currentChordPosition = self.chord?.getCurrentChordString()
     chordString.text = currentChordPosition?.first
+    if pageControl.currentPage == 0 {
+      pageControl.currentPage = chord!.chordStruct.positions.count
+    } else {
+      pageControl.currentPage = pageControl.currentPage - 1
+    }
   }
 }
