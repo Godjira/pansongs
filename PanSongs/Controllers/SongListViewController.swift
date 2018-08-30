@@ -25,10 +25,10 @@ class SongListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.frame = .zero
-    // Do any additional setup after loading the view.
   }
+  
   @IBAction func addBarButtonAction(_ sender: Any) {
-    let songVC = storyboard?.instantiateViewController(withIdentifier: "SongViewController") as! SongViewController
+    let songVC = SongViewController.instance()
     let song = Song(context: CoreDataManager.shared.context!)
     song.localId = NSUUID().uuidString
     songVC.song = song
@@ -50,7 +50,7 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    let detailSongVC = storyboard?.instantiateViewController(withIdentifier: "DetailSongViewController") as! DetailSongViewController
+    let detailSongVC = DetailSongViewController.instance()
     detailSongVC.song = songs[indexPath.row]
     navigationController?.pushViewController(detailSongVC, animated: true)
   }

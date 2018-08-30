@@ -106,10 +106,10 @@ class SongViewController: UIViewController {
   }
   
   @objc func circleButtonAction() {
-    let circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as? CircleViewController
+    let circleVC = CircleViewController.instance()
     guard let song = song else { return }
-    circleVC?.song = song
-    self.navigationController?.pushViewController(circleVC!, animated: true)
+    circleVC.song = song
+    self.navigationController?.pushViewController(circleVC, animated: true)
   }
   
   @objc func changeSegmentedControll() {
@@ -119,7 +119,7 @@ class SongViewController: UIViewController {
       textView.becomeFirstResponder()
     } else {
       if chords.count == 0 {
-        let circleVC = storyboard?.instantiateViewController(withIdentifier: "CircleViewController") as! CircleViewController
+        let circleVC = CircleViewController.instance()
         setSong()
         circleVC.song = song
         navigationController?.pushViewController(circleVC, animated: true)
@@ -151,10 +151,10 @@ class SongViewController: UIViewController {
   }
   
   @objc func nextBarItemAction() {
-    let saveSongVC = storyboard?.instantiateViewController(withIdentifier: "SaveSongViewController") as? SaveSongViewController
+    let saveSongVC = SaveSongViewController.instance()
     setSong()
-    saveSongVC?.song = song
-    navigationController?.pushViewController(saveSongVC!, animated: true)
+    saveSongVC.song = song
+    navigationController?.pushViewController(saveSongVC, animated: true)
   }
   
   @objc func doneButtonAction() {

@@ -152,7 +152,10 @@ class CircleViewController: UIViewController {
   private func setAdCollectToOverTheTop() {
     oldAdditColectionViewFrame = additionalChordsCollectionView.frame
     guard let oldAdditColectionViewFrame = oldAdditColectionViewFrame else { return }
-    additionalChordsCollectionView.frame = CGRect(x: oldAdditColectionViewFrame.origin.x, y: -oldAdditColectionViewFrame.height, width: oldAdditColectionViewFrame.width, height: oldAdditColectionViewFrame.height)
+    additionalChordsCollectionView.frame = CGRect(x: oldAdditColectionViewFrame.origin.x,
+                                                  y: -oldAdditColectionViewFrame.height,
+                                                  width: oldAdditColectionViewFrame.width,
+                                                  height: oldAdditColectionViewFrame.height)
     overTheTopAdditColectionFrame = additionalChordsCollectionView.frame
     self.additionalChordsCollectionView.alpha = 0
   }

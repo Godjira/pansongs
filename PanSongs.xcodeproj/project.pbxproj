@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		193E7C0A2110E44C00456BDE /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E7C092110E44C00456BDE /* KeyboardView.swift */; };
 		194D6F9421306B36009EA33A /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D6F9321306B36009EA33A /* UIColorExtensions.swift */; };
+		19A6ADFE2137F50D0000F891 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A6ADFD2137F50D0000F891 /* UIStoryboardExtensions.swift */; };
+		19A6AE002137FF480000F891 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A6ADFF2137FF480000F891 /* UIViewControllerExtensions.swift */; };
 		30E9B0825D8A5DAB4ABA01FF /* Pods_PanSongs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E7DC0082C6419908E4EB79 /* Pods_PanSongs.framework */; };
 		D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */; };
 		D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E9E2520F91BCD001F5834 /* Chord.swift */; };
@@ -37,6 +39,8 @@
 /* Begin PBXFileReference section */
 		193E7C092110E44C00456BDE /* KeyboardView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		194D6F9321306B36009EA33A /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		19A6ADFD2137F50D0000F891 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
+		19A6ADFF2137FF480000F891 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		20950C61B0E27DED89175D4C /* Pods-PanSongs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PanSongs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PanSongs/Pods-PanSongs.debug.xcconfig"; sourceTree = "<group>"; };
 		48E7DC0082C6419908E4EB79 /* Pods_PanSongs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PanSongs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B440F004D1A3CB3B61480FAB /* Pods-PanSongs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PanSongs.release.xcconfig"; path = "Pods/Target Support Files/Pods-PanSongs/Pods-PanSongs.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 			children = (
 				ED2B7AA7212EB18700F1C200 /* UICollectionViewExtension.swift */,
 				194D6F9321306B36009EA33A /* UIColorExtensions.swift */,
+				19A6ADFD2137F50D0000F891 /* UIStoryboardExtensions.swift */,
+				19A6ADFF2137FF480000F891 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,12 +337,14 @@
 				ED968B1E2134293A006E6CE3 /* Song+CoreDataClass.swift in Sources */,
 				ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
+				19A6AE002137FF480000F891 /* UIViewControllerExtensions.swift in Sources */,
 				EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */,
 				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
 				ED968B1F2134293A006E6CE3 /* Song+CoreDataProperties.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,
 				ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */,
 				ED0C6EC5212561EC00BE43BA /* DetailSongViewController.swift in Sources */,
+				19A6ADFE2137F50D0000F891 /* UIStoryboardExtensions.swift in Sources */,
 				EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */,
 				194D6F9421306B36009EA33A /* UIColorExtensions.swift in Sources */,
 			);

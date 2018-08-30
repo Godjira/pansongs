@@ -77,7 +77,7 @@ class DetailSongViewController: UIViewController {
   }
   
   @objc func editButtonAction() {
-    guard let songVC = storyboard?.instantiateViewController(withIdentifier: "SongViewController") as? SongViewController else { return }
+    let songVC = SongViewController.instance()
     songVC.song = song
     navigationController?.pushViewController(songVC, animated: true)
   }

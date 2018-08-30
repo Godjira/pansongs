@@ -34,10 +34,10 @@ class SaveSongViewController: UIViewController {
   
   @objc func saveAction() {
     if nameSongTextField.text != "" && authorsTextView.text != "" {
-      song?.name = nameSongTextField.text
-      song?.author = authorsTextView.text
-      song?.descriptionSong = descriptionTextView.text
-      song?.date = Date()
+      song?.load(with: nameSongTextField.text,
+                 author: authorsTextView.text,
+                 descriptionSong: descriptionTextView.text,
+                 date: Date())
       CoreDataManager.shared.saveContext()
       navigationController?.popToRootViewController(animated: true)
     }

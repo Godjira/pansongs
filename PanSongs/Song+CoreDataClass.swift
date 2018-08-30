@@ -13,4 +13,10 @@ import CoreData
 @objc(Song)
 public class Song: NSManagedObject {
 
+  func load(with name: String?, author: String?, descriptionSong: String?, date: Date?) {
+    self.name = name
+    self.author = author
+    self.descriptionSong = descriptionSong
+    self.date = date
+  }
 }
