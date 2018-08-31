@@ -48,9 +48,9 @@ class CircleViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    setCircleViewOverTheTop()
-    setAdCollectToOverTheTop()
-    animateCircleViewToOldPosition()
+    setupCircle()
+    setupAdditionalCollection()
+    showCircle()
     setupChords()
   }
   
@@ -115,7 +115,7 @@ class CircleViewController: UIViewController {
   private var oldCircleViewCenter: CGPoint?
   private var overTheTopCircleCenter: CGPoint?
   
-  private func setCircleViewOverTheTop() {
+  private func setupCircle() {
     let widthScreen = UIScreen.main.bounds.width
     circleView.center.y =  circleView.frame.height / 2
     circleView.center.x = widthScreen / 2
@@ -126,26 +126,32 @@ class CircleViewController: UIViewController {
     self.circleView.alpha = 0
   }
   
-  private func animateCircleViewToOldPosition() {
+  private func showCircle() {
     guard oldCircleViewCenter != nil else { return }
     UIView.animate(withDuration: 0.5) {
       self.circleView.alpha = 1
       self.circleView.center = self.oldCircleViewCenter!
     }
+    for subview in circleView.subviews where subview.isKind(of: UIButton.self) {
+      subview.isUserInteractionEnabled = true
+    }
   }
   
-  private func animateCircleViewToOverTheTopPosition() {
+  private func hideCircle() {
     guard overTheTopCircleCenter != nil else { return }
     UIView.animate(withDuration: 0.5) {
       self.circleView.center = self.overTheTopCircleCenter!
-      self.circleView.alpha = 0.3
+      self.circleView.alpha = 0
+    }
+    for subview in circleView.subviews where subview.isKind(of: UIButton.self) {
+      subview.isUserInteractionEnabled = false
     }
   }
   // AdditionalCollection animation
   private var oldAdditColectionViewFrame: CGRect?
   private var overTheTopAdditColectionFrame: CGRect?
   
-  private func setAdCollectToOverTheTop() {
+  private func setupAdditionalCollection() {
     oldAdditColectionViewFrame = additionalChordsCollectionView.frame
     guard let oldAdditColectionViewFrame = oldAdditColectionViewFrame else { return }
     additionalChordsCollectionView.frame = CGRect(x: oldAdditColectionViewFrame.origin.x,
@@ -156,7 +162,7 @@ class CircleViewController: UIViewController {
     self.additionalChordsCollectionView.alpha = 0
   }
   
-  private func animateAdCollectToOldPosition() {
+  private func showAdditinalCollection() {
     guard oldAdditColectionViewFrame != nil else { return }
     UIView.animate(withDuration: 0.5) {
       self.additionalChordsCollectionView.alpha = 1
@@ -165,11 +171,11 @@ class CircleViewController: UIViewController {
     additionalChordsCollectionView.isUserInteractionEnabled = true
   }
   
-  private func animateAdCollectToOverTheTopPosition() {
+  private func hideAdditionalCollection() {
     guard oldAdditColectionViewFrame != nil else { return }
-    self.additionalChordsCollectionView.alpha = 0.3
     UIView.animate(withDuration: 0.5) {
       self.additionalChordsCollectionView.frame = self.overTheTopAdditColectionFrame!
+      self.additionalChordsCollectionView.alpha = 0
     }
   }
 }
@@ -201,7 +207,7 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let backCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backCell", for: indexPath)
           as? AdditionalChordCollectionViewCell else { return UICollectionViewCell() }
         backCell.nameChordLabel.text = "⇪"
-        backCell.backgroundColor = .tertiary
+        backCell.backgroundColor = .quaternary
         backCell.nameChordLabel.textColor = .background2
         return backCell
       }
@@ -210,8 +216,8 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
       let additionalChord = additionalChords[indexPath.row - 1]
       cell.nameChordLabel.text = additionalChord.chordStruct.name
       cell.additionalChord = additionalChord
-      cell.backgroundColor = .secondary
-      cell.nameChordLabel.textColor = .primary
+      cell.backgroundColor = .quaternary
+      cell.nameChordLabel.textColor = .background2
       return cell
     }
     return UICollectionViewCell()
@@ -224,8 +230,8 @@ extension CircleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     if collectionView == additionalChordsCollectionView {
       // If did select BackCell
       if indexPath.row == 0 {
-        animateAdCollectToOverTheTopPosition()
-        animateCircleViewToOldPosition()
+        hideAdditionalCollection()
+        showCircle()
         return
       }
       guard let cell = collectionView.cellForItem(at: indexPath) as? AdditionalChordCollectionViewCell else { return }
@@ -246,7 +252,7 @@ extension CircleViewController: ChordCollectionViewCellDelegat {
   func addAdditionalChord(fromChord: Chord) {
     self.additionalChords = ChordsManager.shared.getAdditionalChord(from: fromChord)!
     additionalChordsCollectionView.reloadData()
-    animateCircleViewToOverTheTopPosition()
-    animateAdCollectToOldPosition()
+    hideCircle()
+    showAdditinalCollection()
   }
 }
