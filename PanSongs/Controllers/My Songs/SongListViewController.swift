@@ -26,9 +26,12 @@ class SongListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.frame = .zero
+    
+    let item = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SongListViewController.addAction))
+    tabBarController?.navigationItem.rightBarButtonItem = item
   }
   
-  @IBAction func addBarButtonAction(_ sender: Any) {
+  @objc func addAction() {
     let songVC = SongViewController.instance()
     let song = Song(context: CoreDataManager.shared.context!)
     song.localId = NSUUID().uuidString

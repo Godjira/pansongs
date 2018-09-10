@@ -24,6 +24,10 @@
 		ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0773DD210A4035008BEFFE /* ChordCollectionViewCell.swift */; };
 		ED0C6EC5212561EC00BE43BA /* DetailSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0C6EC4212561EC00BE43BA /* DetailSongViewController.swift */; };
 		ED2B7AA8212EB18700F1C200 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2B7AA7212EB18700F1C200 /* UICollectionViewExtension.swift */; };
+		ED391B70214000DD00772A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B6F214000DD00772A3F /* ProfileViewController.swift */; };
+		ED391B722140010900772A3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B712140010900772A3F /* LoginViewController.swift */; };
+		ED391B74214168B400772A3F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B73214168B400772A3F /* SignUpViewController.swift */; };
+		ED391B762144170E00772A3F /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B752144170E00772A3F /* ProfileManager.swift */; };
 		ED408E5E211080290029C867 /* KeyChordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */; };
 		ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61D59F212184F8007A1ACF /* ChordTextView.swift */; };
 		ED8BBAA721209B2400F8D507 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */; };
@@ -58,6 +62,10 @@
 		ED0773DD210A4035008BEFFE /* ChordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED0C6EC4212561EC00BE43BA /* DetailSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSongViewController.swift; sourceTree = "<group>"; };
 		ED2B7AA7212EB18700F1C200 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		ED391B6F214000DD00772A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		ED391B712140010900772A3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ED391B73214168B400772A3F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		ED391B752144170E00772A3F /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChordTableViewCell.swift; sourceTree = "<group>"; };
 		ED61D59F212184F8007A1ACF /* ChordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordTextView.swift; sourceTree = "<group>"; };
 		ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -121,6 +129,7 @@
 		D61E9E2720F91CF2001F5834 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				ED391B752144170E00772A3F /* ProfileManager.swift */,
 				D61E9E2820F91EA9001F5834 /* ChordsManager.swift */,
 				ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */,
 			);
@@ -170,11 +179,8 @@
 		D693D8CF20F4955D00AFC5BD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */,
-				ED0C6EC4212561EC00BE43BA /* DetailSongViewController.swift */,
-				EDCA6C8F2122E7A3005B213D /* SongViewController.swift */,
-				D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */,
-				ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */,
+				ED391B6E214000C100772A3F /* Profile */,
+				ED391B6D2140005F00772A3F /* My Songs */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +193,28 @@
 				EDCA0EA9212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		ED391B6D2140005F00772A3F /* My Songs */ = {
+			isa = PBXGroup;
+			children = (
+				ED9D347B211AC7FD00AF86AE /* SongListViewController.swift */,
+				ED0C6EC4212561EC00BE43BA /* DetailSongViewController.swift */,
+				EDCA6C8F2122E7A3005B213D /* SongViewController.swift */,
+				D61E9E2220F8ABB0001F5834 /* CircleViewController.swift */,
+				ED91AC20211ECEA50079A5B3 /* SaveSongViewController.swift */,
+			);
+			path = "My Songs";
+			sourceTree = "<group>";
+		};
+		ED391B6E214000C100772A3F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ED391B6F214000DD00772A3F /* ProfileViewController.swift */,
+				ED391B712140010900772A3F /* LoginViewController.swift */,
+				ED391B73214168B400772A3F /* SignUpViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		EDBAA73D2124747A004EB241 /* CoreData */ = {
@@ -305,12 +333,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PanSongs/Pods-PanSongs-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,19 +364,23 @@
 				ED2B7AA8212EB18700F1C200 /* UICollectionViewExtension.swift in Sources */,
 				EDE0F5932128808B00BDCC09 /* ChordView.swift in Sources */,
 				D61E9E2620F91BCD001F5834 /* Chord.swift in Sources */,
+				ED391B74214168B400772A3F /* SignUpViewController.swift in Sources */,
 				ED8BBAA721209B2400F8D507 /* CoreDataManager.swift in Sources */,
 				ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */,
 				ED968B1E2134293A006E6CE3 /* Song+CoreDataClass.swift in Sources */,
 				ED0773DE210A4035008BEFFE /* ChordCollectionViewCell.swift in Sources */,
 				D693D8BB20F4952E00AFC5BD /* AppDelegate.swift in Sources */,
+				ED391B722140010900772A3F /* LoginViewController.swift in Sources */,
 				19A6AE002137FF480000F891 /* UIViewControllerExtensions.swift in Sources */,
 				EDCA0EAA212FEBA900C65995 /* AdditionalChordCollectionViewCell.swift in Sources */,
 				D61E9E2320F8ABB0001F5834 /* CircleViewController.swift in Sources */,
+				ED391B70214000DD00772A3F /* ProfileViewController.swift in Sources */,
 				ED968B1F2134293A006E6CE3 /* Song+CoreDataProperties.swift in Sources */,
 				D693D8C320F4952E00AFC5BD /* PanSongs.xcdatamodeld in Sources */,
 				ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */,
 				ED0C6EC5212561EC00BE43BA /* DetailSongViewController.swift in Sources */,
 				19A6ADFE2137F50D0000F891 /* UIStoryboardExtensions.swift in Sources */,
+				ED391B762144170E00772A3F /* ProfileManager.swift in Sources */,
 				EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */,
 				194D6F9421306B36009EA33A /* UIColorExtensions.swift in Sources */,
 			);
