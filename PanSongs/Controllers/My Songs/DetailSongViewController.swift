@@ -30,6 +30,11 @@ class DetailSongViewController: UIViewController {
     statusBar.backgroundColor = color
   }
   
+  @IBAction func testAction(_ sender: Any) {
+    print(FirebaseManager.shared.send(song: song!))
+  }
+  
+  
   private func setupTextView() {
     textView.isEditable = false
     textView.isSelectable = true
@@ -63,6 +68,7 @@ class DetailSongViewController: UIViewController {
     let navigationBarHeight = (navigationController?.navigationBar.frame.height)!
     let statusBarHeight = UIApplication.shared.statusBarFrame.height
     let bottomInset: CGFloat = 20
+    
     chordView.center.y = screenHeight - chordView.frame.height / 2 - navigationBarHeight - statusBarHeight - bottomInset
   }
   
@@ -100,3 +106,5 @@ extension DetailSongViewController: ChordTextViewDelegate, PresentChordViewDeleg
     chordView.isHidden = false
   }
 }
+
+

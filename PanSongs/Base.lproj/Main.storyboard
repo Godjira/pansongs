@@ -359,21 +359,21 @@
                                 <rect key="frame" x="0.0" y="8" width="375" height="285"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KIC-qc-BK4">
-                                    <size key="itemSize" width="67" height="38"/>
+                                    <size key="itemSize" width="90" height="38"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="backCell" id="hIy-h0-whr" customClass="AdditionalChordCollectionViewCell" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="75" height="38"/>
+                                        <rect key="frame" x="10" y="10" width="90" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="38"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-8J-lsN">
-                                                    <rect key="frame" x="6" y="0.0" width="54" height="38"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -382,7 +382,7 @@
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.66666668650000005" green="0.1577306798" blue="0.36689298970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="customSize" width="75" height="38"/>
+                                        <size key="customSize" width="90" height="38"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="3"/>
@@ -393,14 +393,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="AdditionalChordCollectionViewCell" reuseIdentifier="AdditionalChordCollectionViewCell" id="1wd-t5-O6X" customClass="AdditionalChordCollectionViewCell" customModule="PanSongs" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="67" width="75" height="38"/>
+                                        <rect key="frame" x="10" y="67" width="90" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="38"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-7B-AV7">
-                                                    <rect key="frame" x="0.0" y="8" width="75" height="22"/>
+                                                    <rect key="frame" x="0.0" y="8" width="90" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -409,7 +409,7 @@
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.0" green="0.52258367416600537" blue="0.52752220812182737" alpha="0.67262414380000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="customSize" width="75" height="38"/>
+                                        <size key="customSize" width="90" height="38"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="3"/>
@@ -661,9 +661,10 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bHh-OW-NfV">
-                                <rect key="frame" x="1" y="343" width="375" height="344"/>
+                                <rect key="frame" x="1" y="343" width="375" height="316"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q4N-H3-o9Z">
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="q4N-H3-o9Z">
                                     <size key="itemSize" width="144" height="155"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -685,7 +686,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HJ-5B-uTX">
-                                                    <rect key="frame" x="6" y="14" width="132" height="126"/>
+                                                    <rect key="frame" x="6" y="14" width="132" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">●|➀|-|-|-|-|
 ●|➀|-|-|-|-|
@@ -774,6 +775,7 @@
                                             <constraint firstAttribute="trailing" secondItem="99A-tI-cKb" secondAttribute="trailing" id="v42-m6-ZWt"/>
                                             <constraint firstAttribute="trailing" secondItem="eh2-2f-ed6" secondAttribute="trailing" id="vmA-Ua-CQ8"/>
                                         </constraints>
+                                        <size key="customSize" width="144" height="155"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -796,7 +798,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bHh-OW-NfV" firstAttribute="bottom" secondItem="vJq-XN-DmJ" secondAttribute="bottom" constant="20" id="8JO-zD-VSa"/>
+                            <constraint firstItem="bHh-OW-NfV" firstAttribute="bottom" secondItem="vJq-XN-DmJ" secondAttribute="bottom" constant="-8" id="8JO-zD-VSa"/>
                             <constraint firstItem="vJq-XN-DmJ" firstAttribute="trailing" secondItem="Ndb-Rm-D2p" secondAttribute="trailing" id="9jR-Fg-Zw7"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="top" secondItem="kfB-hu-Xyp" secondAttribute="bottom" constant="15" id="Kji-UB-vQy"/>
                             <constraint firstItem="bHh-OW-NfV" firstAttribute="leading" secondItem="vJq-XN-DmJ" secondAttribute="leading" constant="1" id="N8M-kv-6g6"/>
@@ -862,6 +864,14 @@
                                             <outlet property="delegate" destination="Mj2-Dp-9Bm" id="N3L-re-CfR"/>
                                         </connections>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzL-Xm-dr1">
+                                        <rect key="frame" x="256" y="455" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="testAction:" destination="Mj2-Dp-9Bm" eventType="touchUpInside" id="klW-QE-F9h"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>

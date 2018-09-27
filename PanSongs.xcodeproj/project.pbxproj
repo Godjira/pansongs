@@ -27,7 +27,7 @@
 		ED391B70214000DD00772A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B6F214000DD00772A3F /* ProfileViewController.swift */; };
 		ED391B722140010900772A3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B712140010900772A3F /* LoginViewController.swift */; };
 		ED391B74214168B400772A3F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B73214168B400772A3F /* SignUpViewController.swift */; };
-		ED391B762144170E00772A3F /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B752144170E00772A3F /* ProfileManager.swift */; };
+		ED391B762144170E00772A3F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED391B752144170E00772A3F /* FirebaseManager.swift */; };
 		ED408E5E211080290029C867 /* KeyChordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */; };
 		ED61D5A0212184F8007A1ACF /* ChordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61D59F212184F8007A1ACF /* ChordTextView.swift */; };
 		ED8BBAA721209B2400F8D507 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */; };
@@ -65,7 +65,7 @@
 		ED391B6F214000DD00772A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ED391B712140010900772A3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED391B73214168B400772A3F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		ED391B752144170E00772A3F /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		ED391B752144170E00772A3F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		ED408E5D211080290029C867 /* KeyChordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChordTableViewCell.swift; sourceTree = "<group>"; };
 		ED61D59F212184F8007A1ACF /* ChordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordTextView.swift; sourceTree = "<group>"; };
 		ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		D61E9E2720F91CF2001F5834 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				ED391B752144170E00772A3F /* ProfileManager.swift */,
+				ED391B752144170E00772A3F /* FirebaseManager.swift */,
 				D61E9E2820F91EA9001F5834 /* ChordsManager.swift */,
 				ED8BBAA621209B2400F8D507 /* CoreDataManager.swift */,
 			);
@@ -380,7 +380,7 @@
 				ED9D347C211AC7FD00AF86AE /* SongListViewController.swift in Sources */,
 				ED0C6EC5212561EC00BE43BA /* DetailSongViewController.swift in Sources */,
 				19A6ADFE2137F50D0000F891 /* UIStoryboardExtensions.swift in Sources */,
-				ED391B762144170E00772A3F /* ProfileManager.swift in Sources */,
+				ED391B762144170E00772A3F /* FirebaseManager.swift in Sources */,
 				EDCA6C902122E7A3005B213D /* SongViewController.swift in Sources */,
 				194D6F9421306B36009EA33A /* UIColorExtensions.swift in Sources */,
 			);

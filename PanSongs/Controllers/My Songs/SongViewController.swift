@@ -22,15 +22,16 @@ class SongViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     setupToolBarForKeyboard()
     setupCircleButton()
     setupTextAndScrollViews()
     
     keyboard = textView.inputView
-    // Init and set bar button item
+
     let nextBarItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(SongViewController.nextBarItemAction))
     navigationItem.rightBarButtonItem = nextBarItem
-    // Add observers on keyboard event
+    
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: .UIKeyboardDidHide, object: nil)
   }
